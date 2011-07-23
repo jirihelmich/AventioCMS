@@ -1,0 +1,2625 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CMSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="CMSModelStoreContainer">
+          <EntitySet Name="articles" EntityType="CMSModel.Store.articles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="articles_authors" EntityType="CMSModel.Store.articles_authors" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="articles_categories" EntityType="CMSModel.Store.articles_categories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="authors" EntityType="CMSModel.Store.authors" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="categories" EntityType="CMSModel.Store.categories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="comments" EntityType="CMSModel.Store.comments" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="docgroups" EntityType="CMSModel.Store.docgroups" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="docgroups_products" EntityType="CMSModel.Store.docgroups_products" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="docs" EntityType="CMSModel.Store.docs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="images" EntityType="CMSModel.Store.images" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="images_products" EntityType="CMSModel.Store.images_products" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="menuitems" EntityType="CMSModel.Store.menuitems" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="news" EntityType="CMSModel.Store.news" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="pages" EntityType="CMSModel.Store.pages" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="products" EntityType="CMSModel.Store.products" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="products_categories" EntityType="CMSModel.Store.products_categories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="products_connections" EntityType="CMSModel.Store.products_connections" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="resources" EntityType="CMSModel.Store.resources" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="roles" EntityType="CMSModel.Store.roles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="roles_resources" EntityType="CMSModel.Store.roles_resources" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="settings" EntityType="CMSModel.Store.settings" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tags" EntityType="CMSModel.Store.tags" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tags_articles" EntityType="CMSModel.Store.tags_articles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="texts" EntityType="CMSModel.Store.texts" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="texts_values" EntityType="CMSModel.Store.texts_values" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="users" EntityType="CMSModel.Store.users" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_articles_authors_articles" Association="CMSModel.Store.FK_articles_authors_articles">
+            <End Role="articles" EntitySet="articles" />
+            <End Role="articles_authors" EntitySet="articles_authors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_articles_authors_authors" Association="CMSModel.Store.FK_articles_authors_authors">
+            <End Role="authors" EntitySet="authors" />
+            <End Role="articles_authors" EntitySet="articles_authors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_articles_categories_articles" Association="CMSModel.Store.FK_articles_categories_articles">
+            <End Role="articles" EntitySet="articles" />
+            <End Role="articles_categories" EntitySet="articles_categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_articles_categories_categories" Association="CMSModel.Store.FK_articles_categories_categories">
+            <End Role="categories" EntitySet="categories" />
+            <End Role="articles_categories" EntitySet="articles_categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_articles_roles" Association="CMSModel.Store.FK_articles_roles">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="articles" EntitySet="articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_authors_authors" Association="CMSModel.Store.FK_authors_authors">
+            <End Role="users" EntitySet="users" />
+            <End Role="authors" EntitySet="authors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_categories_categories" Association="CMSModel.Store.FK_categories_categories">
+            <End Role="categories" EntitySet="categories" />
+            <End Role="categories1" EntitySet="categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_categories_texts" Association="CMSModel.Store.FK_categories_texts">
+            <End Role="texts" EntitySet="texts" />
+            <End Role="categories" EntitySet="categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_categories_texts1" Association="CMSModel.Store.FK_categories_texts1">
+            <End Role="texts" EntitySet="texts" />
+            <End Role="categories" EntitySet="categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_categories_texts2" Association="CMSModel.Store.FK_categories_texts2">
+            <End Role="texts" EntitySet="texts" />
+            <End Role="categories" EntitySet="categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comments_articles" Association="CMSModel.Store.FK_comments_articles">
+            <End Role="articles" EntitySet="articles" />
+            <End Role="comments" EntitySet="comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comments_comments" Association="CMSModel.Store.FK_comments_comments">
+            <End Role="comments" EntitySet="comments" />
+            <End Role="comments1" EntitySet="comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comments_users" Association="CMSModel.Store.FK_comments_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="comments" EntitySet="comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_docs_docgroups" Association="CMSModel.Store.FK_docs_docgroups">
+            <End Role="docgroups" EntitySet="docgroups" />
+            <End Role="docs" EntitySet="docs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_docs_products_docgroupss" Association="CMSModel.Store.FK_docs_products_docgroupss">
+            <End Role="docgroups" EntitySet="docgroups" />
+            <End Role="docgroups_products" EntitySet="docgroups_products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_docs_products_products" Association="CMSModel.Store.FK_docs_products_products">
+            <End Role="products" EntitySet="products" />
+            <End Role="docgroups_products" EntitySet="docgroups_products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_docs_texts" Association="CMSModel.Store.FK_docs_texts">
+            <End Role="texts" EntitySet="texts" />
+            <End Role="docs" EntitySet="docs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_images_products_images" Association="CMSModel.Store.FK_images_products_images">
+            <End Role="images" EntitySet="images" />
+            <End Role="images_products" EntitySet="images_products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_images_products_products" Association="CMSModel.Store.FK_images_products_products">
+            <End Role="products" EntitySet="products" />
+            <End Role="images_products" EntitySet="images_products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_images_texts" Association="CMSModel.Store.FK_images_texts">
+            <End Role="texts" EntitySet="texts" />
+            <End Role="images" EntitySet="images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_menuitems_articles" Association="CMSModel.Store.FK_menuitems_articles">
+            <End Role="articles" EntitySet="articles" />
+            <End Role="menuitems" EntitySet="menuitems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_menuitems_categories" Association="CMSModel.Store.FK_menuitems_categories">
+            <End Role="categories" EntitySet="categories" />
+            <End Role="menuitems" EntitySet="menuitems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_news_images" Association="CMSModel.Store.FK_news_images">
+            <End Role="images" EntitySet="images" />
+            <End Role="news" EntitySet="news" />
+          </AssociationSet>
+          <AssociationSet Name="FK_news_products" Association="CMSModel.Store.FK_news_products">
+            <End Role="products" EntitySet="products" />
+            <End Role="news" EntitySet="news" />
+          </AssociationSet>
+          <AssociationSet Name="FK_news_texts" Association="CMSModel.Store.FK_news_texts">
+            <End Role="texts" EntitySet="texts" />
+            <End Role="news" EntitySet="news" />
+          </AssociationSet>
+          <AssociationSet Name="FK_news_texts1" Association="CMSModel.Store.FK_news_texts1">
+            <End Role="texts" EntitySet="texts" />
+            <End Role="news" EntitySet="news" />
+          </AssociationSet>
+          <AssociationSet Name="FK_news_texts2" Association="CMSModel.Store.FK_news_texts2">
+            <End Role="texts" EntitySet="texts" />
+            <End Role="news" EntitySet="news" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pages_texts" Association="CMSModel.Store.FK_pages_texts">
+            <End Role="texts" EntitySet="texts" />
+            <End Role="pages" EntitySet="pages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pages_texts1" Association="CMSModel.Store.FK_pages_texts1">
+            <End Role="texts" EntitySet="texts" />
+            <End Role="pages" EntitySet="pages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_categories_categories" Association="CMSModel.Store.FK_products_categories_categories">
+            <End Role="categories" EntitySet="categories" />
+            <End Role="products_categories" EntitySet="products_categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_categories_products" Association="CMSModel.Store.FK_products_categories_products">
+            <End Role="products" EntitySet="products" />
+            <End Role="products_categories" EntitySet="products_categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_connections_products" Association="CMSModel.Store.FK_products_connections_products">
+            <End Role="products" EntitySet="products" />
+            <End Role="products_connections" EntitySet="products_connections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_connections_products1" Association="CMSModel.Store.FK_products_connections_products1">
+            <End Role="products" EntitySet="products" />
+            <End Role="products_connections" EntitySet="products_connections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_images" Association="CMSModel.Store.FK_products_images">
+            <End Role="images" EntitySet="images" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_texts_desc" Association="CMSModel.Store.FK_products_texts_desc">
+            <End Role="texts" EntitySet="texts" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_texts_subtitle" Association="CMSModel.Store.FK_products_texts_subtitle">
+            <End Role="texts" EntitySet="texts" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_texts_text" Association="CMSModel.Store.FK_products_texts_text">
+            <End Role="texts" EntitySet="texts" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_texts_title" Association="CMSModel.Store.FK_products_texts_title">
+            <End Role="texts" EntitySet="texts" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_roles_resources_resources" Association="CMSModel.Store.FK_roles_resources_resources">
+            <End Role="resources" EntitySet="resources" />
+            <End Role="roles_resources" EntitySet="roles_resources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_roles_resources_roles" Association="CMSModel.Store.FK_roles_resources_roles">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="roles_resources" EntitySet="roles_resources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_roles_resources_roles_resources" Association="CMSModel.Store.FK_roles_resources_roles_resources">
+            <End Role="roles_resources" EntitySet="roles_resources" />
+            <End Role="roles_resources1" EntitySet="roles_resources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_roles_roles" Association="CMSModel.Store.FK_roles_roles">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="roles1" EntitySet="roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tags_articles_articles" Association="CMSModel.Store.FK_tags_articles_articles">
+            <End Role="articles" EntitySet="articles" />
+            <End Role="tags_articles" EntitySet="tags_articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tags_articles_tags" Association="CMSModel.Store.FK_tags_articles_tags">
+            <End Role="tags" EntitySet="tags" />
+            <End Role="tags_articles" EntitySet="tags_articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_texts_values_texts1" Association="CMSModel.Store.FK_texts_values_texts1">
+            <End Role="texts" EntitySet="texts" />
+            <End Role="texts_values" EntitySet="texts_values" />
+          </AssociationSet>
+          <AssociationSet Name="FK_users_roles" Association="CMSModel.Store.FK_users_roles">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="articles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="alias" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="introtext" Type="text" Nullable="false" />
+          <Property Name="fulltext" Type="text" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="date_published" Type="datetime" Nullable="false" />
+          <Property Name="date_pullback" Type="datetime" Nullable="false" />
+          <Property Name="date_lastmod" Type="datetime" Nullable="false" />
+          <Property Name="hits" Type="bigint" Nullable="false" />
+          <Property Name="modifications_count" Type="int" Nullable="false" />
+          <Property Name="published" Type="int" Nullable="false" />
+          <Property Name="level" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="articles_authors">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="articlesid" Type="bigint" Nullable="false" />
+          <Property Name="authorsid" Type="bigint" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="articles_categories">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="articlesid" Type="bigint" Nullable="false" />
+          <Property Name="categoriesid" Type="bigint" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="authors">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="lastname" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="usersid" Type="bigint" Nullable="false" />
+          <Property Name="description" Type="text" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="categories">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name_text_id" Type="bigint" Nullable="false" />
+          <Property Name="parentid" Type="bigint" />
+          <Property Name="text_text_id" Type="bigint" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="carousel_text_id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="comments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="varchar(max)" Nullable="false" />
+          <Property Name="text" Type="text" Nullable="false" />
+          <Property Name="usersid" Type="bigint" />
+          <Property Name="useralias" Type="varchar(max)" Nullable="false" />
+          <Property Name="parentid" Type="bigint" />
+          <Property Name="email" Type="varchar(max)" Nullable="false" />
+          <Property Name="ip" Type="varchar(max)" Nullable="false" />
+          <Property Name="articlesid" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="docgroups">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="docgroups_products">
+          <Key>
+            <PropertyRef Name="docgroup_id" />
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="docgroup_id" Type="bigint" Nullable="false" />
+          <Property Name="product_id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="docs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name_text_id" Type="bigint" />
+          <Property Name="path" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="docgroup_id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="images">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="path" Type="varchar" MaxLength="150" />
+          <Property Name="description_text_id" Type="bigint" />
+          <Property Name="width" Type="int" />
+          <Property Name="height" Type="int" />
+        </EntityType>
+        <EntityType Name="images_products">
+          <Key>
+            <PropertyRef Name="image_id" />
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="image_id" Type="bigint" Nullable="false" />
+          <Property Name="product_id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="menuitems">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="name" Type="varchar(max)" />
+          <Property Name="categoriesid" Type="bigint" />
+          <Property Name="articlesid" Type="bigint" />
+          <Property Name="link" Type="varchar(max)" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="news">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="bigint" Nullable="false" />
+          <Property Name="shortdesc" Type="bigint" Nullable="false" />
+          <Property Name="text" Type="bigint" Nullable="false" />
+          <Property Name="date" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="image_id" Type="bigint" />
+          <Property Name="product_id" Type="bigint" />
+          <Property Name="date_order" Type="date" />
+        </EntityType>
+        <EntityType Name="pages">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="title_text_id" Type="bigint" Nullable="false" />
+          <Property Name="text_text_id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="products">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="title_text_id" Type="bigint" Nullable="false" />
+          <Property Name="subtitle_text_id" Type="bigint" Nullable="false" />
+          <Property Name="description_text_id" Type="bigint" Nullable="false" />
+          <Property Name="text_text_id" Type="bigint" Nullable="false" />
+          <Property Name="image_id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="products_categories">
+          <Key>
+            <PropertyRef Name="product_id" />
+            <PropertyRef Name="category_id" />
+          </Key>
+          <Property Name="product_id" Type="bigint" Nullable="false" />
+          <Property Name="category_id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="products_connections">
+          <Key>
+            <PropertyRef Name="product_id" />
+            <PropertyRef Name="product_id_2" />
+          </Key>
+          <Property Name="product_id" Type="bigint" Nullable="false" />
+          <Property Name="product_id_2" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="resources">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="controller" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="action" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="roles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="parentid" Type="bigint" />
+        </EntityType>
+        <EntityType Name="roles_resources">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="resourcesid" Type="bigint" Nullable="false" />
+          <Property Name="rolesid" Type="bigint" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="settings">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="value" Type="varchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tags">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tags_articles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="tagsid" Type="bigint" Nullable="false" />
+          <Property Name="articlesid" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="texts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="texts_values">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="culture" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="value" Type="ntext" />
+          <Property Name="text_id" Type="bigint" Nullable="false" />
+          <Property Name="seo_value" Type="ntext" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="password" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="email" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="rolesid" Type="bigint" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_articles_authors_articles">
+          <End Role="articles" Type="CMSModel.Store.articles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="articles_authors" Type="CMSModel.Store.articles_authors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="articles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="articles_authors">
+              <PropertyRef Name="articlesid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_articles_authors_authors">
+          <End Role="authors" Type="CMSModel.Store.authors" Multiplicity="1" />
+          <End Role="articles_authors" Type="CMSModel.Store.articles_authors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="authors">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="articles_authors">
+              <PropertyRef Name="authorsid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_articles_categories_articles">
+          <End Role="articles" Type="CMSModel.Store.articles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="articles_categories" Type="CMSModel.Store.articles_categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="articles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="articles_categories">
+              <PropertyRef Name="articlesid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_articles_categories_categories">
+          <End Role="categories" Type="CMSModel.Store.categories" Multiplicity="1" />
+          <End Role="articles_categories" Type="CMSModel.Store.articles_categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categories">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="articles_categories">
+              <PropertyRef Name="categoriesid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_articles_roles">
+          <End Role="roles" Type="CMSModel.Store.roles" Multiplicity="1" />
+          <End Role="articles" Type="CMSModel.Store.articles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="articles">
+              <PropertyRef Name="level" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_authors_authors">
+          <End Role="users" Type="CMSModel.Store.users" Multiplicity="1" />
+          <End Role="authors" Type="CMSModel.Store.authors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="authors">
+              <PropertyRef Name="usersid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_categories_categories">
+          <End Role="categories" Type="CMSModel.Store.categories" Multiplicity="0..1" />
+          <End Role="categories1" Type="CMSModel.Store.categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categories">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="categories1">
+              <PropertyRef Name="parentid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_categories_texts">
+          <End Role="texts" Type="CMSModel.Store.texts" Multiplicity="1" />
+          <End Role="categories" Type="CMSModel.Store.categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="texts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="categories">
+              <PropertyRef Name="name_text_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_categories_texts1">
+          <End Role="texts" Type="CMSModel.Store.texts" Multiplicity="1" />
+          <End Role="categories" Type="CMSModel.Store.categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="texts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="categories">
+              <PropertyRef Name="text_text_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_categories_texts2">
+          <End Role="texts" Type="CMSModel.Store.texts" Multiplicity="0..1" />
+          <End Role="categories" Type="CMSModel.Store.categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="texts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="categories">
+              <PropertyRef Name="carousel_text_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comments_articles">
+          <End Role="articles" Type="CMSModel.Store.articles" Multiplicity="1" />
+          <End Role="comments" Type="CMSModel.Store.comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="articles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comments">
+              <PropertyRef Name="articlesid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comments_comments">
+          <End Role="comments" Type="CMSModel.Store.comments" Multiplicity="0..1" />
+          <End Role="comments1" Type="CMSModel.Store.comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comments">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comments1">
+              <PropertyRef Name="parentid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comments_users">
+          <End Role="users" Type="CMSModel.Store.users" Multiplicity="0..1" />
+          <End Role="comments" Type="CMSModel.Store.comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comments">
+              <PropertyRef Name="usersid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_docs_docgroups">
+          <End Role="docgroups" Type="CMSModel.Store.docgroups" Multiplicity="0..1" />
+          <End Role="docs" Type="CMSModel.Store.docs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="docgroups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="docs">
+              <PropertyRef Name="docgroup_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_docs_products_docgroupss">
+          <End Role="docgroups" Type="CMSModel.Store.docgroups" Multiplicity="1" />
+          <End Role="docgroups_products" Type="CMSModel.Store.docgroups_products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="docgroups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="docgroups_products">
+              <PropertyRef Name="docgroup_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_docs_products_products">
+          <End Role="products" Type="CMSModel.Store.products" Multiplicity="1" />
+          <End Role="docgroups_products" Type="CMSModel.Store.docgroups_products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="docgroups_products">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_docs_texts">
+          <End Role="texts" Type="CMSModel.Store.texts" Multiplicity="0..1" />
+          <End Role="docs" Type="CMSModel.Store.docs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="texts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="docs">
+              <PropertyRef Name="name_text_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_images_products_images">
+          <End Role="images" Type="CMSModel.Store.images" Multiplicity="1" />
+          <End Role="images_products" Type="CMSModel.Store.images_products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="images">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="images_products">
+              <PropertyRef Name="image_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_images_products_products">
+          <End Role="products" Type="CMSModel.Store.products" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="images_products" Type="CMSModel.Store.images_products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="images_products">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_images_texts">
+          <End Role="texts" Type="CMSModel.Store.texts" Multiplicity="0..1" />
+          <End Role="images" Type="CMSModel.Store.images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="texts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="images">
+              <PropertyRef Name="description_text_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_menuitems_articles">
+          <End Role="articles" Type="CMSModel.Store.articles" Multiplicity="0..1" />
+          <End Role="menuitems" Type="CMSModel.Store.menuitems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="articles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="menuitems">
+              <PropertyRef Name="articlesid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_menuitems_categories">
+          <End Role="categories" Type="CMSModel.Store.categories" Multiplicity="0..1" />
+          <End Role="menuitems" Type="CMSModel.Store.menuitems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categories">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="menuitems">
+              <PropertyRef Name="categoriesid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_news_images">
+          <End Role="images" Type="CMSModel.Store.images" Multiplicity="0..1" />
+          <End Role="news" Type="CMSModel.Store.news" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="images">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="news">
+              <PropertyRef Name="image_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_news_products">
+          <End Role="products" Type="CMSModel.Store.products" Multiplicity="0..1" />
+          <End Role="news" Type="CMSModel.Store.news" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="news">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_news_texts">
+          <End Role="texts" Type="CMSModel.Store.texts" Multiplicity="1" />
+          <End Role="news" Type="CMSModel.Store.news" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="texts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="news">
+              <PropertyRef Name="title" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_news_texts1">
+          <End Role="texts" Type="CMSModel.Store.texts" Multiplicity="1" />
+          <End Role="news" Type="CMSModel.Store.news" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="texts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="news">
+              <PropertyRef Name="shortdesc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_news_texts2">
+          <End Role="texts" Type="CMSModel.Store.texts" Multiplicity="1" />
+          <End Role="news" Type="CMSModel.Store.news" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="texts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="news">
+              <PropertyRef Name="text" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pages_texts">
+          <End Role="texts" Type="CMSModel.Store.texts" Multiplicity="1" />
+          <End Role="pages" Type="CMSModel.Store.pages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="texts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pages">
+              <PropertyRef Name="text_text_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pages_texts1">
+          <End Role="texts" Type="CMSModel.Store.texts" Multiplicity="1" />
+          <End Role="pages" Type="CMSModel.Store.pages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="texts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pages">
+              <PropertyRef Name="title_text_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_products_categories_categories">
+          <End Role="categories" Type="CMSModel.Store.categories" Multiplicity="1" />
+          <End Role="products_categories" Type="CMSModel.Store.products_categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categories">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="products_categories">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_products_categories_products">
+          <End Role="products" Type="CMSModel.Store.products" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="products_categories" Type="CMSModel.Store.products_categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="products_categories">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_products_connections_products">
+          <End Role="products" Type="CMSModel.Store.products" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="products_connections" Type="CMSModel.Store.products_connections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="products_connections">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_products_connections_products1">
+          <End Role="products" Type="CMSModel.Store.products" Multiplicity="1" />
+          <End Role="products_connections" Type="CMSModel.Store.products_connections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="products_connections">
+              <PropertyRef Name="product_id_2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_products_images">
+          <End Role="images" Type="CMSModel.Store.images" Multiplicity="0..1" />
+          <End Role="products" Type="CMSModel.Store.products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="images">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="image_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_products_texts_desc">
+          <End Role="texts" Type="CMSModel.Store.texts" Multiplicity="1" />
+          <End Role="products" Type="CMSModel.Store.products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="texts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="description_text_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_products_texts_subtitle">
+          <End Role="texts" Type="CMSModel.Store.texts" Multiplicity="1" />
+          <End Role="products" Type="CMSModel.Store.products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="texts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="subtitle_text_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_products_texts_text">
+          <End Role="texts" Type="CMSModel.Store.texts" Multiplicity="1" />
+          <End Role="products" Type="CMSModel.Store.products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="texts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="text_text_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_products_texts_title">
+          <End Role="texts" Type="CMSModel.Store.texts" Multiplicity="1" />
+          <End Role="products" Type="CMSModel.Store.products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="texts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="title_text_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_roles_resources_resources">
+          <End Role="resources" Type="CMSModel.Store.resources" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="roles_resources" Type="CMSModel.Store.roles_resources" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="resources">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="roles_resources">
+              <PropertyRef Name="resourcesid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_roles_resources_roles">
+          <End Role="roles" Type="CMSModel.Store.roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="roles_resources" Type="CMSModel.Store.roles_resources" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="roles_resources">
+              <PropertyRef Name="rolesid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_roles_resources_roles_resources">
+          <End Role="roles_resources" Type="CMSModel.Store.roles_resources" Multiplicity="1" />
+          <End Role="roles_resources1" Type="CMSModel.Store.roles_resources" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="roles_resources">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="roles_resources1">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_roles_roles">
+          <End Role="roles" Type="CMSModel.Store.roles" Multiplicity="0..1" />
+          <End Role="roles1" Type="CMSModel.Store.roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="roles1">
+              <PropertyRef Name="parentid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tags_articles_articles">
+          <End Role="articles" Type="CMSModel.Store.articles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tags_articles" Type="CMSModel.Store.tags_articles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="articles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tags_articles">
+              <PropertyRef Name="articlesid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tags_articles_tags">
+          <End Role="tags" Type="CMSModel.Store.tags" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tags_articles" Type="CMSModel.Store.tags_articles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tags">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tags_articles">
+              <PropertyRef Name="tagsid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_texts_values_texts1">
+          <End Role="texts" Type="CMSModel.Store.texts" Multiplicity="1" />
+          <End Role="texts_values" Type="CMSModel.Store.texts_values" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="texts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="texts_values">
+              <PropertyRef Name="text_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_users_roles">
+          <End Role="roles" Type="CMSModel.Store.roles" Multiplicity="1" />
+          <End Role="users" Type="CMSModel.Store.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="rolesid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CMSModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="CMSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="articles" EntityType="CMSModel.articles" />
+          <EntitySet Name="articles_authors" EntityType="CMSModel.articles_authors" />
+          <EntitySet Name="articles_categories" EntityType="CMSModel.articles_categories" />
+          <EntitySet Name="authors" EntityType="CMSModel.authors" />
+          <EntitySet Name="categories" EntityType="CMSModel.categories" />
+          <EntitySet Name="comments" EntityType="CMSModel.comments" />
+          <EntitySet Name="docgroups" EntityType="CMSModel.docgroups" />
+          <EntitySet Name="docs" EntityType="CMSModel.docs" />
+          <EntitySet Name="images" EntityType="CMSModel.images" />
+          <EntitySet Name="menuitems" EntityType="CMSModel.menuitems" />
+          <EntitySet Name="news" EntityType="CMSModel.news" />
+          <EntitySet Name="pages" EntityType="CMSModel.pages" />
+          <EntitySet Name="products" EntityType="CMSModel.products" />
+          <EntitySet Name="resources" EntityType="CMSModel.resources" />
+          <EntitySet Name="roles" EntityType="CMSModel.roles" />
+          <EntitySet Name="roles_resources" EntityType="CMSModel.roles_resources" />
+          <EntitySet Name="settings" EntityType="CMSModel.settings" />
+          <EntitySet Name="tags" EntityType="CMSModel.tags" />
+          <EntitySet Name="tags_articles" EntityType="CMSModel.tags_articles" />
+          <EntitySet Name="texts" EntityType="CMSModel.texts" />
+          <EntitySet Name="texts_values" EntityType="CMSModel.texts_values" />
+          <EntitySet Name="users" EntityType="CMSModel.users" />
+          <AssociationSet Name="FK_articles_authors_articles" Association="CMSModel.FK_articles_authors_articles">
+            <End Role="articles" EntitySet="articles" />
+            <End Role="articles_authors" EntitySet="articles_authors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_articles_categories_articles" Association="CMSModel.FK_articles_categories_articles">
+            <End Role="articles" EntitySet="articles" />
+            <End Role="articles_categories" EntitySet="articles_categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_articles_roles" Association="CMSModel.FK_articles_roles">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="articles" EntitySet="articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comments_articles" Association="CMSModel.FK_comments_articles">
+            <End Role="articles" EntitySet="articles" />
+            <End Role="comments" EntitySet="comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_menuitems_articles" Association="CMSModel.FK_menuitems_articles">
+            <End Role="articles" EntitySet="articles" />
+            <End Role="menuitems" EntitySet="menuitems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tags_articles_articles" Association="CMSModel.FK_tags_articles_articles">
+            <End Role="articles" EntitySet="articles" />
+            <End Role="tags_articles" EntitySet="tags_articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_articles_authors_authors" Association="CMSModel.FK_articles_authors_authors">
+            <End Role="authors" EntitySet="authors" />
+            <End Role="articles_authors" EntitySet="articles_authors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_articles_categories_categories" Association="CMSModel.FK_articles_categories_categories">
+            <End Role="categories" EntitySet="categories" />
+            <End Role="articles_categories" EntitySet="articles_categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_authors_authors" Association="CMSModel.FK_authors_authors">
+            <End Role="users" EntitySet="users" />
+            <End Role="authors" EntitySet="authors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_categories_categories" Association="CMSModel.FK_categories_categories">
+            <End Role="categories" EntitySet="categories" />
+            <End Role="categories1" EntitySet="categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_categories_texts" Association="CMSModel.FK_categories_texts">
+            <End Role="texts" EntitySet="texts" />
+            <End Role="categories" EntitySet="categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_categories_texts1" Association="CMSModel.FK_categories_texts1">
+            <End Role="texts" EntitySet="texts" />
+            <End Role="categories" EntitySet="categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_categories_texts2" Association="CMSModel.FK_categories_texts2">
+            <End Role="texts" EntitySet="texts" />
+            <End Role="categories" EntitySet="categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_menuitems_categories" Association="CMSModel.FK_menuitems_categories">
+            <End Role="categories" EntitySet="categories" />
+            <End Role="menuitems" EntitySet="menuitems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comments_comments" Association="CMSModel.FK_comments_comments">
+            <End Role="comments" EntitySet="comments" />
+            <End Role="comments1" EntitySet="comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comments_users" Association="CMSModel.FK_comments_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="comments" EntitySet="comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_docs_docgroups" Association="CMSModel.FK_docs_docgroups">
+            <End Role="docgroups" EntitySet="docgroups" />
+            <End Role="docs" EntitySet="docs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_docs_texts" Association="CMSModel.FK_docs_texts">
+            <End Role="texts" EntitySet="texts" />
+            <End Role="docs" EntitySet="docs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_images_texts" Association="CMSModel.FK_images_texts">
+            <End Role="texts" EntitySet="texts" />
+            <End Role="images" EntitySet="images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_news_images" Association="CMSModel.FK_news_images">
+            <End Role="images" EntitySet="images" />
+            <End Role="news" EntitySet="news" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_images" Association="CMSModel.FK_products_images">
+            <End Role="images" EntitySet="images" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_news_products" Association="CMSModel.FK_news_products">
+            <End Role="products" EntitySet="products" />
+            <End Role="news" EntitySet="news" />
+          </AssociationSet>
+          <AssociationSet Name="FK_news_texts" Association="CMSModel.FK_news_texts">
+            <End Role="texts" EntitySet="texts" />
+            <End Role="news" EntitySet="news" />
+          </AssociationSet>
+          <AssociationSet Name="FK_news_texts1" Association="CMSModel.FK_news_texts1">
+            <End Role="texts" EntitySet="texts" />
+            <End Role="news" EntitySet="news" />
+          </AssociationSet>
+          <AssociationSet Name="FK_news_texts2" Association="CMSModel.FK_news_texts2">
+            <End Role="texts" EntitySet="texts" />
+            <End Role="news" EntitySet="news" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pages_texts" Association="CMSModel.FK_pages_texts">
+            <End Role="texts" EntitySet="texts" />
+            <End Role="pages" EntitySet="pages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pages_texts1" Association="CMSModel.FK_pages_texts1">
+            <End Role="texts" EntitySet="texts" />
+            <End Role="pages" EntitySet="pages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_texts_desc" Association="CMSModel.FK_products_texts_desc">
+            <End Role="texts" EntitySet="texts" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_texts_subtitle" Association="CMSModel.FK_products_texts_subtitle">
+            <End Role="texts" EntitySet="texts" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_texts_text" Association="CMSModel.FK_products_texts_text">
+            <End Role="texts" EntitySet="texts" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_texts_title" Association="CMSModel.FK_products_texts_title">
+            <End Role="texts" EntitySet="texts" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_roles_resources_resources" Association="CMSModel.FK_roles_resources_resources">
+            <End Role="resources" EntitySet="resources" />
+            <End Role="roles_resources" EntitySet="roles_resources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_roles_resources_roles" Association="CMSModel.FK_roles_resources_roles">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="roles_resources" EntitySet="roles_resources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_roles_roles" Association="CMSModel.FK_roles_roles">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="roles1" EntitySet="roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_users_roles" Association="CMSModel.FK_users_roles">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_roles_resources_roles_resources" Association="CMSModel.FK_roles_resources_roles_resources">
+            <End Role="roles_resources" EntitySet="roles_resources" />
+            <End Role="roles_resources1" EntitySet="roles_resources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tags_articles_tags" Association="CMSModel.FK_tags_articles_tags">
+            <End Role="tags" EntitySet="tags" />
+            <End Role="tags_articles" EntitySet="tags_articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_texts_values_texts1" Association="CMSModel.FK_texts_values_texts1">
+            <End Role="texts" EntitySet="texts" />
+            <End Role="texts_values" EntitySet="texts_values" />
+          </AssociationSet>
+          <AssociationSet Name="docgroups_products" Association="CMSModel.docgroups_products">
+            <End Role="docgroups" EntitySet="docgroups" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="images_products" Association="CMSModel.images_products">
+            <End Role="images" EntitySet="images" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="products_categories" Association="CMSModel.products_categories">
+            <End Role="categories" EntitySet="categories" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="products_connections" Association="CMSModel.products_connections">
+            <End Role="products" EntitySet="products" />
+            <End Role="products1" EntitySet="products" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="articles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="alias" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="introtext" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="fulltext" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <Property Name="date_published" Type="DateTime" Nullable="false" />
+          <Property Name="date_pullback" Type="DateTime" Nullable="false" />
+          <Property Name="date_lastmod" Type="DateTime" Nullable="false" />
+          <Property Name="hits" Type="Int64" Nullable="false" />
+          <Property Name="modifications_count" Type="Int32" Nullable="false" />
+          <Property Name="published" Type="Int32" Nullable="false" />
+          <Property Name="level" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="articles_authors" Relationship="CMSModel.FK_articles_authors_articles" FromRole="articles" ToRole="articles_authors" />
+          <NavigationProperty Name="articles_categories" Relationship="CMSModel.FK_articles_categories_articles" FromRole="articles" ToRole="articles_categories" />
+          <NavigationProperty Name="roles" Relationship="CMSModel.FK_articles_roles" FromRole="articles" ToRole="roles" />
+          <NavigationProperty Name="comments" Relationship="CMSModel.FK_comments_articles" FromRole="articles" ToRole="comments" />
+          <NavigationProperty Name="menuitems" Relationship="CMSModel.FK_menuitems_articles" FromRole="articles" ToRole="menuitems" />
+          <NavigationProperty Name="tags_articles" Relationship="CMSModel.FK_tags_articles_articles" FromRole="articles" ToRole="tags_articles" />
+        </EntityType>
+        <EntityType Name="articles_authors">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="articlesid" Type="Int64" Nullable="false" />
+          <Property Name="authorsid" Type="Int64" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="articles" Relationship="CMSModel.FK_articles_authors_articles" FromRole="articles_authors" ToRole="articles" />
+          <NavigationProperty Name="authors" Relationship="CMSModel.FK_articles_authors_authors" FromRole="articles_authors" ToRole="authors" />
+        </EntityType>
+        <EntityType Name="articles_categories">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="articlesid" Type="Int64" Nullable="false" />
+          <Property Name="categoriesid" Type="Int64" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="articles" Relationship="CMSModel.FK_articles_categories_articles" FromRole="articles_categories" ToRole="articles" />
+          <NavigationProperty Name="categories" Relationship="CMSModel.FK_articles_categories_categories" FromRole="articles_categories" ToRole="categories" />
+        </EntityType>
+        <EntityType Name="authors">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="lastname" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="usersid" Type="Int64" Nullable="false" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="articles_authors" Relationship="CMSModel.FK_articles_authors_authors" FromRole="authors" ToRole="articles_authors" />
+          <NavigationProperty Name="users" Relationship="CMSModel.FK_authors_authors" FromRole="authors" ToRole="users" />
+        </EntityType>
+        <EntityType Name="categories">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_text_id" Type="Int64" Nullable="false" />
+          <Property Name="parentid" Type="Int64" />
+          <Property Name="text_text_id" Type="Int64" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <Property Name="carousel_text_id" Type="Int64" />
+          <NavigationProperty Name="articles_categories" Relationship="CMSModel.FK_articles_categories_categories" FromRole="categories" ToRole="articles_categories" />
+          <NavigationProperty Name="categories1" Relationship="CMSModel.FK_categories_categories" FromRole="categories" ToRole="categories1" />
+          <NavigationProperty Name="categories2" Relationship="CMSModel.FK_categories_categories" FromRole="categories1" ToRole="categories" />
+          <NavigationProperty Name="texts" Relationship="CMSModel.FK_categories_texts" FromRole="categories" ToRole="texts" />
+          <NavigationProperty Name="texts1" Relationship="CMSModel.FK_categories_texts1" FromRole="categories" ToRole="texts" />
+          <NavigationProperty Name="texts2" Relationship="CMSModel.FK_categories_texts2" FromRole="categories" ToRole="texts" />
+          <NavigationProperty Name="menuitems" Relationship="CMSModel.FK_menuitems_categories" FromRole="categories" ToRole="menuitems" />
+          <NavigationProperty Name="products" Relationship="CMSModel.products_categories" FromRole="categories" ToRole="products" />
+        </EntityType>
+        <EntityType Name="comments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="text" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="usersid" Type="Int64" />
+          <Property Name="useralias" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="parentid" Type="Int64" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="ip" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="articlesid" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="articles" Relationship="CMSModel.FK_comments_articles" FromRole="comments" ToRole="articles" />
+          <NavigationProperty Name="comments1" Relationship="CMSModel.FK_comments_comments" FromRole="comments" ToRole="comments1" />
+          <NavigationProperty Name="comments2" Relationship="CMSModel.FK_comments_comments" FromRole="comments1" ToRole="comments" />
+          <NavigationProperty Name="users" Relationship="CMSModel.FK_comments_users" FromRole="comments" ToRole="users" />
+        </EntityType>
+        <EntityType Name="docgroups">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="docs" Relationship="CMSModel.FK_docs_docgroups" FromRole="docgroups" ToRole="docs" />
+          <NavigationProperty Name="products" Relationship="CMSModel.docgroups_products" FromRole="docgroups" ToRole="products" />
+        </EntityType>
+        <EntityType Name="docs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_text_id" Type="Int64" />
+          <Property Name="path" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="docgroup_id" Type="Int64" />
+          <NavigationProperty Name="docgroups" Relationship="CMSModel.FK_docs_docgroups" FromRole="docs" ToRole="docgroups" />
+          <NavigationProperty Name="texts" Relationship="CMSModel.FK_docs_texts" FromRole="docs" ToRole="texts" />
+        </EntityType>
+        <EntityType Name="images">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="path" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="description_text_id" Type="Int64" />
+          <Property Name="width" Type="Int32" />
+          <Property Name="height" Type="Int32" />
+          <NavigationProperty Name="texts" Relationship="CMSModel.FK_images_texts" FromRole="images" ToRole="texts" />
+          <NavigationProperty Name="news" Relationship="CMSModel.FK_news_images" FromRole="images" ToRole="news" />
+          <NavigationProperty Name="products" Relationship="CMSModel.FK_products_images" FromRole="images" ToRole="products" />
+          <NavigationProperty Name="products1" Relationship="CMSModel.images_products" FromRole="images" ToRole="products" />
+        </EntityType>
+        <EntityType Name="menuitems">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="categoriesid" Type="Int64" />
+          <Property Name="articlesid" Type="Int64" />
+          <Property Name="link" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="articles" Relationship="CMSModel.FK_menuitems_articles" FromRole="menuitems" ToRole="articles" />
+          <NavigationProperty Name="categories" Relationship="CMSModel.FK_menuitems_categories" FromRole="menuitems" ToRole="categories" />
+        </EntityType>
+        <EntityType Name="news">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="Int64" Nullable="false" />
+          <Property Name="shortdesc" Type="Int64" Nullable="false" />
+          <Property Name="text" Type="Int64" Nullable="false" />
+          <Property Name="date" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="image_id" Type="Int64" />
+          <Property Name="product_id" Type="Int64" />
+          <Property Name="date_order" Type="DateTime" />
+          <NavigationProperty Name="images" Relationship="CMSModel.FK_news_images" FromRole="news" ToRole="images" />
+          <NavigationProperty Name="products" Relationship="CMSModel.FK_news_products" FromRole="news" ToRole="products" />
+          <NavigationProperty Name="texts" Relationship="CMSModel.FK_news_texts" FromRole="news" ToRole="texts" />
+          <NavigationProperty Name="texts1" Relationship="CMSModel.FK_news_texts1" FromRole="news" ToRole="texts" />
+          <NavigationProperty Name="texts2" Relationship="CMSModel.FK_news_texts2" FromRole="news" ToRole="texts" />
+        </EntityType>
+        <EntityType Name="pages">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title_text_id" Type="Int64" Nullable="false" />
+          <Property Name="text_text_id" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="texts" Relationship="CMSModel.FK_pages_texts" FromRole="pages" ToRole="texts" />
+          <NavigationProperty Name="texts1" Relationship="CMSModel.FK_pages_texts1" FromRole="pages" ToRole="texts" />
+        </EntityType>
+        <EntityType Name="products">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title_text_id" Type="Int64" Nullable="false" />
+          <Property Name="subtitle_text_id" Type="Int64" Nullable="false" />
+          <Property Name="description_text_id" Type="Int64" Nullable="false" />
+          <Property Name="text_text_id" Type="Int64" Nullable="false" />
+          <Property Name="image_id" Type="Int64" />
+          <NavigationProperty Name="images" Relationship="CMSModel.FK_products_images" FromRole="products" ToRole="images" />
+          <NavigationProperty Name="news" Relationship="CMSModel.FK_news_products" FromRole="products" ToRole="news" />
+          <NavigationProperty Name="texts" Relationship="CMSModel.FK_products_texts_desc" FromRole="products" ToRole="texts" />
+          <NavigationProperty Name="texts1" Relationship="CMSModel.FK_products_texts_subtitle" FromRole="products" ToRole="texts" />
+          <NavigationProperty Name="texts2" Relationship="CMSModel.FK_products_texts_text" FromRole="products" ToRole="texts" />
+          <NavigationProperty Name="texts3" Relationship="CMSModel.FK_products_texts_title" FromRole="products" ToRole="texts" />
+          <NavigationProperty Name="docgroups" Relationship="CMSModel.docgroups_products" FromRole="products" ToRole="docgroups" />
+          <NavigationProperty Name="images1" Relationship="CMSModel.images_products" FromRole="products" ToRole="images" />
+          <NavigationProperty Name="categories" Relationship="CMSModel.products_categories" FromRole="products" ToRole="categories" />
+          <NavigationProperty Name="products1" Relationship="CMSModel.products_connections" FromRole="products" ToRole="products1" />
+          <NavigationProperty Name="products2" Relationship="CMSModel.products_connections" FromRole="products1" ToRole="products" />
+        </EntityType>
+        <EntityType Name="resources">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="controller" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="action" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="roles_resources" Relationship="CMSModel.FK_roles_resources_resources" FromRole="resources" ToRole="roles_resources" />
+        </EntityType>
+        <EntityType Name="roles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <Property Name="parentid" Type="Int64" />
+          <NavigationProperty Name="articles" Relationship="CMSModel.FK_articles_roles" FromRole="roles" ToRole="articles" />
+          <NavigationProperty Name="roles_resources" Relationship="CMSModel.FK_roles_resources_roles" FromRole="roles" ToRole="roles_resources" />
+          <NavigationProperty Name="roles1" Relationship="CMSModel.FK_roles_roles" FromRole="roles" ToRole="roles1" />
+          <NavigationProperty Name="roles2" Relationship="CMSModel.FK_roles_roles" FromRole="roles1" ToRole="roles" />
+          <NavigationProperty Name="users" Relationship="CMSModel.FK_users_roles" FromRole="roles" ToRole="users" />
+        </EntityType>
+        <EntityType Name="roles_resources">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="resourcesid" Type="Int64" Nullable="false" />
+          <Property Name="rolesid" Type="Int64" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="resources" Relationship="CMSModel.FK_roles_resources_resources" FromRole="roles_resources" ToRole="resources" />
+          <NavigationProperty Name="roles" Relationship="CMSModel.FK_roles_resources_roles" FromRole="roles_resources" ToRole="roles" />
+          <NavigationProperty Name="roles_resources1" Relationship="CMSModel.FK_roles_resources_roles_resources" FromRole="roles_resources" ToRole="roles_resources1" />
+          <NavigationProperty Name="roles_resources2" Relationship="CMSModel.FK_roles_resources_roles_resources" FromRole="roles_resources1" ToRole="roles_resources" />
+        </EntityType>
+        <EntityType Name="settings">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="value" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tags">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="tags_articles" Relationship="CMSModel.FK_tags_articles_tags" FromRole="tags" ToRole="tags_articles" />
+        </EntityType>
+        <EntityType Name="tags_articles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tagsid" Type="Int64" Nullable="false" />
+          <Property Name="articlesid" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="articles" Relationship="CMSModel.FK_tags_articles_articles" FromRole="tags_articles" ToRole="articles" />
+          <NavigationProperty Name="tags" Relationship="CMSModel.FK_tags_articles_tags" FromRole="tags_articles" ToRole="tags" />
+        </EntityType>
+        <EntityType Name="texts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="categories" Relationship="CMSModel.FK_categories_texts" FromRole="texts" ToRole="categories" />
+          <NavigationProperty Name="categories1" Relationship="CMSModel.FK_categories_texts1" FromRole="texts" ToRole="categories" />
+          <NavigationProperty Name="categories2" Relationship="CMSModel.FK_categories_texts2" FromRole="texts" ToRole="categories" />
+          <NavigationProperty Name="docs" Relationship="CMSModel.FK_docs_texts" FromRole="texts" ToRole="docs" />
+          <NavigationProperty Name="images" Relationship="CMSModel.FK_images_texts" FromRole="texts" ToRole="images" />
+          <NavigationProperty Name="news" Relationship="CMSModel.FK_news_texts" FromRole="texts" ToRole="news" />
+          <NavigationProperty Name="news1" Relationship="CMSModel.FK_news_texts1" FromRole="texts" ToRole="news" />
+          <NavigationProperty Name="news2" Relationship="CMSModel.FK_news_texts2" FromRole="texts" ToRole="news" />
+          <NavigationProperty Name="pages" Relationship="CMSModel.FK_pages_texts" FromRole="texts" ToRole="pages" />
+          <NavigationProperty Name="pages1" Relationship="CMSModel.FK_pages_texts1" FromRole="texts" ToRole="pages" />
+          <NavigationProperty Name="products" Relationship="CMSModel.FK_products_texts_desc" FromRole="texts" ToRole="products" />
+          <NavigationProperty Name="products1" Relationship="CMSModel.FK_products_texts_subtitle" FromRole="texts" ToRole="products" />
+          <NavigationProperty Name="products2" Relationship="CMSModel.FK_products_texts_text" FromRole="texts" ToRole="products" />
+          <NavigationProperty Name="products3" Relationship="CMSModel.FK_products_texts_title" FromRole="texts" ToRole="products" />
+          <NavigationProperty Name="texts_values" Relationship="CMSModel.FK_texts_values_texts1" FromRole="texts" ToRole="texts_values" />
+        </EntityType>
+        <EntityType Name="texts_values">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="culture" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="value" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="text_id" Type="Int64" Nullable="false" />
+          <Property Name="seo_value" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="texts" Relationship="CMSModel.FK_texts_values_texts1" FromRole="texts_values" ToRole="texts" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="rolesid" Type="Int64" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="authors" Relationship="CMSModel.FK_authors_authors" FromRole="users" ToRole="authors" />
+          <NavigationProperty Name="comments" Relationship="CMSModel.FK_comments_users" FromRole="users" ToRole="comments" />
+          <NavigationProperty Name="roles" Relationship="CMSModel.FK_users_roles" FromRole="users" ToRole="roles" />
+        </EntityType>
+        <Association Name="FK_articles_authors_articles">
+          <End Role="articles" Type="CMSModel.articles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="articles_authors" Type="CMSModel.articles_authors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="articles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="articles_authors">
+              <PropertyRef Name="articlesid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_articles_categories_articles">
+          <End Role="articles" Type="CMSModel.articles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="articles_categories" Type="CMSModel.articles_categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="articles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="articles_categories">
+              <PropertyRef Name="articlesid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_articles_roles">
+          <End Role="roles" Type="CMSModel.roles" Multiplicity="1" />
+          <End Role="articles" Type="CMSModel.articles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="articles">
+              <PropertyRef Name="level" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comments_articles">
+          <End Role="articles" Type="CMSModel.articles" Multiplicity="1" />
+          <End Role="comments" Type="CMSModel.comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="articles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comments">
+              <PropertyRef Name="articlesid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_menuitems_articles">
+          <End Role="articles" Type="CMSModel.articles" Multiplicity="0..1" />
+          <End Role="menuitems" Type="CMSModel.menuitems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="articles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="menuitems">
+              <PropertyRef Name="articlesid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tags_articles_articles">
+          <End Role="articles" Type="CMSModel.articles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tags_articles" Type="CMSModel.tags_articles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="articles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tags_articles">
+              <PropertyRef Name="articlesid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_articles_authors_authors">
+          <End Role="authors" Type="CMSModel.authors" Multiplicity="1" />
+          <End Role="articles_authors" Type="CMSModel.articles_authors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="authors">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="articles_authors">
+              <PropertyRef Name="authorsid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_articles_categories_categories">
+          <End Role="categories" Type="CMSModel.categories" Multiplicity="1" />
+          <End Role="articles_categories" Type="CMSModel.articles_categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categories">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="articles_categories">
+              <PropertyRef Name="categoriesid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_authors_authors">
+          <End Role="users" Type="CMSModel.users" Multiplicity="1" />
+          <End Role="authors" Type="CMSModel.authors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="authors">
+              <PropertyRef Name="usersid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_categories_categories">
+          <End Role="categories" Type="CMSModel.categories" Multiplicity="0..1" />
+          <End Role="categories1" Type="CMSModel.categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categories">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="categories1">
+              <PropertyRef Name="parentid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_categories_texts">
+          <End Role="texts" Type="CMSModel.texts" Multiplicity="1" />
+          <End Role="categories" Type="CMSModel.categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="texts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="categories">
+              <PropertyRef Name="name_text_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_categories_texts1">
+          <End Role="texts" Type="CMSModel.texts" Multiplicity="1" />
+          <End Role="categories" Type="CMSModel.categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="texts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="categories">
+              <PropertyRef Name="text_text_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_categories_texts2">
+          <End Role="texts" Type="CMSModel.texts" Multiplicity="0..1" />
+          <End Role="categories" Type="CMSModel.categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="texts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="categories">
+              <PropertyRef Name="carousel_text_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_menuitems_categories">
+          <End Role="categories" Type="CMSModel.categories" Multiplicity="0..1" />
+          <End Role="menuitems" Type="CMSModel.menuitems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categories">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="menuitems">
+              <PropertyRef Name="categoriesid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comments_comments">
+          <End Role="comments" Type="CMSModel.comments" Multiplicity="0..1" />
+          <End Role="comments1" Type="CMSModel.comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comments">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comments1">
+              <PropertyRef Name="parentid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comments_users">
+          <End Role="users" Type="CMSModel.users" Multiplicity="0..1" />
+          <End Role="comments" Type="CMSModel.comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comments">
+              <PropertyRef Name="usersid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_docs_docgroups">
+          <End Role="docgroups" Type="CMSModel.docgroups" Multiplicity="0..1" />
+          <End Role="docs" Type="CMSModel.docs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="docgroups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="docs">
+              <PropertyRef Name="docgroup_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_docs_texts">
+          <End Role="texts" Type="CMSModel.texts" Multiplicity="0..1" />
+          <End Role="docs" Type="CMSModel.docs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="texts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="docs">
+              <PropertyRef Name="name_text_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_images_texts">
+          <End Role="texts" Type="CMSModel.texts" Multiplicity="0..1" />
+          <End Role="images" Type="CMSModel.images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="texts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="images">
+              <PropertyRef Name="description_text_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_news_images">
+          <End Role="images" Type="CMSModel.images" Multiplicity="0..1" />
+          <End Role="news" Type="CMSModel.news" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="images">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="news">
+              <PropertyRef Name="image_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_products_images">
+          <End Role="images" Type="CMSModel.images" Multiplicity="0..1" />
+          <End Role="products" Type="CMSModel.products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="images">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="image_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_news_products">
+          <End Role="products" Type="CMSModel.products" Multiplicity="0..1" />
+          <End Role="news" Type="CMSModel.news" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="news">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_news_texts">
+          <End Role="texts" Type="CMSModel.texts" Multiplicity="1" />
+          <End Role="news" Type="CMSModel.news" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="texts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="news">
+              <PropertyRef Name="title" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_news_texts1">
+          <End Role="texts" Type="CMSModel.texts" Multiplicity="1" />
+          <End Role="news" Type="CMSModel.news" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="texts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="news">
+              <PropertyRef Name="shortdesc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_news_texts2">
+          <End Role="texts" Type="CMSModel.texts" Multiplicity="1" />
+          <End Role="news" Type="CMSModel.news" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="texts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="news">
+              <PropertyRef Name="text" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pages_texts">
+          <End Role="texts" Type="CMSModel.texts" Multiplicity="1" />
+          <End Role="pages" Type="CMSModel.pages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="texts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pages">
+              <PropertyRef Name="text_text_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pages_texts1">
+          <End Role="texts" Type="CMSModel.texts" Multiplicity="1" />
+          <End Role="pages" Type="CMSModel.pages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="texts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pages">
+              <PropertyRef Name="title_text_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_products_texts_desc">
+          <End Role="texts" Type="CMSModel.texts" Multiplicity="1" />
+          <End Role="products" Type="CMSModel.products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="texts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="description_text_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_products_texts_subtitle">
+          <End Role="texts" Type="CMSModel.texts" Multiplicity="1" />
+          <End Role="products" Type="CMSModel.products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="texts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="subtitle_text_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_products_texts_text">
+          <End Role="texts" Type="CMSModel.texts" Multiplicity="1" />
+          <End Role="products" Type="CMSModel.products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="texts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="text_text_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_products_texts_title">
+          <End Role="texts" Type="CMSModel.texts" Multiplicity="1" />
+          <End Role="products" Type="CMSModel.products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="texts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="title_text_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_roles_resources_resources">
+          <End Role="resources" Type="CMSModel.resources" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="roles_resources" Type="CMSModel.roles_resources" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="resources">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="roles_resources">
+              <PropertyRef Name="resourcesid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_roles_resources_roles">
+          <End Role="roles" Type="CMSModel.roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="roles_resources" Type="CMSModel.roles_resources" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="roles_resources">
+              <PropertyRef Name="rolesid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_roles_roles">
+          <End Role="roles" Type="CMSModel.roles" Multiplicity="0..1" />
+          <End Role="roles1" Type="CMSModel.roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="roles1">
+              <PropertyRef Name="parentid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_users_roles">
+          <End Role="roles" Type="CMSModel.roles" Multiplicity="1" />
+          <End Role="users" Type="CMSModel.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="rolesid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_roles_resources_roles_resources">
+          <End Role="roles_resources" Type="CMSModel.roles_resources" Multiplicity="1" />
+          <End Role="roles_resources1" Type="CMSModel.roles_resources" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="roles_resources">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="roles_resources1">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tags_articles_tags">
+          <End Role="tags" Type="CMSModel.tags" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tags_articles" Type="CMSModel.tags_articles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tags">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tags_articles">
+              <PropertyRef Name="tagsid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_texts_values_texts1">
+          <End Role="texts" Type="CMSModel.texts" Multiplicity="1" />
+          <End Role="texts_values" Type="CMSModel.texts_values" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="texts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="texts_values">
+              <PropertyRef Name="text_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="docgroups_products">
+          <End Role="docgroups" Type="CMSModel.docgroups" Multiplicity="*" />
+          <End Role="products" Type="CMSModel.products" Multiplicity="*" />
+        </Association>
+        <Association Name="images_products">
+          <End Role="images" Type="CMSModel.images" Multiplicity="*" />
+          <End Role="products" Type="CMSModel.products" Multiplicity="*" />
+        </Association>
+        <Association Name="products_categories">
+          <End Role="categories" Type="CMSModel.categories" Multiplicity="*" />
+          <End Role="products" Type="CMSModel.products" Multiplicity="*" />
+        </Association>
+        <Association Name="products_connections">
+          <End Role="products" Type="CMSModel.products" Multiplicity="*" />
+          <End Role="products1" Type="CMSModel.products" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CMSModelStoreContainer" CdmEntityContainer="CMSEntities">
+          <EntitySetMapping Name="articles"><EntityTypeMapping TypeName="CMSModel.articles"><MappingFragment StoreEntitySet="articles">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="title" ColumnName="title" />
+            <ScalarProperty Name="alias" ColumnName="alias" />
+            <ScalarProperty Name="introtext" ColumnName="introtext" />
+            <ScalarProperty Name="fulltext" ColumnName="fulltext" />
+            <ScalarProperty Name="date" ColumnName="date" />
+            <ScalarProperty Name="date_published" ColumnName="date_published" />
+            <ScalarProperty Name="date_pullback" ColumnName="date_pullback" />
+            <ScalarProperty Name="date_lastmod" ColumnName="date_lastmod" />
+            <ScalarProperty Name="hits" ColumnName="hits" />
+            <ScalarProperty Name="modifications_count" ColumnName="modifications_count" />
+            <ScalarProperty Name="published" ColumnName="published" />
+            <ScalarProperty Name="level" ColumnName="level" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="articles_authors"><EntityTypeMapping TypeName="CMSModel.articles_authors"><MappingFragment StoreEntitySet="articles_authors">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="articlesid" ColumnName="articlesid" />
+            <ScalarProperty Name="authorsid" ColumnName="authorsid" />
+            <ScalarProperty Name="date" ColumnName="date" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="articles_categories"><EntityTypeMapping TypeName="CMSModel.articles_categories"><MappingFragment StoreEntitySet="articles_categories">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="articlesid" ColumnName="articlesid" />
+            <ScalarProperty Name="categoriesid" ColumnName="categoriesid" />
+            <ScalarProperty Name="date" ColumnName="date" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="authors"><EntityTypeMapping TypeName="CMSModel.authors"><MappingFragment StoreEntitySet="authors">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="name" ColumnName="name" />
+            <ScalarProperty Name="lastname" ColumnName="lastname" />
+            <ScalarProperty Name="usersid" ColumnName="usersid" />
+            <ScalarProperty Name="description" ColumnName="description" />
+            <ScalarProperty Name="date" ColumnName="date" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="categories"><EntityTypeMapping TypeName="CMSModel.categories"><MappingFragment StoreEntitySet="categories">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="name_text_id" ColumnName="name_text_id" />
+            <ScalarProperty Name="parentid" ColumnName="parentid" />
+            <ScalarProperty Name="text_text_id" ColumnName="text_text_id" />
+            <ScalarProperty Name="date" ColumnName="date" />
+            <ScalarProperty Name="carousel_text_id" ColumnName="carousel_text_id" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="comments"><EntityTypeMapping TypeName="CMSModel.comments"><MappingFragment StoreEntitySet="comments">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="title" ColumnName="title" />
+            <ScalarProperty Name="text" ColumnName="text" />
+            <ScalarProperty Name="usersid" ColumnName="usersid" />
+            <ScalarProperty Name="useralias" ColumnName="useralias" />
+            <ScalarProperty Name="parentid" ColumnName="parentid" />
+            <ScalarProperty Name="email" ColumnName="email" />
+            <ScalarProperty Name="ip" ColumnName="ip" />
+            <ScalarProperty Name="articlesid" ColumnName="articlesid" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="docgroups"><EntityTypeMapping TypeName="CMSModel.docgroups"><MappingFragment StoreEntitySet="docgroups">
+            <ScalarProperty Name="id" ColumnName="id" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="docs"><EntityTypeMapping TypeName="CMSModel.docs"><MappingFragment StoreEntitySet="docs">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="name_text_id" ColumnName="name_text_id" />
+            <ScalarProperty Name="path" ColumnName="path" />
+            <ScalarProperty Name="docgroup_id" ColumnName="docgroup_id" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="images"><EntityTypeMapping TypeName="CMSModel.images"><MappingFragment StoreEntitySet="images">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="path" ColumnName="path" />
+            <ScalarProperty Name="description_text_id" ColumnName="description_text_id" />
+            <ScalarProperty Name="width" ColumnName="width" />
+            <ScalarProperty Name="height" ColumnName="height" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="menuitems"><EntityTypeMapping TypeName="CMSModel.menuitems"><MappingFragment StoreEntitySet="menuitems">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="name" ColumnName="name" />
+            <ScalarProperty Name="categoriesid" ColumnName="categoriesid" />
+            <ScalarProperty Name="articlesid" ColumnName="articlesid" />
+            <ScalarProperty Name="link" ColumnName="link" />
+            <ScalarProperty Name="date" ColumnName="date" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="news"><EntityTypeMapping TypeName="CMSModel.news"><MappingFragment StoreEntitySet="news">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="title" ColumnName="title" />
+            <ScalarProperty Name="shortdesc" ColumnName="shortdesc" />
+            <ScalarProperty Name="text" ColumnName="text" />
+            <ScalarProperty Name="date" ColumnName="date" />
+            <ScalarProperty Name="image_id" ColumnName="image_id" />
+            <ScalarProperty Name="product_id" ColumnName="product_id" />
+            <ScalarProperty Name="date_order" ColumnName="date_order" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="pages"><EntityTypeMapping TypeName="CMSModel.pages"><MappingFragment StoreEntitySet="pages">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="title_text_id" ColumnName="title_text_id" />
+            <ScalarProperty Name="text_text_id" ColumnName="text_text_id" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="products"><EntityTypeMapping TypeName="CMSModel.products"><MappingFragment StoreEntitySet="products">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="title_text_id" ColumnName="title_text_id" />
+            <ScalarProperty Name="subtitle_text_id" ColumnName="subtitle_text_id" />
+            <ScalarProperty Name="description_text_id" ColumnName="description_text_id" />
+            <ScalarProperty Name="text_text_id" ColumnName="text_text_id" />
+            <ScalarProperty Name="image_id" ColumnName="image_id" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="resources"><EntityTypeMapping TypeName="CMSModel.resources"><MappingFragment StoreEntitySet="resources">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="name" ColumnName="name" />
+            <ScalarProperty Name="controller" ColumnName="controller" />
+            <ScalarProperty Name="action" ColumnName="action" />
+            <ScalarProperty Name="date" ColumnName="date" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="roles"><EntityTypeMapping TypeName="CMSModel.roles"><MappingFragment StoreEntitySet="roles">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="name" ColumnName="name" />
+            <ScalarProperty Name="date" ColumnName="date" />
+            <ScalarProperty Name="parentid" ColumnName="parentid" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="roles_resources"><EntityTypeMapping TypeName="CMSModel.roles_resources"><MappingFragment StoreEntitySet="roles_resources">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="resourcesid" ColumnName="resourcesid" />
+            <ScalarProperty Name="rolesid" ColumnName="rolesid" />
+            <ScalarProperty Name="date" ColumnName="date" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="settings"><EntityTypeMapping TypeName="CMSModel.settings"><MappingFragment StoreEntitySet="settings">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="name" ColumnName="name" />
+            <ScalarProperty Name="value" ColumnName="value" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tags"><EntityTypeMapping TypeName="CMSModel.tags"><MappingFragment StoreEntitySet="tags">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="name" ColumnName="name" />
+            <ScalarProperty Name="date" ColumnName="date" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tags_articles"><EntityTypeMapping TypeName="CMSModel.tags_articles"><MappingFragment StoreEntitySet="tags_articles">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="tagsid" ColumnName="tagsid" />
+            <ScalarProperty Name="articlesid" ColumnName="articlesid" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="texts"><EntityTypeMapping TypeName="CMSModel.texts"><MappingFragment StoreEntitySet="texts">
+            <ScalarProperty Name="id" ColumnName="id" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="texts_values"><EntityTypeMapping TypeName="CMSModel.texts_values"><MappingFragment StoreEntitySet="texts_values">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="culture" ColumnName="culture" />
+            <ScalarProperty Name="value" ColumnName="value" />
+            <ScalarProperty Name="text_id" ColumnName="text_id" />
+            <ScalarProperty Name="seo_value" ColumnName="seo_value" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="users"><EntityTypeMapping TypeName="CMSModel.users"><MappingFragment StoreEntitySet="users">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="username" ColumnName="username" />
+            <ScalarProperty Name="password" ColumnName="password" />
+            <ScalarProperty Name="email" ColumnName="email" />
+            <ScalarProperty Name="rolesid" ColumnName="rolesid" />
+            <ScalarProperty Name="date" ColumnName="date" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="docgroups_products" TypeName="CMSModel.docgroups_products" StoreEntitySet="docgroups_products">
+            <EndProperty Name="docgroups">
+              <ScalarProperty Name="id" ColumnName="docgroup_id" />
+            </EndProperty>
+            <EndProperty Name="products">
+              <ScalarProperty Name="id" ColumnName="product_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="images_products" TypeName="CMSModel.images_products" StoreEntitySet="images_products">
+            <EndProperty Name="images">
+              <ScalarProperty Name="id" ColumnName="image_id" />
+            </EndProperty>
+            <EndProperty Name="products">
+              <ScalarProperty Name="id" ColumnName="product_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="products_categories" TypeName="CMSModel.products_categories" StoreEntitySet="products_categories">
+            <EndProperty Name="categories">
+              <ScalarProperty Name="id" ColumnName="category_id" />
+            </EndProperty>
+            <EndProperty Name="products">
+              <ScalarProperty Name="id" ColumnName="product_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="products_connections" TypeName="CMSModel.products_connections" StoreEntitySet="products_connections">
+            <EndProperty Name="products">
+              <ScalarProperty Name="id" ColumnName="product_id" />
+            </EndProperty>
+            <EndProperty Name="products1">
+              <ScalarProperty Name="id" ColumnName="product_id_2" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model">
+        <EntityTypeShape EntityType="CMSModel.articles" Width="1.5" PointX="3" PointY="3.375" Height="4.6725065104166665" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.articles_authors" Width="1.5" PointX="5.25" PointY="6.625" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.articles_categories" Width="1.5" PointX="5.25" PointY="9.625" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.authors" Width="1.5" PointX="3" PointY="29.5" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.categories" Width="1.5" PointX="3" PointY="8.875" Height="3.7109993489583335" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.comments" Width="1.5" PointX="10.25" PointY="4" Height="3.518697916666667" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.docgroups" Width="1.5" PointX="3" PointY="26.125" Height="1.595683593749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.docs" Width="1.5" PointX="6" PointY="18.25" Height="2.172587890624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.images" Width="1.5" PointX="3" PointY="16.25" Height="2.7494921875000031" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.menuitems" Width="1.5" PointX="8.25" PointY="9.5" Height="2.5571907552083353" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.news" Width="1.5" PointX="7.5" PointY="13.125" Height="3.5186979166666692" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.pages" Width="1.5" PointX="3" PointY="19.75" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.products" Width="1.5" PointX="5.25" PointY="12.75" Height="4.2879036458333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.resources" Width="1.5" PointX="5.75" PointY="3.25" Height="2.1725878906250036" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.roles" Width="1.5" PointX="0.75" PointY="4.375" Height="2.749492187499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.roles_resources" Width="1.5" PointX="8" PointY="3.875" Height="2.5571907552083388" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.settings" Width="1.5" PointX="10.75" PointY="8.875" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.tags" Width="1.5" PointX="6" PointY="21.75" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.tags_articles" Width="1.5" PointX="8.25" PointY="0.75" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.texts" Width="1.5" PointX="0.75" PointY="13.25" Height="4.0956022135416656" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.texts_values" Width="1.5" PointX="3" PointY="22.5" Height="2.1725878906250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.users" Width="1.5" PointX="8" PointY="24.375" Height="2.7494921875000102" IsExpanded="true" />
+        <AssociationConnector Association="CMSModel.FK_articles_authors_articles" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="7.3362532552083337" />
+          <ConnectorPoint PointX="5.25" PointY="7.3362532552083337" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_articles_categories_articles" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.4999999999999991" PointY="8.0475065104166674" />
+          <ConnectorPoint PointX="4.875" PointY="8.4225065104166674" />
+          <ConnectorPoint PointX="4.875" PointY="10.7112939453125" />
+          <ConnectorPoint PointX="4.979166666666667" PointY="10.7112939453125" />
+          <ConnectorPoint PointX="5.145833333333333" PointY="10.7112939453125" />
+          <ConnectorPoint PointX="5.25" PointY="10.7112939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_articles_roles" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="5.749746093749998" />
+          <ConnectorPoint PointX="3" PointY="5.749746093749998" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_comments_articles" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="6.5285953776041694" />
+          <ConnectorPoint PointX="6.791666666666667" PointY="6.5285953776041685" />
+          <ConnectorPoint PointX="6.958333333333333" PointY="6.5285953776041694" />
+          <ConnectorPoint PointX="8.4485897435897428" PointY="6.5285953776041685" />
+          <ConnectorPoint PointX="8.61525641025641" PointY="6.5285953776041694" />
+          <ConnectorPoint PointX="8.8951282051282039" PointY="6.5285953776041685" />
+          <ConnectorPoint PointX="9.0617948717948718" PointY="6.5285953776041694" />
+          <ConnectorPoint PointX="10.25" PointY="6.5285953776041694" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_menuitems_articles" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="6.5455476888020847" />
+          <ConnectorPoint PointX="6.791666666666667" PointY="6.5455476888020838" />
+          <ConnectorPoint PointX="6.958333333333333" PointY="6.5455476888020847" />
+          <ConnectorPoint PointX="8.4485897435897428" PointY="6.5455476888020838" />
+          <ConnectorPoint PointX="8.61525641025641" PointY="6.5455476888020847" />
+          <ConnectorPoint PointX="8.8951282051282039" PointY="6.5455476888020838" />
+          <ConnectorPoint PointX="9.0617948717948718" PointY="6.5455476888020847" />
+          <ConnectorPoint PointX="9.65625" PointY="6.5455476888020847" />
+          <ConnectorPoint PointX="9.65625" PointY="9.5" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_tags_articles_articles" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="6.5116430664062541" />
+          <ConnectorPoint PointX="6.791666666666667" PointY="6.5116430664062532" />
+          <ConnectorPoint PointX="6.958333333333333" PointY="6.5116430664062541" />
+          <ConnectorPoint PointX="9.609375" PointY="6.5116430664062541" />
+          <ConnectorPoint PointX="9.609375" PointY="2.7302864583333388" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_articles_authors_authors" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="29.563460538461534" />
+          <ConnectorPoint PointX="5.0625" PointY="29.000960538461534" />
+          <ConnectorPoint PointX="5.0625" PointY="8.0981725729166669" />
+          <ConnectorPoint PointX="5.25" PointY="8.0981725729166669" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_articles_categories_categories" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="10.105646972656249" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="10.105646972656249" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="10.105646972656249" />
+          <ConnectorPoint PointX="4.979166666666667" PointY="10.105646972656249" />
+          <ConnectorPoint PointX="5.145833333333333" PointY="10.105646972656249" />
+          <ConnectorPoint PointX="5.25" PointY="10.105646972656249" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_authors_authors" ManuallyRouted="false">
+          <ConnectorPoint PointX="8.75" PointY="27.12449218750001" />
+          <ConnectorPoint PointX="8.75" PointY="30.841578146834934" />
+          <ConnectorPoint PointX="4.5" PointY="30.841578146834934" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_categories_categories" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.5319230769230767" PointY="12.585999348958334" />
+          <ConnectorPoint PointX="3.5319230769230767" PointY="12.835999348958332" />
+          <ConnectorPoint PointX="3.9784615384615383" PointY="12.835999348958332" />
+          <ConnectorPoint PointX="3.9784615384615383" PointY="12.585999348958334" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_categories_texts" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="13.25" />
+          <ConnectorPoint PointX="1.5" PointY="10.730499674479166" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="10.730499674479166" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="10.730499674479166" />
+          <ConnectorPoint PointX="3" PointY="10.730499674479166" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_categories_texts1" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.9062525" PointY="13.25" />
+          <ConnectorPoint PointX="1.9062525" PointY="11.68950201171875" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="11.68950201171875" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="11.68950201171875" />
+          <ConnectorPoint PointX="3" PointY="11.68950201171875" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_categories_texts2" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.0937475" PointY="13.25" />
+          <ConnectorPoint PointX="1.0937475" PointY="9.7714973372395821" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="9.7714973372395821" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="9.7714973372395821" />
+          <ConnectorPoint PointX="3" PointY="9.7714973372395821" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_menuitems_categories" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="11.958639322916667" />
+          <ConnectorPoint PointX="4.979166666666667" PointY="11.958639322916667" />
+          <ConnectorPoint PointX="5.145833333333333" PointY="11.958639322916667" />
+          <ConnectorPoint PointX="6.791666666666667" PointY="11.958639322916667" />
+          <ConnectorPoint PointX="6.958333333333333" PointY="11.958639322916667" />
+          <ConnectorPoint PointX="8.25" PointY="11.958639322916667" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_comments_comments" ManuallyRouted="false">
+          <ConnectorPoint PointX="10.781923076923077" PointY="7.5186979166666674" />
+          <ConnectorPoint PointX="10.781923076923077" PointY="7.7686979166666674" />
+          <ConnectorPoint PointX="11.228461538461538" PointY="7.7686979166666674" />
+          <ConnectorPoint PointX="11.228461538461538" PointY="7.5186979166666674" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_comments_users" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.5" PointY="25.749746093750005" />
+          <ConnectorPoint PointX="10.46875" PointY="25.749746093750005" />
+          <ConnectorPoint PointX="10.46875" PointY="7.5186979166666674" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_docs_docgroups" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="26.126152846153843" />
+          <ConnectorPoint PointX="4.875" PointY="25.751152846153843" />
+          <ConnectorPoint PointX="4.875" PointY="19.336293945312498" />
+          <ConnectorPoint PointX="4.979166666666667" PointY="19.336293945312498" />
+          <ConnectorPoint PointX="5.145833333333333" PointY="19.336293945312498" />
+          <ConnectorPoint PointX="5.510416666666667" PointY="19.336293945312498" />
+          <ConnectorPoint PointX="5.677083333333333" PointY="19.336293945312498" />
+          <ConnectorPoint PointX="6" PointY="19.336293945312498" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_docs_texts" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="17.345602213541667" />
+          <ConnectorPoint PointX="1.5" PointY="19.54314947265625" />
+          <ConnectorPoint PointX="1.8229191666666667" PointY="19.54314947265625" />
+          <ConnectorPoint PointX="1.9895858333333332" PointY="19.54314947265625" />
+          <ConnectorPoint PointX="2.0260454166666664" PointY="19.54314947265625" />
+          <ConnectorPoint PointX="2.1927120833333333" PointY="19.54314947265625" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="19.54314947265625" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="19.54314947265625" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="19.54314947265625" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="19.54314947265625" />
+          <ConnectorPoint PointX="4.979166666666667" PointY="19.54314947265625" />
+          <ConnectorPoint PointX="5.145833333333333" PointY="19.54314947265625" />
+          <ConnectorPoint PointX="5.510416666666667" PointY="19.54314947265625" />
+          <ConnectorPoint PointX="5.677083333333333" PointY="19.54314947265625" />
+          <ConnectorPoint PointX="6" PointY="19.54314947265625" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_images_texts" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="16.797801106770834" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="16.797801106770834" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="16.797801106770834" />
+          <ConnectorPoint PointX="3" PointY="16.797801106770834" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_news_images" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="17.643951822916669" />
+          <ConnectorPoint PointX="4.979166666666667" PointY="17.643951822916669" />
+          <ConnectorPoint PointX="5.145833333333333" PointY="17.643951822916669" />
+          <ConnectorPoint PointX="5.510416666666667" PointY="17.643951822916669" />
+          <ConnectorPoint PointX="5.677083333333333" PointY="17.643951822916669" />
+          <ConnectorPoint PointX="7.666666666666667" PointY="17.643951822916669" />
+          <ConnectorPoint PointX="7.833333333333333" PointY="17.643951822916669" />
+          <ConnectorPoint PointX="8.28125" PointY="17.643951822916669" />
+          <ConnectorPoint PointX="8.28125" PointY="16.643697916666667" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_products_images" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="16.643951822916669" />
+          <ConnectorPoint PointX="4.979166666666667" PointY="16.643951822916669" />
+          <ConnectorPoint PointX="5.145833333333333" PointY="16.643951822916669" />
+          <ConnectorPoint PointX="5.25" PointY="16.643951822916669" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_news_products" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="14.884348958333334" />
+          <ConnectorPoint PointX="6.791666666666667" PointY="14.884348958333332" />
+          <ConnectorPoint PointX="7.208333333333333" PointY="14.884348958333334" />
+          <ConnectorPoint PointX="7.5" PointY="14.884348958333334" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_news_texts" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.10937825" PointY="13.25" />
+          <ConnectorPoint PointX="2.10937825" PointY="13" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="13" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="13" />
+          <ConnectorPoint PointX="4.75" PointY="13" />
+          <ConnectorPoint PointX="4.75" PointY="12.5" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="12.499999999999998" />
+          <ConnectorPoint PointX="5.145833333333333" PointY="12.5" />
+          <ConnectorPoint PointX="6.791666666666667" PointY="12.5" />
+          <ConnectorPoint PointX="6.958333333333333" PointY="12.5" />
+          <ConnectorPoint PointX="7.125" PointY="12.5" />
+          <ConnectorPoint PointX="7.125" PointY="15.7952754375" />
+          <ConnectorPoint PointX="7.5" PointY="15.7952754375" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_news_texts1" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.70312625" PointY="13.25" />
+          <ConnectorPoint PointX="1.70312625" PointY="13.125" />
+          <ConnectorPoint PointX="1.8229191666666667" PointY="13.125" />
+          <ConnectorPoint PointX="1.9895858333333332" PointY="13.125" />
+          <ConnectorPoint PointX="2.0260449166666663" PointY="13.125" />
+          <ConnectorPoint PointX="2.1927115833333333" PointY="13.125" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="13.125" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="13.125" />
+          <ConnectorPoint PointX="4.875" PointY="13.125" />
+          <ConnectorPoint PointX="4.875" PointY="12.25" />
+          <ConnectorPoint PointX="4.979166666666667" PointY="12.25" />
+          <ConnectorPoint PointX="5.145833333333333" PointY="12.25" />
+          <ConnectorPoint PointX="6.791666666666667" PointY="12.25" />
+          <ConnectorPoint PointX="6.958333333333333" PointY="12.25" />
+          <ConnectorPoint PointX="7.25" PointY="12.25" />
+          <ConnectorPoint PointX="7.25" PointY="13.973422479166665" />
+          <ConnectorPoint PointX="7.5" PointY="13.973422479166665" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_news_texts2" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.29687375" PointY="13.25" />
+          <ConnectorPoint PointX="1.29687375" PointY="13.0625" />
+          <ConnectorPoint PointX="1.4166666666666667" PointY="13.0625" />
+          <ConnectorPoint PointX="1.5833333333333333" PointY="13.0625" />
+          <ConnectorPoint PointX="1.8229191666666667" PointY="13.0625" />
+          <ConnectorPoint PointX="1.9895858333333332" PointY="13.0625" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="13.0625" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="13.0625" />
+          <ConnectorPoint PointX="4.625" PointY="13.0625" />
+          <ConnectorPoint PointX="4.625" PointY="12.5" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="12.499999999999998" />
+          <ConnectorPoint PointX="5.145833333333333" PointY="12.5" />
+          <ConnectorPoint PointX="6.791666666666667" PointY="12.5" />
+          <ConnectorPoint PointX="6.958333333333333" PointY="12.5" />
+          <ConnectorPoint PointX="7" PointY="12.5" />
+          <ConnectorPoint PointX="7" PointY="15.339812197916668" />
+          <ConnectorPoint PointX="7.041666666666667" PointY="15.339812197916668" />
+          <ConnectorPoint PointX="7.208333333333333" PointY="15.339812197916668" />
+          <ConnectorPoint PointX="7.5" PointY="15.339812197916668" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_pages_texts" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.9062525" PointY="17.345602213541667" />
+          <ConnectorPoint PointX="1.9062525" PointY="20.740143229166666" />
+          <ConnectorPoint PointX="2.0260454166666664" PointY="20.740143229166666" />
+          <ConnectorPoint PointX="2.1927120833333333" PointY="20.740143229166666" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="20.740143229166666" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="20.740143229166666" />
+          <ConnectorPoint PointX="3" PointY="20.740143229166666" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_pages_texts1" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.0937475" PointY="17.345602213541667" />
+          <ConnectorPoint PointX="1.0937475" PointY="20.21381911458333" />
+          <ConnectorPoint PointX="1.8229191666666667" PointY="20.21381911458333" />
+          <ConnectorPoint PointX="1.9895858333333332" PointY="20.21381911458333" />
+          <ConnectorPoint PointX="2.0260454166666664" PointY="20.21381911458333" />
+          <ConnectorPoint PointX="2.1927120833333333" PointY="20.21381911458333" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="20.21381911458333" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="20.21381911458333" />
+          <ConnectorPoint PointX="3" PointY="20.21381911458333" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_products_texts_desc" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="14.71875" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="14.71875" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="14.71875" />
+          <ConnectorPoint PointX="4.979166666666667" PointY="14.71875" />
+          <ConnectorPoint PointX="5.145833333333333" PointY="14.71875" />
+          <ConnectorPoint PointX="5.25" PointY="14.71875" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_products_texts_subtitle" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="15.515625" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="15.515625" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="15.515625" />
+          <ConnectorPoint PointX="4.979166666666667" PointY="15.515625" />
+          <ConnectorPoint PointX="5.145833333333333" PointY="15.515625" />
+          <ConnectorPoint PointX="5.25" PointY="15.515625" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_products_texts_text" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="13.921875" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="13.921875" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="13.921875" />
+          <ConnectorPoint PointX="4.979166666666667" PointY="13.921875" />
+          <ConnectorPoint PointX="5.145833333333333" PointY="13.921875" />
+          <ConnectorPoint PointX="5.25" PointY="13.921875" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_products_texts_title" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="15.1171875" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="15.1171875" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="15.1171875" />
+          <ConnectorPoint PointX="4.979166666666667" PointY="15.1171875" />
+          <ConnectorPoint PointX="5.145833333333333" PointY="15.1171875" />
+          <ConnectorPoint PointX="5.25" PointY="15.1171875" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_roles_resources_resources" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.25" PointY="4.6487939453125016" />
+          <ConnectorPoint PointX="7.416666666666667" PointY="4.6487939453125007" />
+          <ConnectorPoint PointX="7.583333333333333" PointY="4.6487939453125016" />
+          <ConnectorPoint PointX="8" PointY="4.6487939453125016" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_roles_resources_roles" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="5.0311210468750058" />
+          <ConnectorPoint PointX="2.75" PointY="5.0311210468750058" />
+          <ConnectorPoint PointX="2.75" PointY="3" />
+          <ConnectorPoint PointX="7.416666666666667" PointY="2.9999999999999996" />
+          <ConnectorPoint PointX="7.583333333333333" PointY="3" />
+          <ConnectorPoint PointX="8.75" PointY="3" />
+          <ConnectorPoint PointX="8.75" PointY="3.875" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_roles_roles" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.2819230769230767" PointY="7.124492187499996" />
+          <ConnectorPoint PointX="1.2819230769230767" PointY="7.374492187499996" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="7.374492187499996" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="7.124492187499996" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_users_roles" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="7.124492187499996" />
+          <ConnectorPoint PointX="2.625" PointY="7.499492187499996" />
+          <ConnectorPoint PointX="2.625" PointY="25.3987939453125" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="25.3987939453125" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="25.3987939453125" />
+          <ConnectorPoint PointX="4.979166666666667" PointY="25.3987939453125" />
+          <ConnectorPoint PointX="5.145833333333333" PointY="25.3987939453125" />
+          <ConnectorPoint PointX="5.510416666666667" PointY="25.3987939453125" />
+          <ConnectorPoint PointX="5.677083333333333" PointY="25.3987939453125" />
+          <ConnectorPoint PointX="8" PointY="25.3987939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_roles_resources_roles_resources" ManuallyRouted="false">
+          <ConnectorPoint PointX="8.5319230769230767" PointY="6.4321907552083388" />
+          <ConnectorPoint PointX="8.5319230769230767" PointY="6.9321907552083388" />
+          <ConnectorPoint PointX="8.9784615384615378" PointY="6.9321907552083388" />
+          <ConnectorPoint PointX="8.9784615384615378" PointY="6.4321907552083388" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_tags_articles_tags" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="21.75" />
+          <ConnectorPoint PointX="6.75" PointY="20.672587890624996" />
+          <ConnectorPoint PointX="7.75" PointY="20.672587890624996" />
+          <ConnectorPoint PointX="7.75" PointY="17.287903645833339" />
+          <ConnectorPoint PointX="6.875" PointY="17.287903645833339" />
+          <ConnectorPoint PointX="6.875" PointY="5.6725878906250031" />
+          <ConnectorPoint PointX="7.5" PointY="5.6725878906250031" />
+          <ConnectorPoint PointX="7.5" PointY="1.7401432291666694" />
+          <ConnectorPoint PointX="8.25" PointY="1.7401432291666694" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.FK_texts_values_texts1" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.10937875" PointY="17.345602213541667" />
+          <ConnectorPoint PointX="2.10937875" PointY="23.5862939453125" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="23.5862939453125" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="23.5862939453125" />
+          <ConnectorPoint PointX="3" PointY="23.5862939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.docgroups_products" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="26.95467071995192" />
+          <ConnectorPoint PointX="4.979166666666667" PointY="26.95467071995192" />
+          <ConnectorPoint PointX="5.145833333333333" PointY="26.95467071995192" />
+          <ConnectorPoint PointX="5.59375" PointY="26.95467071995192" />
+          <ConnectorPoint PointX="5.59375" PointY="17.037903645833339" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.images_products" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="16.384475911458335" />
+          <ConnectorPoint PointX="4.979166666666667" PointY="16.384475911458335" />
+          <ConnectorPoint PointX="5.145833333333333" PointY="16.384475911458335" />
+          <ConnectorPoint PointX="5.25" PointY="16.384475911458335" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.products_categories" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="12.52369065665064" />
+          <ConnectorPoint PointX="4.5660744349011217" PointY="12.58976509155176" />
+          <ConnectorPoint PointX="4.6839255650988791" PointY="12.707616221749518" />
+          <ConnectorPoint PointX="4.6910744349011217" PointY="12.71476509155176" />
+          <ConnectorPoint PointX="4.8089255650988791" PointY="12.832616221749518" />
+          <ConnectorPoint PointX="4.8160744349011217" PointY="12.83976509155176" />
+          <ConnectorPoint PointX="4.9339255650988791" PointY="12.957616221749518" />
+          <ConnectorPoint PointX="4.9375" PointY="12.96119065665064" />
+          <ConnectorPoint PointX="4.9375" PointY="12.436347153846153" />
+          <ConnectorPoint PointX="5.0035744349011217" PointY="12.502421588747273" />
+          <ConnectorPoint PointX="5.1214255650988791" PointY="12.620272718945031" />
+          <ConnectorPoint PointX="5.2511528461538459" PointY="12.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="CMSModel.products_connections" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.7819230769230767" PointY="12.75" />
+          <ConnectorPoint PointX="5.7819230769230767" PointY="12.625" />
+          <ConnectorPoint PointX="6.2284615384615378" PointY="12.625" />
+          <ConnectorPoint PointX="6.2284615384615378" PointY="12.75" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
