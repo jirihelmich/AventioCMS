@@ -13,25 +13,26 @@ namespace HTH8.Controllers
     public class ImageController : BaseController
     {
         //
-        // GET: /Image/
+        // GET: /Image/Thumbnail
 
-        public ActionResult Thumbnail()
+        public ActionResult Thumbnail(int width, int height, string path)
         {
-            int width = Int32.Parse(Request.Params["w"]);
-            int height = Int32.Parse(Request.Params["h"]);
-            string path = Request.MapPath("~/files/" + Request.Params["path"]);
+            string fullPath = Request.MapPath("~/files/" + path);
 
-            ImageEditing resizer = new ImageEditing(path);
+            ImageEditing resizer = new ImageEditing(fullPath);
             return new ImageActionResult(resizer.Resize(width, height));
         }
 
-        public ActionResult CarouselImage()
+        //
+        // GET: /Image/CarouselImage
+
+        public ActionResult CarouselImage(string id, string culture, string number)
         {
             String title = _sl.GetSubsystem<CategoryService>()
-                .GetTitleByIDCulture((String)Request.Params["id"], Request.Params["culture"]);
+                .GetTitleByIDCulture(id, culture);
 
             return new ImageActionResult(
-                Utils.ImageCreator.CreateCarouselImage(title, Request.Params["number"])
+                Utils.ImageCreator.CreateCarouselImage(title, number)
             ); 
         }
 

@@ -37,7 +37,7 @@
             @if (n.Image != null)
             {
                 <div class="news-image">
-                    <img src="@Url.Content("/Image/Thumbnail?w=230&h=175&path=" + n.Image.Path)"
+                    <img src="@Url.Content("/Image/Thumbnail?width=230&height=175&path=" + n.Image.Path)"
                         alt="@n.TitleText.GetValue(UICulture)" />
                 </div>
             }
