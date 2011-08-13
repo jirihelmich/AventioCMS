@@ -1,7 +1,0 @@
-C:\Users\Jirka\documents\visual studio 2010\Projects\AventioCMS\Model\bin\Debug\Model.dll
-C:\Users\Jirka\documents\visual studio 2010\Projects\AventioCMS\Model\bin\Debug\Model.pdb
-C:\Users\Jirka\documents\visual studio 2010\Projects\AventioCMS\Model\bin\Debug\DomainModel.dll
-C:\Users\Jirka\documents\visual studio 2010\Projects\AventioCMS\Model\bin\Debug\DomainModel.pdb
-C:\Users\Jirka\documents\visual studio 2010\Projects\AventioCMS\Model\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Jirka\documents\visual studio 2010\Projects\AventioCMS\Model\obj\Debug\Model.dll
-C:\Users\Jirka\documents\visual studio 2010\Projects\AventioCMS\Model\obj\Debug\Model.pdb
