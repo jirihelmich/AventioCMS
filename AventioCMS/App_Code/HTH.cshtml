@@ -6,7 +6,7 @@
         @foreach(Category c in categories)
         {
             <li>
-                <a href="#">@c.TitleText.GetValue(UICulture)<span class="left"></span><span class="right"></span></a>
+                <a href="@Url.Action("Detail", "Category", new { Id = c.Id, Title = c.TitleText.GetSeoValue(UICulture) })">@c.TitleText.GetValue(UICulture)<span class="left"></span><span class="right"></span></a>
                 @if (c.Children.Count() > 0)
                 {
                     @DisplayProductsMenu(c.Children, Url, UICulture, Html, false);
@@ -17,7 +17,7 @@
 }
 
 @helper DisplaySingleNewsFrontpage(News n, UrlHelper Url, String UICulture, System.Web.Mvc.HtmlHelper Html, int index)
-    {
+{   
     <div class="news @(index == 0 ? "left" : "")">
         <div class="news-inner">
             @if (n.Image != null)
@@ -30,7 +30,7 @@
             <div class="news-text">
                 <h3>@n.TitleText.GetValue(UICulture)</h3>
                 <p>@Html.Raw(n.ShortDescriptionText.GetValue(UICulture))</p>
-                <a href="">...</a>
+                <a href="@Url.Action("Detail", "News", new { Id = n.Id, Title = n.TitleText.GetSeoValue(UICulture) })">...</a>
             </div>
         </div>
     </div>

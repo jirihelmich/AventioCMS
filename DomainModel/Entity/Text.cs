@@ -15,5 +15,10 @@ namespace DomainModel.Entity
         {
             return Values.Single(x => x.Culture == Culture.Substring(0, 2)).Value;
         }
+
+        public String GetSeoValue(String Culture)
+        {
+            return Values.Single(x => x.Culture == Culture.Substring(0, 2)).SeoValue;
+        }
     }
 }
