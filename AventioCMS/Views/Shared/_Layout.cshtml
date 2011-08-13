@@ -9,8 +9,9 @@
 </head>
 <body>
     <div id="wrapper">
-        <div id="header">            <a id='logo' href='@Url.Action("Index", "Index", new { Culture = UICulture })' title="HTH8 s.r.o.">HTH8</a>            <ul id="main-menu" class="clearfix"> 
+        <div id="header">            <a id='logo' href='@Url.Action("Index", "Home", new { Culture = UICulture })' title="HTH8 s.r.o.">HTH8</a>            <ul id="main-menu" class="clearfix"> 
 	            <li><span class="non-a-item">Produkty</span></li>
+                @HTH.DisplayPagesMenu(ViewBag.Pages, Url, UICulture, Html)
             </ul>             @HTH.DisplayProductsMenu(ViewBag.Categories, Url, UICulture, Html, true)                        <ul id='languages' class='clearfix'>                @{ViewBag.RequestParams["Culture"] = "cs";}                <li class='cz'><a href='@Url.Action(ViewBag.RequestAction, ViewBag.RequestController, ViewBag.RequestParams)'>CZ</a></li>                @{ViewBag.RequestParams["Culture"] = "en";}                <li class='en'><a href='@Url.Action(ViewBag.RequestAction, ViewBag.RequestController, ViewBag.RequestParams)'>EN</a></li>                @{ViewBag.RequestParams["Culture"] = "de";}                <li class='de'><a href='@Url.Action(ViewBag.RequestAction, ViewBag.RequestController, ViewBag.RequestParams)'>DE</a></li>                @{ViewBag.RequestParams["Culture"] = "ru";}                <li class='ru'><a href='@Url.Action(ViewBag.RequestAction, ViewBag.RequestController, ViewBag.RequestParams)'>RU</a></li>            </ul>        </div>
         <div class="page">
             @RenderBody()
@@ -22,7 +23,7 @@
                 <div class='aventio-footer'>                    <a href='http://aventio.cz'>Aventio</a>
                     <div id="logindisplay">                        <a href="@Url.Action("Index", "Map", new { Culture = UICulture })">Mapa webu</a>                    </div>
                 </div>
-                <div class='hth-footer'>                    &copy; 2011 <a href="@Url.Action("Index", "Index", new { Culture = UICulture })">HTH 8 s.r.o.</a>                    <br />                    Všechna práva vyhrazena                </div>            </div>
+                <div class='hth-footer'>                    &copy; 2011 <a href="@Url.Action("Index", "Home", new { Culture = UICulture })">HTH 8 s.r.o.</a>                    <br />                    Všechna práva vyhrazena                </div>            </div>
             <div id='footer-bottom'></div>
         </div>
     </div>

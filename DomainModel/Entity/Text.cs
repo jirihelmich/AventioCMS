@@ -4,10 +4,9 @@ namespace DomainModel.Entity
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Text
+
+    public partial class Text : EntityBase
     {
-        public long Id { get; set; }
     
         public virtual ICollection<TextValue> Values { get; set; }
 

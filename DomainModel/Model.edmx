@@ -1382,7 +1382,7 @@
           <Property Name="Title" Type="Int64" Nullable="false" />
           <Property Name="Date" Type="DateTime" />
           <NavigationProperty Name="Image" Relationship="CMSModel.FK_news_images" FromRole="news" ToRole="images" />
-          <NavigationProperty Name="Products" Relationship="CMSModel.FK_news_products" FromRole="news" ToRole="products" />
+          <NavigationProperty Name="Product" Relationship="CMSModel.FK_news_products" FromRole="news" ToRole="products" />
           <NavigationProperty Name="TitleText" Relationship="CMSModel.FK_news_texts" FromRole="news" ToRole="texts" />
           <NavigationProperty Name="ShortDescriptionText" Relationship="CMSModel.FK_news_texts1" FromRole="news" ToRole="texts" />
           <NavigationProperty Name="DescriptionText" Relationship="CMSModel.FK_news_texts2" FromRole="news" ToRole="texts" />
@@ -1477,13 +1477,13 @@
         </EntityType>
         <EntityType Name="TagArticle">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="tagsid" Type="Int64" Nullable="false" />
-          <Property Name="articlesid" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="articles" Relationship="CMSModel.FK_tags_articles_articles" FromRole="tags_articles" ToRole="articles" />
-          <NavigationProperty Name="tags" Relationship="CMSModel.FK_tags_articles_tags" FromRole="tags_articles" ToRole="tags" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TagId" Type="Int64" Nullable="false" />
+          <Property Name="ArticleId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Article" Relationship="CMSModel.FK_tags_articles_articles" FromRole="tags_articles" ToRole="articles" />
+          <NavigationProperty Name="Tag" Relationship="CMSModel.FK_tags_articles_tags" FromRole="tags_articles" ToRole="tags" />
         </EntityType>
         <EntityType Name="Text">
           <Key>
@@ -1591,7 +1591,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tags_articles">
-              <PropertyRef Name="articlesid" />
+              <PropertyRef Name="ArticleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1969,7 +1969,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tags_articles">
-              <PropertyRef Name="tagsid" />
+              <PropertyRef Name="TagId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2137,9 +2137,9 @@
             <ScalarProperty Name="Date" ColumnName="date" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="tags_articles"><EntityTypeMapping TypeName="CMSModel.TagArticle"><MappingFragment StoreEntitySet="tags_articles">
-            <ScalarProperty Name="id" ColumnName="id" />
-            <ScalarProperty Name="tagsid" ColumnName="tagsid" />
-            <ScalarProperty Name="articlesid" ColumnName="articlesid" />
+            <ScalarProperty Name="Id" ColumnName="id" />
+            <ScalarProperty Name="TagId" ColumnName="tagsid" />
+            <ScalarProperty Name="ArticleId" ColumnName="articlesid" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="texts"><EntityTypeMapping TypeName="CMSModel.Text"><MappingFragment StoreEntitySet="texts">
             <ScalarProperty Name="Id" ColumnName="id" />
@@ -2230,7 +2230,7 @@
         <EntityTypeShape EntityType="CMSModel.Role" Width="1.5" PointX="3.75" PointY="4.5" Height="2.5571907552083335" IsExpanded="true" />
         <EntityTypeShape EntityType="CMSModel.RoleResource" Width="1.5" PointX="11" PointY="4.25" Height="2.1725878906249996" IsExpanded="true" />
         <EntityTypeShape EntityType="CMSModel.Setting" Width="1.5" PointX="0.75" PointY="3.25" Height="1.5956835937500031" IsExpanded="true" />
-        <EntityTypeShape EntityType="CMSModel.Tag" Width="1.5" PointX="6" PointY="25" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.Tag" Width="1.5" PointX="13.375" PointY="12.875" Height="1.7879850260416674" IsExpanded="true" />
         <EntityTypeShape EntityType="CMSModel.TagArticle" Width="1.5" PointX="8.25" PointY="6.875" Height="1.9802864583333388" IsExpanded="true" />
         <EntityTypeShape EntityType="CMSModel.Text" Width="1.5" PointX="0.75" PointY="14.125" Height="1.4033821614583317" IsExpanded="true" />
         <EntityTypeShape EntityType="CMSModel.TextValue" Width="1.5" PointX="3" PointY="16.125" Height="2.1725878906250031" IsExpanded="true" />
@@ -2281,8 +2281,6 @@
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_authors_authors" ManuallyRouted="false">
           <ConnectorPoint PointX="8.25" PointY="22.153595377604169" />
-          <ConnectorPoint PointX="8.6666666666666661" PointY="22.153595377604169" />
-          <ConnectorPoint PointX="8.8333333333333339" PointY="22.153595377604169" />
           <ConnectorPoint PointX="9" PointY="22.153595377604169" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_categories_categories" ManuallyRouted="false">
@@ -2320,10 +2318,8 @@
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_comments_users" ManuallyRouted="false">
           <ConnectorPoint PointX="8.25" PointY="23.559591471354171" />
-          <ConnectorPoint PointX="8.6666666666666661" PointY="23.559591471354171" />
-          <ConnectorPoint PointX="8.8333333333333339" PointY="23.559591471354171" />
-          <ConnectorPoint PointX="12" PointY="23.559591471354171" />
-          <ConnectorPoint PointX="12" PointY="10.643697916666666" />
+          <ConnectorPoint PointX="11.65625" PointY="23.559591471354171" />
+          <ConnectorPoint PointX="11.65625" PointY="10.643697916666666" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_docs_docgroups" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="22.566699545898437" />
@@ -2525,17 +2521,13 @@
           <ConnectorPoint PointX="11.978461538461538" PointY="6.422587890625" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_tags_articles_tags" ManuallyRouted="false">
-          <ConnectorPoint PointX="7.5" PointY="25.893992513020834" />
-          <ConnectorPoint PointX="8.75" PointY="25.893992513020834" />
-          <ConnectorPoint PointX="8.75" PointY="20.701396484374996" />
-          <ConnectorPoint PointX="9.75" PointY="20.701396484374996" />
-          <ConnectorPoint PointX="9.75" PointY="12.172587890625" />
-          <ConnectorPoint PointX="9.0833333333333339" PointY="12.172587890625" />
-          <ConnectorPoint PointX="8.9166666666666661" PointY="12.172587890625" />
-          <ConnectorPoint PointX="8" PointY="12.172587890625" />
-          <ConnectorPoint PointX="8" PointY="9.2302864583333388" />
-          <ConnectorPoint PointX="9" PointY="9.2302864583333388" />
-          <ConnectorPoint PointX="9" PointY="8.8552864583333388" />
+          <ConnectorPoint PointX="14.344047842977021" PointY="12.875" />
+          <ConnectorPoint PointX="14.344047842977021" PointY="6.96875" />
+          <ConnectorPoint PointX="12.739583333333334" PointY="6.9687499999999991" />
+          <ConnectorPoint PointX="12.572916666666666" PointY="6.96875" />
+          <ConnectorPoint PointX="10.489583333333334" PointY="6.9687499999999991" />
+          <ConnectorPoint PointX="10.322916666666666" PointY="6.96875" />
+          <ConnectorPoint PointX="9.75" PointY="6.96875" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_texts_values_texts1" ManuallyRouted="false">
           <ConnectorPoint PointX="2.007815625" PointY="15.528382161458332" />

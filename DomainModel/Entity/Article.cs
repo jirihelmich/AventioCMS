@@ -3,9 +3,8 @@ namespace DomainModel.Entity
     using System;
     using System.Collections.Generic;
     
-    public partial class Article
+    public partial class Article : EntityBase
     {
-        public long Id { get; set; }
         public string Title { get; set; }
         public string Alias { get; set; }
         public string Introtext { get; set; }

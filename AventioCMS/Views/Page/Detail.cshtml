@@ -1,0 +1,14 @@
+﻿@model DomainModel.Entity.Page
+
+<div id='subpage' class="static-page">
+	<div class='top'>
+		<h1>@Model.TitleText.GetValue(UICulture)</h1>
+		<ul class='tags'>
+			<li><a href='@Url.Action("Index", "Home", new { Culture = UICulture })'>HTH 8<span class="left"></span><span class="right"></span></a></li>
+			<li><a href='#' class="active">@Model.TitleText.GetValue(UICulture)<span class="left"></span><span class="right"></span></a></li>
+		</ul>
+	</div>
+	<div class='content clearfix'>
+        @Html.Raw(Model.ContentText.GetValue(UICulture))
+    </div>
+</div>

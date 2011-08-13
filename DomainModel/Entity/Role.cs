@@ -2,10 +2,9 @@ namespace DomainModel.Entity
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Role
+
+    public partial class Role : EntityBase
     {
-        public long Id { get; set; }
         public string Name { get; set; }
         public System.DateTime Date { get; set; }
         public Nullable<long> ParentId { get; set; }

@@ -5,11 +5,15 @@ using System.Text;
 using DomainModel;
 using DomainModel.Entity;
 using AventioCMS.Models.ViewModel;
+using Model.Subsystem;
 
 namespace Model
 {
     public class ServiceLayer
     {
+
+        #region Properties
+        
         /// <summary>
         /// An instance of EF context which is used to retreive entities from the underlying
         /// data provider.
@@ -22,6 +26,10 @@ namespace Model
         /// </summary>
         private Dictionary<Type, object> _serviceCache = new Dictionary<Type, object>();
 
+        #endregion Properties
+
+        #region Public Methods
+
         /// <summary>
         /// Factory method for the services of the Model subsystem.
         /// 
@@ -30,13 +38,13 @@ namespace Model
         /// </summary>
         /// <typeparam name="T">Type of the service, derived from the Subsystem.AbstractService class</typeparam>
         /// <returns></returns>
-        public T GetSubsystem<T>() where T : Subsystem.AbstractService, new()
+        public T GetSubsystem<T,U>() where T : Subsystem.AbstractService<U>, new() where U : EntityBase
         {
             // "singleton"
             if (!_serviceCache.ContainsKey(typeof(T)))
             {
                 // consider double-locking to provide thread-safe functionality
-                Subsystem.AbstractService instance = new T();
+                Subsystem.AbstractService<U> instance = new T();
                 instance.SetServiceLayer(this);
 
                 // insert new instance
@@ -54,7 +62,7 @@ namespace Model
         /// <returns>List of the news, ordered by date, descending.</returns>
         public List<News> GetTopNews(int count)
         {
-            return _context.News.OrderByDescending(x => x.Date).Take(count).ToList();
+            return GetSubsystem<NewsService, News>().GetTop(count);
         }
 
         /// <summary>
@@ -63,16 +71,16 @@ namespace Model
         /// <returns>List of topmost categories.</returns>
         public List<Category> GetRootCategories()
         {
-            return _context.categories.Where(x => x.Parent == null).ToList();
+            return GetSubsystem<CategoryService, Category>().GetRootCategories();
         }
 
         /// <summary>
         /// Returns a list of all pages.
         /// </summary>
         /// <returns></returns>
-        public List<Page> GetPages()
+        public List<Page> GetAllPages()
         {
-            return _context.pages.ToList();
+            return GetSubsystem<PageService, Page>().ToList();
         }
 
         /// <summary>
@@ -84,6 +92,10 @@ namespace Model
             return new FrontpageViewModel() {News = GetTopNews(4), Categories = GetRootCategories()};
         }
 
+        #endregion Public Methods
+
+        #region Internal
+
         /// <summary>
         /// Getter of the EF data Context.
         /// </summary>
@@ -92,5 +104,7 @@ namespace Model
         {
             return _context;
         }
+
+        #endregion Internal
     }
 }

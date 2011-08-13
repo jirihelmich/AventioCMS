@@ -2,10 +2,9 @@ namespace DomainModel.Entity
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class ArticleAuthors
+
+    public partial class ArticleAuthors : EntityBase
     {
-        public long Id { get; set; }
         public long ArticleId { get; set; }
         public long AuthorId { get; set; }
         public System.DateTime Date { get; set; }

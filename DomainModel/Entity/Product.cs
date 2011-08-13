@@ -2,10 +2,9 @@ namespace DomainModel.Entity
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Product
+
+    public partial class Product : EntityBase
     {
-        public long Id { get; set; }
         public long TitleTextId { get; set; }
         public long TextTextId { get; set; }
         public long SubtitleTextId { get; set; }

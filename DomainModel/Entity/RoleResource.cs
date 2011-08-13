@@ -2,10 +2,9 @@ namespace DomainModel.Entity
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class RoleResource
+
+    public partial class RoleResource : EntityBase
     {
-        public long Id { get; set; }
         public System.DateTime Date { get; set; }
         public long RoleId { get; set; }
         public long ResourceId { get; set; }

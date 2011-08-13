@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using DomainModel.Entity;
 
 namespace Model.Subsystem
 {
-    public class CategoryService : AbstractService
+    public class CategoryService : AbstractService<Category>
     {
         public String GetTitleByIDCulture(String id, String culture)
         {
@@ -15,7 +16,17 @@ namespace Model.Subsystem
 
         public String GetTitleByIDCulture(long id, String culture)
         {
-            return _sl.GetDBContext().categories.Single(x => x.Id == id).TitleText.GetValue(culture);
+            return GetItemSet().Single(x => x.Id == id).TitleText.GetValue(culture);
+        }
+
+        public List<Category> GetRootCategories()
+        {
+            return GetItemSet().Where(x => x.Parent == null).ToList();
+        }
+
+        protected override System.Data.Entity.DbSet<Category> GetItemSet(DomainModel.CMSEntities ctx)
+        {
+            return ctx.categories;
         }
 
     }

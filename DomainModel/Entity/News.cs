@@ -11,10 +11,9 @@ namespace DomainModel.Entity
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class News
+
+    public partial class News : EntityBase
     {
-        public long Id { get; set; }
         public long Title { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
         public long TextId { get; set; }
@@ -23,7 +22,7 @@ namespace DomainModel.Entity
         public Nullable<long> ImageId { get; set; }
     
         public virtual Image Image { get; set; }
-        public virtual Product Products { get; set; }
+        public virtual Product Product { get; set; }
         public virtual Text TitleText { get; set; }
         public virtual Text ShortDescriptionText { get; set; }
         public virtual Text DescriptionText { get; set; }

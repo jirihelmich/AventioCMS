@@ -68,6 +68,7 @@
     <Compile Include="Entity\Comment.cs" />
     <Compile Include="Entity\Document.cs" />
     <Compile Include="Entity\DocumentGroup.cs" />
+    <Compile Include="Entity\EntityBase.cs" />
     <Compile Include="Entity\Image.cs" />
     <Compile Include="Entity\Menuitem.cs" />
     <Compile Include="Entity\News.cs" />

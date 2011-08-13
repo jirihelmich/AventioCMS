@@ -2,10 +2,9 @@ namespace DomainModel.Entity
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Resource
+
+    public partial class Resource : EntityBase
     {
-        public long Id { get; set; }
         public string Name { get; set; }
         public string Controller { get; set; }
         public string Action { get; set; }

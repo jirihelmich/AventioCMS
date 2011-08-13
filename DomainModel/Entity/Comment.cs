@@ -2,10 +2,9 @@ namespace DomainModel.Entity
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Comment
+
+    public partial class Comment : EntityBase
     {
-        public long Id { get; set; }
         public string Title { get; set; }
         public string Text { get; set; }
         public string UserAlias { get; set; }

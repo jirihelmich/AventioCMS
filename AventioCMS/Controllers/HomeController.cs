@@ -12,7 +12,7 @@ namespace HTH8.Controllers
 
         public ActionResult Index()
         {   
-            return View(sl.GetFrontpage());
+            return View(_sl.GetFrontpage());
         }
 
         public ActionResult About()

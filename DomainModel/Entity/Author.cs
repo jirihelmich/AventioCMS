@@ -2,10 +2,9 @@ namespace DomainModel.Entity
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Author
+
+    public partial class Author : EntityBase
     {
-        public long Id { get; set; }
         public string Name { get; set; }
         public string Lastname { get; set; }
         public string Description { get; set; }

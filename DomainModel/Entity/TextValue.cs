@@ -2,10 +2,9 @@ namespace DomainModel.Entity
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class TextValue
+
+    public partial class TextValue : EntityBase
     {
-        public long Id { get; set; }
         public string Culture { get; set; }
         public string Value { get; set; }
         public string SeoValue { get; set; }

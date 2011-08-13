@@ -11,10 +11,9 @@ namespace DomainModel.Entity
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Image
+
+    public partial class Image : EntityBase
     {
-        public long Id { get; set; }
         public string Path { get; set; }
         public Nullable<int> Width { get; set; }
         public Nullable<int> Height { get; set; }

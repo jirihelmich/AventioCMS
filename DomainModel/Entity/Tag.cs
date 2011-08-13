@@ -3,9 +3,8 @@ namespace DomainModel.Entity
     using System;
     using System.Collections.Generic;
     
-    public partial class Tag
+    public partial class Tag : EntityBase
     {
-        public long Id { get; set; }
         public string Name { get; set; }
         public System.DateTime Date { get; set; }
     

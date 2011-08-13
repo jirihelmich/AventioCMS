@@ -1,15 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
 namespace DomainModel.Entity
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class TagArticle
+    public class TagArticle : EntityBase
     {
-        public long id { get; set; }
-        public long tagsid { get; set; }
-        public long articlesid { get; set; }
-    
-        public virtual Article articles { get; set; }
-        public virtual Tag tags { get; set; }
+        public long ArticleId { get; set; }
+        public long TagId { get; set; }
+
+        public Article Article { get; set; }
+        public Tag Tag { get; set; }
     }
 }

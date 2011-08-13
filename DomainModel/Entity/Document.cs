@@ -2,10 +2,9 @@ namespace DomainModel.Entity
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Document
+
+    public partial class Document : EntityBase
     {
-        public long Id { get; set; }
         public string Path { get; set; }
         public Nullable<long> NameTextId { get; set; }
         public Nullable<long> DocumentGroupId { get; set; }

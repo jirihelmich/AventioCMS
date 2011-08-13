@@ -2,10 +2,9 @@ namespace DomainModel.Entity
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class MenuItem
+
+    public partial class MenuItem : EntityBase
     {
-        public long Id { get; set; }
         public string Name { get; set; }
         public string Link { get; set; }
         public System.DateTime Date { get; set; }

@@ -45,6 +45,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Subsystem\AbstractService.cs" />
     <Compile Include="Subsystem\CategoryService.cs" />
+    <Compile Include="Subsystem\NewsService.cs" />
+    <Compile Include="Subsystem\PageService.cs" />
     <Compile Include="ViewModel\FrontpageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
