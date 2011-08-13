@@ -1044,28 +1044,28 @@
     <edmx:ConceptualModels>
       <Schema Namespace="CMSModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="CMSEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="articles" EntityType="CMSModel.articles" />
-          <EntitySet Name="articles_authors" EntityType="CMSModel.articles_authors" />
-          <EntitySet Name="articles_categories" EntityType="CMSModel.articles_categories" />
-          <EntitySet Name="authors" EntityType="CMSModel.authors" />
-          <EntitySet Name="categories" EntityType="CMSModel.categories" />
-          <EntitySet Name="comments" EntityType="CMSModel.comments" />
-          <EntitySet Name="docgroups" EntityType="CMSModel.docgroups" />
-          <EntitySet Name="docs" EntityType="CMSModel.docs" />
-          <EntitySet Name="images" EntityType="CMSModel.images" />
-          <EntitySet Name="menuitems" EntityType="CMSModel.menuitems" />
-          <EntitySet Name="news" EntityType="CMSModel.news" />
-          <EntitySet Name="pages" EntityType="CMSModel.pages" />
-          <EntitySet Name="products" EntityType="CMSModel.products" />
-          <EntitySet Name="resources" EntityType="CMSModel.resources" />
-          <EntitySet Name="roles" EntityType="CMSModel.roles" />
-          <EntitySet Name="roles_resources" EntityType="CMSModel.roles_resources" />
-          <EntitySet Name="settings" EntityType="CMSModel.settings" />
-          <EntitySet Name="tags" EntityType="CMSModel.tags" />
-          <EntitySet Name="tags_articles" EntityType="CMSModel.tags_articles" />
-          <EntitySet Name="texts" EntityType="CMSModel.texts" />
-          <EntitySet Name="texts_values" EntityType="CMSModel.texts_values" />
-          <EntitySet Name="users" EntityType="CMSModel.users" />
+          <EntitySet Name="articles" EntityType="CMSModel.Article" />
+          <EntitySet Name="articles_authors" EntityType="CMSModel.ArticleAuthors" />
+          <EntitySet Name="articles_categories" EntityType="CMSModel.ArticleCategory" />
+          <EntitySet Name="authors" EntityType="CMSModel.Author" />
+          <EntitySet Name="categories" EntityType="CMSModel.Category" />
+          <EntitySet Name="comments" EntityType="CMSModel.Comment" />
+          <EntitySet Name="docgroups" EntityType="CMSModel.DocumentGroup" />
+          <EntitySet Name="docs" EntityType="CMSModel.Document" />
+          <EntitySet Name="images" EntityType="CMSModel.Image" />
+          <EntitySet Name="menuitems" EntityType="CMSModel.MenuItem" />
+          <EntitySet Name="news" EntityType="CMSModel.News" />
+          <EntitySet Name="pages" EntityType="CMSModel.Page" />
+          <EntitySet Name="products" EntityType="CMSModel.Product" />
+          <EntitySet Name="resources" EntityType="CMSModel.Resource" />
+          <EntitySet Name="roles" EntityType="CMSModel.Role" />
+          <EntitySet Name="roles_resources" EntityType="CMSModel.RoleResource" />
+          <EntitySet Name="settings" EntityType="CMSModel.Setting" />
+          <EntitySet Name="tags" EntityType="CMSModel.Tag" />
+          <EntitySet Name="tags_articles" EntityType="CMSModel.TagArticle" />
+          <EntitySet Name="texts" EntityType="CMSModel.Text" />
+          <EntitySet Name="texts_values" EntityType="CMSModel.TextValue" />
+          <EntitySet Name="users" EntityType="CMSModel.User" />
           <AssociationSet Name="FK_articles_authors_articles" Association="CMSModel.FK_articles_authors_articles">
             <End Role="articles" EntitySet="articles" />
             <End Role="articles_authors" EntitySet="articles_authors" />
@@ -1235,254 +1235,247 @@
             <End Role="products1" EntitySet="products" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="articles">
+        <EntityType Name="Article">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="title" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="alias" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="introtext" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
-          <Property Name="fulltext" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
-          <Property Name="date" Type="DateTime" Nullable="false" />
-          <Property Name="date_published" Type="DateTime" Nullable="false" />
-          <Property Name="date_pullback" Type="DateTime" Nullable="false" />
-          <Property Name="date_lastmod" Type="DateTime" Nullable="false" />
-          <Property Name="hits" Type="Int64" Nullable="false" />
-          <Property Name="modifications_count" Type="Int32" Nullable="false" />
-          <Property Name="published" Type="Int32" Nullable="false" />
-          <Property Name="level" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="articles_authors" Relationship="CMSModel.FK_articles_authors_articles" FromRole="articles" ToRole="articles_authors" />
-          <NavigationProperty Name="articles_categories" Relationship="CMSModel.FK_articles_categories_articles" FromRole="articles" ToRole="articles_categories" />
-          <NavigationProperty Name="roles" Relationship="CMSModel.FK_articles_roles" FromRole="articles" ToRole="roles" />
-          <NavigationProperty Name="comments" Relationship="CMSModel.FK_comments_articles" FromRole="articles" ToRole="comments" />
-          <NavigationProperty Name="menuitems" Relationship="CMSModel.FK_menuitems_articles" FromRole="articles" ToRole="menuitems" />
-          <NavigationProperty Name="tags_articles" Relationship="CMSModel.FK_tags_articles_articles" FromRole="articles" ToRole="tags_articles" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Alias" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Introtext" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Fulltext" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="DatePublished" Type="DateTime" Nullable="false" />
+          <Property Name="DatePullback" Type="DateTime" Nullable="false" />
+          <Property Name="DateLastModified" Type="DateTime" Nullable="false" />
+          <Property Name="Hits" Type="Int64" Nullable="false" />
+          <Property Name="ModificationsCount" Type="Int32" Nullable="false" />
+          <Property Name="Published" Type="Int32" Nullable="false" />
+          <Property Name="Level" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="ArticleAuthor" Relationship="CMSModel.FK_articles_authors_articles" FromRole="articles" ToRole="articles_authors" />
+          <NavigationProperty Name="ArticleCategory" Relationship="CMSModel.FK_articles_categories_articles" FromRole="articles" ToRole="articles_categories" />
+          <NavigationProperty Name="Roles" Relationship="CMSModel.FK_articles_roles" FromRole="articles" ToRole="roles" />
+          <NavigationProperty Name="Comments" Relationship="CMSModel.FK_comments_articles" FromRole="articles" ToRole="comments" />
+          <NavigationProperty Name="MenuItems" Relationship="CMSModel.FK_menuitems_articles" FromRole="articles" ToRole="menuitems" />
+          <NavigationProperty Name="ArticleTags" Relationship="CMSModel.FK_tags_articles_articles" FromRole="articles" ToRole="tags_articles" />
         </EntityType>
-        <EntityType Name="articles_authors">
+        <EntityType Name="ArticleAuthors">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="articlesid" Type="Int64" Nullable="false" />
-          <Property Name="authorsid" Type="Int64" Nullable="false" />
-          <Property Name="date" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="articles" Relationship="CMSModel.FK_articles_authors_articles" FromRole="articles_authors" ToRole="articles" />
-          <NavigationProperty Name="authors" Relationship="CMSModel.FK_articles_authors_authors" FromRole="articles_authors" ToRole="authors" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Article" Relationship="CMSModel.FK_articles_authors_articles" FromRole="articles_authors" ToRole="articles" />
+          <NavigationProperty Name="Author" Relationship="CMSModel.FK_articles_authors_authors" FromRole="articles_authors" ToRole="authors" />
+          <Property Type="Int64" Name="ArticleId" Nullable="false" />
+          <Property Type="Int64" Name="AuthorId" Nullable="false" />
         </EntityType>
-        <EntityType Name="articles_categories">
+        <EntityType Name="ArticleCategory">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="articlesid" Type="Int64" Nullable="false" />
-          <Property Name="categoriesid" Type="Int64" Nullable="false" />
-          <Property Name="date" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="articles" Relationship="CMSModel.FK_articles_categories_articles" FromRole="articles_categories" ToRole="articles" />
-          <NavigationProperty Name="categories" Relationship="CMSModel.FK_articles_categories_categories" FromRole="articles_categories" ToRole="categories" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Article" Relationship="CMSModel.FK_articles_categories_articles" FromRole="articles_categories" ToRole="articles" />
+          <NavigationProperty Name="Category" Relationship="CMSModel.FK_articles_categories_categories" FromRole="articles_categories" ToRole="categories" />
+          <Property Type="Int64" Name="ArticleId" Nullable="false" />
+          <Property Type="Int64" Name="CategoryId" Nullable="false" />
         </EntityType>
-        <EntityType Name="authors">
+        <EntityType Name="Author">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="lastname" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="usersid" Type="Int64" Nullable="false" />
-          <Property Name="description" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
-          <Property Name="date" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="articles_authors" Relationship="CMSModel.FK_articles_authors_authors" FromRole="authors" ToRole="articles_authors" />
-          <NavigationProperty Name="users" Relationship="CMSModel.FK_authors_authors" FromRole="authors" ToRole="users" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Lastname" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="AuthorArticles" Relationship="CMSModel.FK_articles_authors_authors" FromRole="authors" ToRole="articles_authors" />
+          <NavigationProperty Name="User" Relationship="CMSModel.FK_authors_authors" FromRole="authors" ToRole="users" />
+          <Property Type="Int64" Name="usersid" Nullable="false" />
         </EntityType>
-        <EntityType Name="categories">
+        <EntityType Name="Category">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name_text_id" Type="Int64" Nullable="false" />
-          <Property Name="parentid" Type="Int64" />
-          <Property Name="text_text_id" Type="Int64" Nullable="false" />
-          <Property Name="date" Type="DateTime" Nullable="false" />
-          <Property Name="carousel_text_id" Type="Int64" />
-          <NavigationProperty Name="articles_categories" Relationship="CMSModel.FK_articles_categories_categories" FromRole="categories" ToRole="articles_categories" />
-          <NavigationProperty Name="categories1" Relationship="CMSModel.FK_categories_categories" FromRole="categories" ToRole="categories1" />
-          <NavigationProperty Name="categories2" Relationship="CMSModel.FK_categories_categories" FromRole="categories1" ToRole="categories" />
-          <NavigationProperty Name="texts" Relationship="CMSModel.FK_categories_texts" FromRole="categories" ToRole="texts" />
-          <NavigationProperty Name="texts1" Relationship="CMSModel.FK_categories_texts1" FromRole="categories" ToRole="texts" />
-          <NavigationProperty Name="texts2" Relationship="CMSModel.FK_categories_texts2" FromRole="categories" ToRole="texts" />
-          <NavigationProperty Name="menuitems" Relationship="CMSModel.FK_menuitems_categories" FromRole="categories" ToRole="menuitems" />
-          <NavigationProperty Name="products" Relationship="CMSModel.products_categories" FromRole="categories" ToRole="products" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="CategoryArticles" Relationship="CMSModel.FK_articles_categories_categories" FromRole="categories" ToRole="articles_categories" />
+          <NavigationProperty Name="Children" Relationship="CMSModel.FK_categories_categories" FromRole="categories" ToRole="categories1" />
+          <NavigationProperty Name="Parent" Relationship="CMSModel.FK_categories_categories" FromRole="categories1" ToRole="categories" />
+          <NavigationProperty Name="TitleText" Relationship="CMSModel.FK_categories_texts" FromRole="categories" ToRole="texts" />
+          <NavigationProperty Name="ShortDescriptionText" Relationship="CMSModel.FK_categories_texts1" FromRole="categories" ToRole="texts" />
+          <NavigationProperty Name="DescriptionText" Relationship="CMSModel.FK_categories_texts2" FromRole="categories" ToRole="texts" />
+          <NavigationProperty Name="MenuItems" Relationship="CMSModel.FK_menuitems_categories" FromRole="categories" ToRole="menuitems" />
+          <NavigationProperty Name="Products" Relationship="CMSModel.products_categories" FromRole="categories" ToRole="products" />
+          <Property Type="Int64" Name="ParentId" Nullable="true" />
+          <Property Type="Int64" Name="DescriptionTextId" Nullable="false" />
+          <Property Type="Int64" Name="CarouselTextId" Nullable="true" />
+          <Property Type="Int64" Name="NameTextId" Nullable="false" />
         </EntityType>
-        <EntityType Name="comments">
+        <EntityType Name="Comment">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="title" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
-          <Property Name="text" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
-          <Property Name="usersid" Type="Int64" />
-          <Property Name="useralias" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
-          <Property Name="parentid" Type="Int64" />
-          <Property Name="email" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
-          <Property Name="ip" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
-          <Property Name="articlesid" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="articles" Relationship="CMSModel.FK_comments_articles" FromRole="comments" ToRole="articles" />
-          <NavigationProperty Name="comments1" Relationship="CMSModel.FK_comments_comments" FromRole="comments" ToRole="comments1" />
-          <NavigationProperty Name="comments2" Relationship="CMSModel.FK_comments_comments" FromRole="comments1" ToRole="comments" />
-          <NavigationProperty Name="users" Relationship="CMSModel.FK_comments_users" FromRole="comments" ToRole="users" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="UserAlias" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="IP" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Article" Relationship="CMSModel.FK_comments_articles" FromRole="comments" ToRole="articles" />
+          <NavigationProperty Name="Children" Relationship="CMSModel.FK_comments_comments" FromRole="comments" ToRole="comments1" />
+          <NavigationProperty Name="Parent" Relationship="CMSModel.FK_comments_comments" FromRole="comments1" ToRole="comments" />
+          <NavigationProperty Name="User" Relationship="CMSModel.FK_comments_users" FromRole="comments" ToRole="users" />
+          <Property Type="Int64" Name="UserId" Nullable="true" />
+          <Property Type="Int64" Name="ArticleId" Nullable="false" />
+          <Property Type="Int64" Name="ParentId" Nullable="true" />
         </EntityType>
-        <EntityType Name="docgroups">
+        <EntityType Name="DocumentGroup">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="docs" Relationship="CMSModel.FK_docs_docgroups" FromRole="docgroups" ToRole="docs" />
-          <NavigationProperty Name="products" Relationship="CMSModel.docgroups_products" FromRole="docgroups" ToRole="products" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Documents" Relationship="CMSModel.FK_docs_docgroups" FromRole="docgroups" ToRole="docs" />
+          <NavigationProperty Name="Products" Relationship="CMSModel.docgroups_products" FromRole="docgroups" ToRole="products" />
         </EntityType>
-        <EntityType Name="docs">
+        <EntityType Name="Document">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name_text_id" Type="Int64" />
-          <Property Name="path" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
-          <Property Name="docgroup_id" Type="Int64" />
-          <NavigationProperty Name="docgroups" Relationship="CMSModel.FK_docs_docgroups" FromRole="docs" ToRole="docgroups" />
-          <NavigationProperty Name="texts" Relationship="CMSModel.FK_docs_texts" FromRole="docs" ToRole="texts" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Path" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="DocumentGroup" Relationship="CMSModel.FK_docs_docgroups" FromRole="docs" ToRole="docgroups" />
+          <NavigationProperty Name="TitleText" Relationship="CMSModel.FK_docs_texts" FromRole="docs" ToRole="texts" />
+          <Property Type="Int64" Name="NameTextId" Nullable="true" />
+          <Property Type="Int64" Name="DocumentGroupId" Nullable="true" />
         </EntityType>
-        <EntityType Name="images">
+        <EntityType Name="Image">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="path" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
-          <Property Name="description_text_id" Type="Int64" />
-          <Property Name="width" Type="Int32" />
-          <Property Name="height" Type="Int32" />
-          <NavigationProperty Name="texts" Relationship="CMSModel.FK_images_texts" FromRole="images" ToRole="texts" />
-          <NavigationProperty Name="news" Relationship="CMSModel.FK_news_images" FromRole="images" ToRole="news" />
-          <NavigationProperty Name="products" Relationship="CMSModel.FK_products_images" FromRole="images" ToRole="products" />
-          <NavigationProperty Name="products1" Relationship="CMSModel.images_products" FromRole="images" ToRole="products" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Path" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="Width" Type="Int32" />
+          <Property Name="Height" Type="Int32" />
+          <NavigationProperty Name="TitleText" Relationship="CMSModel.FK_images_texts" FromRole="images" ToRole="texts" />
+          <Property Type="Int64" Name="DescriptionTextId" Nullable="true" />
         </EntityType>
-        <EntityType Name="menuitems">
+        <EntityType Name="MenuItem">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
-          <Property Name="categoriesid" Type="Int64" />
-          <Property Name="articlesid" Type="Int64" />
-          <Property Name="link" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
-          <Property Name="date" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="articles" Relationship="CMSModel.FK_menuitems_articles" FromRole="menuitems" ToRole="articles" />
-          <NavigationProperty Name="categories" Relationship="CMSModel.FK_menuitems_categories" FromRole="menuitems" ToRole="categories" />
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Link" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Article" Relationship="CMSModel.FK_menuitems_articles" FromRole="menuitems" ToRole="articles" />
+          <NavigationProperty Name="Category" Relationship="CMSModel.FK_menuitems_categories" FromRole="menuitems" ToRole="categories" />
+          <Property Type="Int64" Name="ArticleId" Nullable="true" />
+          <Property Type="Int64" Name="CategoryId" Nullable="true" />
         </EntityType>
-        <EntityType Name="news">
+        <EntityType Name="News">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="title" Type="Int64" Nullable="false" />
-          <Property Name="shortdesc" Type="Int64" Nullable="false" />
-          <Property Name="text" Type="Int64" Nullable="false" />
-          <Property Name="date" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="image_id" Type="Int64" />
-          <Property Name="product_id" Type="Int64" />
-          <Property Name="date_order" Type="DateTime" />
-          <NavigationProperty Name="images" Relationship="CMSModel.FK_news_images" FromRole="news" ToRole="images" />
-          <NavigationProperty Name="products" Relationship="CMSModel.FK_news_products" FromRole="news" ToRole="products" />
-          <NavigationProperty Name="texts" Relationship="CMSModel.FK_news_texts" FromRole="news" ToRole="texts" />
-          <NavigationProperty Name="texts1" Relationship="CMSModel.FK_news_texts1" FromRole="news" ToRole="texts" />
-          <NavigationProperty Name="texts2" Relationship="CMSModel.FK_news_texts2" FromRole="news" ToRole="texts" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="Int64" Nullable="false" />
+          <Property Name="Date" Type="DateTime" />
+          <NavigationProperty Name="Image" Relationship="CMSModel.FK_news_images" FromRole="news" ToRole="images" />
+          <NavigationProperty Name="Products" Relationship="CMSModel.FK_news_products" FromRole="news" ToRole="products" />
+          <NavigationProperty Name="TitleText" Relationship="CMSModel.FK_news_texts" FromRole="news" ToRole="texts" />
+          <NavigationProperty Name="ShortDescriptionText" Relationship="CMSModel.FK_news_texts1" FromRole="news" ToRole="texts" />
+          <NavigationProperty Name="DescriptionText" Relationship="CMSModel.FK_news_texts2" FromRole="news" ToRole="texts" />
+          <Property Type="Int64" Name="TextId" Nullable="false" />
+          <Property Type="Int64" Name="ShortDescriptionId" Nullable="false" />
+          <Property Type="Int64" Name="ProductId" Nullable="true" />
+          <Property Type="Int64" Name="ImageId" Nullable="true" />
         </EntityType>
-        <EntityType Name="pages">
+        <EntityType Name="Page">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="title_text_id" Type="Int64" Nullable="false" />
-          <Property Name="text_text_id" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="texts" Relationship="CMSModel.FK_pages_texts" FromRole="pages" ToRole="texts" />
-          <NavigationProperty Name="texts1" Relationship="CMSModel.FK_pages_texts1" FromRole="pages" ToRole="texts" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="TitleText" Relationship="CMSModel.FK_pages_texts" FromRole="pages" ToRole="texts" />
+          <NavigationProperty Name="ContentText" Relationship="CMSModel.FK_pages_texts1" FromRole="pages" ToRole="texts" />
+          <Property Type="Int64" Name="TitleTextId" Nullable="false" />
+          <Property Type="Int64" Name="TextTextId" Nullable="false" />
         </EntityType>
-        <EntityType Name="products">
+        <EntityType Name="Product">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="title_text_id" Type="Int64" Nullable="false" />
-          <Property Name="subtitle_text_id" Type="Int64" Nullable="false" />
-          <Property Name="description_text_id" Type="Int64" Nullable="false" />
-          <Property Name="text_text_id" Type="Int64" Nullable="false" />
-          <Property Name="image_id" Type="Int64" />
-          <NavigationProperty Name="images" Relationship="CMSModel.FK_products_images" FromRole="products" ToRole="images" />
-          <NavigationProperty Name="news" Relationship="CMSModel.FK_news_products" FromRole="products" ToRole="news" />
-          <NavigationProperty Name="texts" Relationship="CMSModel.FK_products_texts_desc" FromRole="products" ToRole="texts" />
-          <NavigationProperty Name="texts1" Relationship="CMSModel.FK_products_texts_subtitle" FromRole="products" ToRole="texts" />
-          <NavigationProperty Name="texts2" Relationship="CMSModel.FK_products_texts_text" FromRole="products" ToRole="texts" />
-          <NavigationProperty Name="texts3" Relationship="CMSModel.FK_products_texts_title" FromRole="products" ToRole="texts" />
-          <NavigationProperty Name="docgroups" Relationship="CMSModel.docgroups_products" FromRole="products" ToRole="docgroups" />
-          <NavigationProperty Name="images1" Relationship="CMSModel.images_products" FromRole="products" ToRole="images" />
-          <NavigationProperty Name="categories" Relationship="CMSModel.products_categories" FromRole="products" ToRole="categories" />
-          <NavigationProperty Name="products1" Relationship="CMSModel.products_connections" FromRole="products" ToRole="products1" />
-          <NavigationProperty Name="products2" Relationship="CMSModel.products_connections" FromRole="products1" ToRole="products" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Image" Relationship="CMSModel.FK_products_images" FromRole="products" ToRole="images" />
+          <NavigationProperty Name="News" Relationship="CMSModel.FK_news_products" FromRole="products" ToRole="news" />
+          <NavigationProperty Name="TitleText" Relationship="CMSModel.FK_products_texts_desc" FromRole="products" ToRole="texts" />
+          <NavigationProperty Name="SubtitleText" Relationship="CMSModel.FK_products_texts_subtitle" FromRole="products" ToRole="texts" />
+          <NavigationProperty Name="ShortDescriptionText" Relationship="CMSModel.FK_products_texts_text" FromRole="products" ToRole="texts" />
+          <NavigationProperty Name="DescriptionText" Relationship="CMSModel.FK_products_texts_title" FromRole="products" ToRole="texts" />
+          <NavigationProperty Name="DocumentGroups" Relationship="CMSModel.docgroups_products" FromRole="products" ToRole="docgroups" />
+          <NavigationProperty Name="Images" Relationship="CMSModel.images_products" FromRole="products" ToRole="images" />
+          <NavigationProperty Name="Categories" Relationship="CMSModel.products_categories" FromRole="products" ToRole="categories" />
+          <NavigationProperty Name="Similar" Relationship="CMSModel.products_connections" FromRole="products" ToRole="products1" />
+          <NavigationProperty Name="SimilarTo" Relationship="CMSModel.products_connections" FromRole="products1" ToRole="products" />
+          <Property Type="Int64" Name="TitleTextId" Nullable="false" />
+          <Property Type="Int64" Name="TextTextId" Nullable="false" />
+          <Property Type="Int64" Name="SubtitleTextId" Nullable="false" />
+          <Property Type="Int64" Name="DescriptionTextId" Nullable="false" />
+          <Property Type="Int64" Name="ImageId" Nullable="true" />
         </EntityType>
-        <EntityType Name="resources">
+        <EntityType Name="Resource">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="controller" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="action" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="date" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="roles_resources" Relationship="CMSModel.FK_roles_resources_resources" FromRole="resources" ToRole="roles_resources" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Controller" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Action" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="ResourceRoles" Relationship="CMSModel.FK_roles_resources_resources" FromRole="resources" ToRole="roles_resources" />
         </EntityType>
-        <EntityType Name="roles">
+        <EntityType Name="Role">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="date" Type="DateTime" Nullable="false" />
-          <Property Name="parentid" Type="Int64" />
-          <NavigationProperty Name="articles" Relationship="CMSModel.FK_articles_roles" FromRole="roles" ToRole="articles" />
-          <NavigationProperty Name="roles_resources" Relationship="CMSModel.FK_roles_resources_roles" FromRole="roles" ToRole="roles_resources" />
-          <NavigationProperty Name="roles1" Relationship="CMSModel.FK_roles_roles" FromRole="roles" ToRole="roles1" />
-          <NavigationProperty Name="roles2" Relationship="CMSModel.FK_roles_roles" FromRole="roles1" ToRole="roles" />
-          <NavigationProperty Name="users" Relationship="CMSModel.FK_users_roles" FromRole="roles" ToRole="users" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="RoleResources" Relationship="CMSModel.FK_roles_resources_roles" FromRole="roles" ToRole="roles_resources" />
+          <NavigationProperty Name="Children" Relationship="CMSModel.FK_roles_roles" FromRole="roles" ToRole="roles1" />
+          <NavigationProperty Name="Parent" Relationship="CMSModel.FK_roles_roles" FromRole="roles1" ToRole="roles" />
+          <NavigationProperty Name="Users" Relationship="CMSModel.FK_users_roles" FromRole="roles" ToRole="users" />
+          <Property Type="Int64" Name="ParentId" Nullable="true" />
         </EntityType>
-        <EntityType Name="roles_resources">
+        <EntityType Name="RoleResource">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="resourcesid" Type="Int64" Nullable="false" />
-          <Property Name="rolesid" Type="Int64" Nullable="false" />
-          <Property Name="date" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="resources" Relationship="CMSModel.FK_roles_resources_resources" FromRole="roles_resources" ToRole="resources" />
-          <NavigationProperty Name="roles" Relationship="CMSModel.FK_roles_resources_roles" FromRole="roles_resources" ToRole="roles" />
-          <NavigationProperty Name="roles_resources1" Relationship="CMSModel.FK_roles_resources_roles_resources" FromRole="roles_resources" ToRole="roles_resources1" />
-          <NavigationProperty Name="roles_resources2" Relationship="CMSModel.FK_roles_resources_roles_resources" FromRole="roles_resources1" ToRole="roles_resources" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Resource" Relationship="CMSModel.FK_roles_resources_resources" FromRole="roles_resources" ToRole="resources" />
+          <NavigationProperty Name="Role" Relationship="CMSModel.FK_roles_resources_roles" FromRole="roles_resources" ToRole="roles" />
+          <Property Type="Int64" Name="RoleId" Nullable="false" />
+          <Property Type="Int64" Name="ResourceId" Nullable="false" />
         </EntityType>
-        <EntityType Name="settings">
+        <EntityType Name="Setting">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="value" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
         </EntityType>
-        <EntityType Name="tags">
+        <EntityType Name="Tag">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="date" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="tags_articles" Relationship="CMSModel.FK_tags_articles_tags" FromRole="tags" ToRole="tags_articles" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="TagArticles" Relationship="CMSModel.FK_tags_articles_tags" FromRole="tags" ToRole="tags_articles" />
         </EntityType>
-        <EntityType Name="tags_articles">
+        <EntityType Name="TagArticle">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -1492,124 +1485,110 @@
           <NavigationProperty Name="articles" Relationship="CMSModel.FK_tags_articles_articles" FromRole="tags_articles" ToRole="articles" />
           <NavigationProperty Name="tags" Relationship="CMSModel.FK_tags_articles_tags" FromRole="tags_articles" ToRole="tags" />
         </EntityType>
-        <EntityType Name="texts">
+        <EntityType Name="Text">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="categories" Relationship="CMSModel.FK_categories_texts" FromRole="texts" ToRole="categories" />
-          <NavigationProperty Name="categories1" Relationship="CMSModel.FK_categories_texts1" FromRole="texts" ToRole="categories" />
-          <NavigationProperty Name="categories2" Relationship="CMSModel.FK_categories_texts2" FromRole="texts" ToRole="categories" />
-          <NavigationProperty Name="docs" Relationship="CMSModel.FK_docs_texts" FromRole="texts" ToRole="docs" />
-          <NavigationProperty Name="images" Relationship="CMSModel.FK_images_texts" FromRole="texts" ToRole="images" />
-          <NavigationProperty Name="news" Relationship="CMSModel.FK_news_texts" FromRole="texts" ToRole="news" />
-          <NavigationProperty Name="news1" Relationship="CMSModel.FK_news_texts1" FromRole="texts" ToRole="news" />
-          <NavigationProperty Name="news2" Relationship="CMSModel.FK_news_texts2" FromRole="texts" ToRole="news" />
-          <NavigationProperty Name="pages" Relationship="CMSModel.FK_pages_texts" FromRole="texts" ToRole="pages" />
-          <NavigationProperty Name="pages1" Relationship="CMSModel.FK_pages_texts1" FromRole="texts" ToRole="pages" />
-          <NavigationProperty Name="products" Relationship="CMSModel.FK_products_texts_desc" FromRole="texts" ToRole="products" />
-          <NavigationProperty Name="products1" Relationship="CMSModel.FK_products_texts_subtitle" FromRole="texts" ToRole="products" />
-          <NavigationProperty Name="products2" Relationship="CMSModel.FK_products_texts_text" FromRole="texts" ToRole="products" />
-          <NavigationProperty Name="products3" Relationship="CMSModel.FK_products_texts_title" FromRole="texts" ToRole="products" />
-          <NavigationProperty Name="texts_values" Relationship="CMSModel.FK_texts_values_texts1" FromRole="texts" ToRole="texts_values" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Values" Relationship="CMSModel.FK_texts_values_texts1" FromRole="texts" ToRole="texts_values" />
         </EntityType>
-        <EntityType Name="texts_values">
+        <EntityType Name="TextValue">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="culture" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="value" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="text_id" Type="Int64" Nullable="false" />
-          <Property Name="seo_value" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="texts" Relationship="CMSModel.FK_texts_values_texts1" FromRole="texts_values" ToRole="texts" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Culture" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Value" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="SeoValue" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Text" Relationship="CMSModel.FK_texts_values_texts1" FromRole="texts_values" ToRole="texts" />
+          <Property Type="Int64" Name="TextId" Nullable="false" />
         </EntityType>
-        <EntityType Name="users">
+        <EntityType Name="User">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="username" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="password" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="email" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="rolesid" Type="Int64" Nullable="false" />
-          <Property Name="date" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="authors" Relationship="CMSModel.FK_authors_authors" FromRole="users" ToRole="authors" />
-          <NavigationProperty Name="comments" Relationship="CMSModel.FK_comments_users" FromRole="users" ToRole="comments" />
-          <NavigationProperty Name="roles" Relationship="CMSModel.FK_users_roles" FromRole="users" ToRole="roles" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Authors" Relationship="CMSModel.FK_authors_authors" FromRole="users" ToRole="authors" />
+          <NavigationProperty Name="Comments" Relationship="CMSModel.FK_comments_users" FromRole="users" ToRole="comments" />
+          <NavigationProperty Name="Role" Relationship="CMSModel.FK_users_roles" FromRole="users" ToRole="roles" />
+          <Property Type="Int64" Name="RoleId" Nullable="false" />
         </EntityType>
         <Association Name="FK_articles_authors_articles">
-          <End Role="articles" Type="CMSModel.articles" Multiplicity="1">
+          <End Role="articles" Type="CMSModel.Article" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="articles_authors" Type="CMSModel.articles_authors" Multiplicity="*" />
+          <End Role="articles_authors" Type="CMSModel.ArticleAuthors" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="articles">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="articles_authors">
-              <PropertyRef Name="articlesid" />
+              <PropertyRef Name="ArticleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_articles_categories_articles">
-          <End Role="articles" Type="CMSModel.articles" Multiplicity="1">
+          <End Role="articles" Type="CMSModel.Article" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="articles_categories" Type="CMSModel.articles_categories" Multiplicity="*" />
+          <End Role="articles_categories" Type="CMSModel.ArticleCategory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="articles">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="articles_categories">
-              <PropertyRef Name="articlesid" />
+              <PropertyRef Name="ArticleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_articles_roles">
-          <End Role="roles" Type="CMSModel.roles" Multiplicity="1" />
-          <End Role="articles" Type="CMSModel.articles" Multiplicity="*" />
+          <End Role="roles" Type="CMSModel.Role" Multiplicity="1" />
+          <End Role="articles" Type="CMSModel.Article" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="roles">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="articles">
-              <PropertyRef Name="level" />
+              <PropertyRef Name="Level" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_comments_articles">
-          <End Role="articles" Type="CMSModel.articles" Multiplicity="1" />
-          <End Role="comments" Type="CMSModel.comments" Multiplicity="*" />
+          <End Role="articles" Type="CMSModel.Article" Multiplicity="1" />
+          <End Role="comments" Type="CMSModel.Comment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="articles">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="comments">
-              <PropertyRef Name="articlesid" />
+              <PropertyRef Name="ArticleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_menuitems_articles">
-          <End Role="articles" Type="CMSModel.articles" Multiplicity="0..1" />
-          <End Role="menuitems" Type="CMSModel.menuitems" Multiplicity="*" />
+          <End Role="articles" Type="CMSModel.Article" Multiplicity="0..1" />
+          <End Role="menuitems" Type="CMSModel.MenuItem" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="articles">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="menuitems">
-              <PropertyRef Name="articlesid" />
+              <PropertyRef Name="ArticleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tags_articles_articles">
-          <End Role="articles" Type="CMSModel.articles" Multiplicity="1">
+          <End Role="articles" Type="CMSModel.Article" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="tags_articles" Type="CMSModel.tags_articles" Multiplicity="*" />
+          <End Role="tags_articles" Type="CMSModel.TagArticle" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="articles">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tags_articles">
               <PropertyRef Name="articlesid" />
@@ -1617,35 +1596,35 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_articles_authors_authors">
-          <End Role="authors" Type="CMSModel.authors" Multiplicity="1" />
-          <End Role="articles_authors" Type="CMSModel.articles_authors" Multiplicity="*" />
+          <End Role="authors" Type="CMSModel.Author" Multiplicity="1" />
+          <End Role="articles_authors" Type="CMSModel.ArticleAuthors" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="authors">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="articles_authors">
-              <PropertyRef Name="authorsid" />
+              <PropertyRef Name="AuthorId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_articles_categories_categories">
-          <End Role="categories" Type="CMSModel.categories" Multiplicity="1" />
-          <End Role="articles_categories" Type="CMSModel.articles_categories" Multiplicity="*" />
+          <End Role="categories" Type="CMSModel.Category" Multiplicity="1" />
+          <End Role="articles_categories" Type="CMSModel.ArticleCategory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="categories">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="articles_categories">
-              <PropertyRef Name="categoriesid" />
+              <PropertyRef Name="CategoryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_authors_authors">
-          <End Role="users" Type="CMSModel.users" Multiplicity="1" />
-          <End Role="authors" Type="CMSModel.authors" Multiplicity="*" />
+          <End Role="users" Type="CMSModel.User" Multiplicity="1" />
+          <End Role="authors" Type="CMSModel.Author" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="users">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="authors">
               <PropertyRef Name="usersid" />
@@ -1653,341 +1632,341 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_categories_categories">
-          <End Role="categories" Type="CMSModel.categories" Multiplicity="0..1" />
-          <End Role="categories1" Type="CMSModel.categories" Multiplicity="*" />
+          <End Role="categories" Type="CMSModel.Category" Multiplicity="0..1" />
+          <End Role="categories1" Type="CMSModel.Category" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="categories">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="categories1">
-              <PropertyRef Name="parentid" />
+              <PropertyRef Name="ParentId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_categories_texts">
-          <End Role="texts" Type="CMSModel.texts" Multiplicity="1" />
-          <End Role="categories" Type="CMSModel.categories" Multiplicity="*" />
+          <End Role="texts" Type="CMSModel.Text" Multiplicity="1" />
+          <End Role="categories" Type="CMSModel.Category" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="texts">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="categories">
-              <PropertyRef Name="name_text_id" />
+              <PropertyRef Name="NameTextId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_categories_texts1">
-          <End Role="texts" Type="CMSModel.texts" Multiplicity="1" />
-          <End Role="categories" Type="CMSModel.categories" Multiplicity="*" />
+          <End Role="texts" Type="CMSModel.Text" Multiplicity="1" />
+          <End Role="categories" Type="CMSModel.Category" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="texts">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="categories">
-              <PropertyRef Name="text_text_id" />
+              <PropertyRef Name="DescriptionTextId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_categories_texts2">
-          <End Role="texts" Type="CMSModel.texts" Multiplicity="0..1" />
-          <End Role="categories" Type="CMSModel.categories" Multiplicity="*" />
+          <End Role="texts" Type="CMSModel.Text" Multiplicity="0..1" />
+          <End Role="categories" Type="CMSModel.Category" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="texts">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="categories">
-              <PropertyRef Name="carousel_text_id" />
+              <PropertyRef Name="CarouselTextId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_menuitems_categories">
-          <End Role="categories" Type="CMSModel.categories" Multiplicity="0..1" />
-          <End Role="menuitems" Type="CMSModel.menuitems" Multiplicity="*" />
+          <End Role="categories" Type="CMSModel.Category" Multiplicity="0..1" />
+          <End Role="menuitems" Type="CMSModel.MenuItem" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="categories">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="menuitems">
-              <PropertyRef Name="categoriesid" />
+              <PropertyRef Name="CategoryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_comments_comments">
-          <End Role="comments" Type="CMSModel.comments" Multiplicity="0..1" />
-          <End Role="comments1" Type="CMSModel.comments" Multiplicity="*" />
+          <End Role="comments" Type="CMSModel.Comment" Multiplicity="0..1" />
+          <End Role="comments1" Type="CMSModel.Comment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="comments">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="comments1">
-              <PropertyRef Name="parentid" />
+              <PropertyRef Name="ParentId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_comments_users">
-          <End Role="users" Type="CMSModel.users" Multiplicity="0..1" />
-          <End Role="comments" Type="CMSModel.comments" Multiplicity="*" />
+          <End Role="users" Type="CMSModel.User" Multiplicity="0..1" />
+          <End Role="comments" Type="CMSModel.Comment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="users">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="comments">
-              <PropertyRef Name="usersid" />
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_docs_docgroups">
-          <End Role="docgroups" Type="CMSModel.docgroups" Multiplicity="0..1" />
-          <End Role="docs" Type="CMSModel.docs" Multiplicity="*" />
+          <End Role="docgroups" Type="CMSModel.DocumentGroup" Multiplicity="0..1" />
+          <End Role="docs" Type="CMSModel.Document" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="docgroups">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="docs">
-              <PropertyRef Name="docgroup_id" />
+              <PropertyRef Name="DocumentGroupId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_docs_texts">
-          <End Role="texts" Type="CMSModel.texts" Multiplicity="0..1" />
-          <End Role="docs" Type="CMSModel.docs" Multiplicity="*" />
+          <End Role="texts" Type="CMSModel.Text" Multiplicity="0..1" />
+          <End Role="docs" Type="CMSModel.Document" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="texts">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="docs">
-              <PropertyRef Name="name_text_id" />
+              <PropertyRef Name="NameTextId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_images_texts">
-          <End Role="texts" Type="CMSModel.texts" Multiplicity="0..1" />
-          <End Role="images" Type="CMSModel.images" Multiplicity="*" />
+          <End Role="texts" Type="CMSModel.Text" Multiplicity="0..1" />
+          <End Role="images" Type="CMSModel.Image" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="texts">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="images">
-              <PropertyRef Name="description_text_id" />
+              <PropertyRef Name="DescriptionTextId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_news_images">
-          <End Role="images" Type="CMSModel.images" Multiplicity="0..1" />
-          <End Role="news" Type="CMSModel.news" Multiplicity="*" />
+          <End Role="images" Type="CMSModel.Image" Multiplicity="0..1" />
+          <End Role="news" Type="CMSModel.News" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="images">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="news">
-              <PropertyRef Name="image_id" />
+              <PropertyRef Name="ImageId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_products_images">
-          <End Role="images" Type="CMSModel.images" Multiplicity="0..1" />
-          <End Role="products" Type="CMSModel.products" Multiplicity="*" />
+          <End Role="images" Type="CMSModel.Image" Multiplicity="0..1" />
+          <End Role="products" Type="CMSModel.Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="images">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="products">
-              <PropertyRef Name="image_id" />
+              <PropertyRef Name="ImageId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_news_products">
-          <End Role="products" Type="CMSModel.products" Multiplicity="0..1" />
-          <End Role="news" Type="CMSModel.news" Multiplicity="*" />
+          <End Role="products" Type="CMSModel.Product" Multiplicity="0..1" />
+          <End Role="news" Type="CMSModel.News" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="products">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="news">
-              <PropertyRef Name="product_id" />
+              <PropertyRef Name="ProductId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_news_texts">
-          <End Role="texts" Type="CMSModel.texts" Multiplicity="1" />
-          <End Role="news" Type="CMSModel.news" Multiplicity="*" />
+          <End Role="texts" Type="CMSModel.Text" Multiplicity="1" />
+          <End Role="news" Type="CMSModel.News" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="texts">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="news">
-              <PropertyRef Name="title" />
+              <PropertyRef Name="Title" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_news_texts1">
-          <End Role="texts" Type="CMSModel.texts" Multiplicity="1" />
-          <End Role="news" Type="CMSModel.news" Multiplicity="*" />
+          <End Role="texts" Type="CMSModel.Text" Multiplicity="1" />
+          <End Role="news" Type="CMSModel.News" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="texts">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="news">
-              <PropertyRef Name="shortdesc" />
+              <PropertyRef Name="ShortDescriptionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_news_texts2">
-          <End Role="texts" Type="CMSModel.texts" Multiplicity="1" />
-          <End Role="news" Type="CMSModel.news" Multiplicity="*" />
+          <End Role="texts" Type="CMSModel.Text" Multiplicity="1" />
+          <End Role="news" Type="CMSModel.News" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="texts">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="news">
-              <PropertyRef Name="text" />
+              <PropertyRef Name="TextId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_pages_texts">
-          <End Role="texts" Type="CMSModel.texts" Multiplicity="1" />
-          <End Role="pages" Type="CMSModel.pages" Multiplicity="*" />
+          <End Role="texts" Type="CMSModel.Text" Multiplicity="1" />
+          <End Role="pages" Type="CMSModel.Page" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="texts">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="pages">
-              <PropertyRef Name="text_text_id" />
+              <PropertyRef Name="TextTextId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_pages_texts1">
-          <End Role="texts" Type="CMSModel.texts" Multiplicity="1" />
-          <End Role="pages" Type="CMSModel.pages" Multiplicity="*" />
+          <End Role="texts" Type="CMSModel.Text" Multiplicity="1" />
+          <End Role="pages" Type="CMSModel.Page" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="texts">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="pages">
-              <PropertyRef Name="title_text_id" />
+              <PropertyRef Name="TitleTextId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_products_texts_desc">
-          <End Role="texts" Type="CMSModel.texts" Multiplicity="1" />
-          <End Role="products" Type="CMSModel.products" Multiplicity="*" />
+          <End Role="texts" Type="CMSModel.Text" Multiplicity="1" />
+          <End Role="products" Type="CMSModel.Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="texts">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="products">
-              <PropertyRef Name="description_text_id" />
+              <PropertyRef Name="DescriptionTextId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_products_texts_subtitle">
-          <End Role="texts" Type="CMSModel.texts" Multiplicity="1" />
-          <End Role="products" Type="CMSModel.products" Multiplicity="*" />
+          <End Role="texts" Type="CMSModel.Text" Multiplicity="1" />
+          <End Role="products" Type="CMSModel.Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="texts">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="products">
-              <PropertyRef Name="subtitle_text_id" />
+              <PropertyRef Name="SubtitleTextId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_products_texts_text">
-          <End Role="texts" Type="CMSModel.texts" Multiplicity="1" />
-          <End Role="products" Type="CMSModel.products" Multiplicity="*" />
+          <End Role="texts" Type="CMSModel.Text" Multiplicity="1" />
+          <End Role="products" Type="CMSModel.Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="texts">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="products">
-              <PropertyRef Name="text_text_id" />
+              <PropertyRef Name="TextTextId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_products_texts_title">
-          <End Role="texts" Type="CMSModel.texts" Multiplicity="1" />
-          <End Role="products" Type="CMSModel.products" Multiplicity="*" />
+          <End Role="texts" Type="CMSModel.Text" Multiplicity="1" />
+          <End Role="products" Type="CMSModel.Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="texts">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="products">
-              <PropertyRef Name="title_text_id" />
+              <PropertyRef Name="TitleTextId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_roles_resources_resources">
-          <End Role="resources" Type="CMSModel.resources" Multiplicity="1">
+          <End Role="resources" Type="CMSModel.Resource" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="roles_resources" Type="CMSModel.roles_resources" Multiplicity="*" />
+          <End Role="roles_resources" Type="CMSModel.RoleResource" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="resources">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="roles_resources">
-              <PropertyRef Name="resourcesid" />
+              <PropertyRef Name="ResourceId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_roles_resources_roles">
-          <End Role="roles" Type="CMSModel.roles" Multiplicity="1">
+          <End Role="roles" Type="CMSModel.Role" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="roles_resources" Type="CMSModel.roles_resources" Multiplicity="*" />
+          <End Role="roles_resources" Type="CMSModel.RoleResource" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="roles">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="roles_resources">
-              <PropertyRef Name="rolesid" />
+              <PropertyRef Name="RoleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_roles_roles">
-          <End Role="roles" Type="CMSModel.roles" Multiplicity="0..1" />
-          <End Role="roles1" Type="CMSModel.roles" Multiplicity="*" />
+          <End Role="roles" Type="CMSModel.Role" Multiplicity="0..1" />
+          <End Role="roles1" Type="CMSModel.Role" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="roles">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="roles1">
-              <PropertyRef Name="parentid" />
+              <PropertyRef Name="ParentId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_users_roles">
-          <End Role="roles" Type="CMSModel.roles" Multiplicity="1" />
-          <End Role="users" Type="CMSModel.users" Multiplicity="*" />
+          <End Role="roles" Type="CMSModel.Role" Multiplicity="1" />
+          <End Role="users" Type="CMSModel.User" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="roles">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="users">
-              <PropertyRef Name="rolesid" />
+              <PropertyRef Name="RoleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_roles_resources_roles_resources">
-          <End Role="roles_resources" Type="CMSModel.roles_resources" Multiplicity="1" />
-          <End Role="roles_resources1" Type="CMSModel.roles_resources" Multiplicity="0..1" />
+          <End Role="roles_resources" Type="CMSModel.RoleResource" Multiplicity="1" />
+          <End Role="roles_resources1" Type="CMSModel.RoleResource" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="roles_resources">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="roles_resources1">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tags_articles_tags">
-          <End Role="tags" Type="CMSModel.tags" Multiplicity="1">
+          <End Role="tags" Type="CMSModel.Tag" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="tags_articles" Type="CMSModel.tags_articles" Multiplicity="*" />
+          <End Role="tags_articles" Type="CMSModel.TagArticle" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tags">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tags_articles">
               <PropertyRef Name="tagsid" />
@@ -1995,32 +1974,32 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_texts_values_texts1">
-          <End Role="texts" Type="CMSModel.texts" Multiplicity="1" />
-          <End Role="texts_values" Type="CMSModel.texts_values" Multiplicity="*" />
+          <End Role="texts" Type="CMSModel.Text" Multiplicity="1" />
+          <End Role="texts_values" Type="CMSModel.TextValue" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="texts">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="texts_values">
-              <PropertyRef Name="text_id" />
+              <PropertyRef Name="TextId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="docgroups_products">
-          <End Role="docgroups" Type="CMSModel.docgroups" Multiplicity="*" />
-          <End Role="products" Type="CMSModel.products" Multiplicity="*" />
+          <End Role="docgroups" Type="CMSModel.DocumentGroup" Multiplicity="*" />
+          <End Role="products" Type="CMSModel.Product" Multiplicity="*" />
         </Association>
         <Association Name="images_products">
-          <End Role="images" Type="CMSModel.images" Multiplicity="*" />
-          <End Role="products" Type="CMSModel.products" Multiplicity="*" />
+          <End Role="images" Type="CMSModel.Image" Multiplicity="*" />
+          <End Role="products" Type="CMSModel.Product" Multiplicity="*" />
         </Association>
         <Association Name="products_categories">
-          <End Role="categories" Type="CMSModel.categories" Multiplicity="*" />
-          <End Role="products" Type="CMSModel.products" Multiplicity="*" />
+          <End Role="categories" Type="CMSModel.Category" Multiplicity="*" />
+          <End Role="products" Type="CMSModel.Product" Multiplicity="*" />
         </Association>
         <Association Name="products_connections">
-          <End Role="products" Type="CMSModel.products" Multiplicity="*" />
-          <End Role="products1" Type="CMSModel.products" Multiplicity="*" />
+          <End Role="products" Type="CMSModel.Product" Multiplicity="*" />
+          <End Role="products1" Type="CMSModel.Product" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -2028,189 +2007,188 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="CMSModelStoreContainer" CdmEntityContainer="CMSEntities">
-          <EntitySetMapping Name="articles"><EntityTypeMapping TypeName="CMSModel.articles"><MappingFragment StoreEntitySet="articles">
-            <ScalarProperty Name="id" ColumnName="id" />
-            <ScalarProperty Name="title" ColumnName="title" />
-            <ScalarProperty Name="alias" ColumnName="alias" />
-            <ScalarProperty Name="introtext" ColumnName="introtext" />
-            <ScalarProperty Name="fulltext" ColumnName="fulltext" />
-            <ScalarProperty Name="date" ColumnName="date" />
-            <ScalarProperty Name="date_published" ColumnName="date_published" />
-            <ScalarProperty Name="date_pullback" ColumnName="date_pullback" />
-            <ScalarProperty Name="date_lastmod" ColumnName="date_lastmod" />
-            <ScalarProperty Name="hits" ColumnName="hits" />
-            <ScalarProperty Name="modifications_count" ColumnName="modifications_count" />
-            <ScalarProperty Name="published" ColumnName="published" />
-            <ScalarProperty Name="level" ColumnName="level" />
+          <EntitySetMapping Name="articles"><EntityTypeMapping TypeName="CMSModel.Article"><MappingFragment StoreEntitySet="articles">
+            <ScalarProperty Name="Id" ColumnName="id" />
+            <ScalarProperty Name="Title" ColumnName="title" />
+            <ScalarProperty Name="Alias" ColumnName="alias" />
+            <ScalarProperty Name="Introtext" ColumnName="introtext" />
+            <ScalarProperty Name="Fulltext" ColumnName="fulltext" />
+            <ScalarProperty Name="Date" ColumnName="date" />
+            <ScalarProperty Name="DatePublished" ColumnName="date_published" />
+            <ScalarProperty Name="DatePullback" ColumnName="date_pullback" />
+            <ScalarProperty Name="DateLastModified" ColumnName="date_lastmod" />
+            <ScalarProperty Name="Hits" ColumnName="hits" />
+            <ScalarProperty Name="ModificationsCount" ColumnName="modifications_count" />
+            <ScalarProperty Name="Published" ColumnName="published" />
+            <ScalarProperty Name="Level" ColumnName="level" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="articles_authors"><EntityTypeMapping TypeName="CMSModel.articles_authors"><MappingFragment StoreEntitySet="articles_authors">
-            <ScalarProperty Name="id" ColumnName="id" />
-            <ScalarProperty Name="articlesid" ColumnName="articlesid" />
-            <ScalarProperty Name="authorsid" ColumnName="authorsid" />
-            <ScalarProperty Name="date" ColumnName="date" />
+          <EntitySetMapping Name="articles_authors"><EntityTypeMapping TypeName="CMSModel.ArticleAuthors"><MappingFragment StoreEntitySet="articles_authors">
+                <ScalarProperty Name="AuthorId" ColumnName="authorsid" />
+                <ScalarProperty Name="ArticleId" ColumnName="articlesid" />
+                <ScalarProperty Name="Id" ColumnName="id" />
+            <ScalarProperty Name="Date" ColumnName="date" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="articles_categories"><EntityTypeMapping TypeName="CMSModel.articles_categories"><MappingFragment StoreEntitySet="articles_categories">
-            <ScalarProperty Name="id" ColumnName="id" />
-            <ScalarProperty Name="articlesid" ColumnName="articlesid" />
-            <ScalarProperty Name="categoriesid" ColumnName="categoriesid" />
-            <ScalarProperty Name="date" ColumnName="date" />
+          <EntitySetMapping Name="articles_categories"><EntityTypeMapping TypeName="CMSModel.ArticleCategory"><MappingFragment StoreEntitySet="articles_categories">
+            <ScalarProperty Name="ArticleId" ColumnName="articlesid" />
+                <ScalarProperty Name="CategoryId" ColumnName="categoriesid" />
+                <ScalarProperty Name="Id" ColumnName="id" />
+            <ScalarProperty Name="Date" ColumnName="date" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="authors"><EntityTypeMapping TypeName="CMSModel.authors"><MappingFragment StoreEntitySet="authors">
-            <ScalarProperty Name="id" ColumnName="id" />
-            <ScalarProperty Name="name" ColumnName="name" />
-            <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <EntitySetMapping Name="authors"><EntityTypeMapping TypeName="CMSModel.Author"><MappingFragment StoreEntitySet="authors">
             <ScalarProperty Name="usersid" ColumnName="usersid" />
-            <ScalarProperty Name="description" ColumnName="description" />
-            <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="Id" ColumnName="id" />
+            <ScalarProperty Name="Name" ColumnName="name" />
+            <ScalarProperty Name="Lastname" ColumnName="lastname" />
+            <ScalarProperty Name="Description" ColumnName="description" />
+            <ScalarProperty Name="Date" ColumnName="date" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="categories"><EntityTypeMapping TypeName="CMSModel.categories"><MappingFragment StoreEntitySet="categories">
-            <ScalarProperty Name="id" ColumnName="id" />
-            <ScalarProperty Name="name_text_id" ColumnName="name_text_id" />
-            <ScalarProperty Name="parentid" ColumnName="parentid" />
-            <ScalarProperty Name="text_text_id" ColumnName="text_text_id" />
-            <ScalarProperty Name="date" ColumnName="date" />
-            <ScalarProperty Name="carousel_text_id" ColumnName="carousel_text_id" />
+          <EntitySetMapping Name="categories"><EntityTypeMapping TypeName="CMSModel.Category"><MappingFragment StoreEntitySet="categories">
+            <ScalarProperty Name="DescriptionTextId" ColumnName="text_text_id" />
+                <ScalarProperty Name="NameTextId" ColumnName="name_text_id" />
+                <ScalarProperty Name="CarouselTextId" ColumnName="carousel_text_id" />
+                <ScalarProperty Name="ParentId" ColumnName="parentid" />
+                <ScalarProperty Name="Id" ColumnName="id" />
+            <ScalarProperty Name="Date" ColumnName="date" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="comments"><EntityTypeMapping TypeName="CMSModel.comments"><MappingFragment StoreEntitySet="comments">
-            <ScalarProperty Name="id" ColumnName="id" />
-            <ScalarProperty Name="title" ColumnName="title" />
-            <ScalarProperty Name="text" ColumnName="text" />
-            <ScalarProperty Name="usersid" ColumnName="usersid" />
-            <ScalarProperty Name="useralias" ColumnName="useralias" />
-            <ScalarProperty Name="parentid" ColumnName="parentid" />
-            <ScalarProperty Name="email" ColumnName="email" />
-            <ScalarProperty Name="ip" ColumnName="ip" />
-            <ScalarProperty Name="articlesid" ColumnName="articlesid" />
+          <EntitySetMapping Name="comments"><EntityTypeMapping TypeName="CMSModel.Comment"><MappingFragment StoreEntitySet="comments">
+            <ScalarProperty Name="ParentId" ColumnName="parentid" />
+                <ScalarProperty Name="ArticleId" ColumnName="articlesid" />
+                <ScalarProperty Name="UserId" ColumnName="usersid" />
+                <ScalarProperty Name="Id" ColumnName="id" />
+            <ScalarProperty Name="Title" ColumnName="title" />
+            <ScalarProperty Name="Text" ColumnName="text" />
+            <ScalarProperty Name="UserAlias" ColumnName="useralias" />
+            <ScalarProperty Name="Email" ColumnName="email" />
+            <ScalarProperty Name="IP" ColumnName="ip" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="docgroups"><EntityTypeMapping TypeName="CMSModel.docgroups"><MappingFragment StoreEntitySet="docgroups">
-            <ScalarProperty Name="id" ColumnName="id" />
+          <EntitySetMapping Name="docgroups"><EntityTypeMapping TypeName="CMSModel.DocumentGroup"><MappingFragment StoreEntitySet="docgroups">
+            <ScalarProperty Name="Id" ColumnName="id" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="docs"><EntityTypeMapping TypeName="CMSModel.docs"><MappingFragment StoreEntitySet="docs">
-            <ScalarProperty Name="id" ColumnName="id" />
-            <ScalarProperty Name="name_text_id" ColumnName="name_text_id" />
-            <ScalarProperty Name="path" ColumnName="path" />
-            <ScalarProperty Name="docgroup_id" ColumnName="docgroup_id" />
+          <EntitySetMapping Name="docs"><EntityTypeMapping TypeName="CMSModel.Document"><MappingFragment StoreEntitySet="docs">
+            <ScalarProperty Name="DocumentGroupId" ColumnName="docgroup_id" />
+                <ScalarProperty Name="NameTextId" ColumnName="name_text_id" />
+                <ScalarProperty Name="Id" ColumnName="id" />
+            <ScalarProperty Name="Path" ColumnName="path" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="images"><EntityTypeMapping TypeName="CMSModel.images"><MappingFragment StoreEntitySet="images">
-            <ScalarProperty Name="id" ColumnName="id" />
-            <ScalarProperty Name="path" ColumnName="path" />
-            <ScalarProperty Name="description_text_id" ColumnName="description_text_id" />
-            <ScalarProperty Name="width" ColumnName="width" />
-            <ScalarProperty Name="height" ColumnName="height" />
+          <EntitySetMapping Name="images"><EntityTypeMapping TypeName="CMSModel.Image"><MappingFragment StoreEntitySet="images">
+            <ScalarProperty Name="DescriptionTextId" ColumnName="description_text_id" />
+                <ScalarProperty Name="Id" ColumnName="id" />
+            <ScalarProperty Name="Path" ColumnName="path" />
+            <ScalarProperty Name="Width" ColumnName="width" />
+            <ScalarProperty Name="Height" ColumnName="height" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="menuitems"><EntityTypeMapping TypeName="CMSModel.menuitems"><MappingFragment StoreEntitySet="menuitems">
-            <ScalarProperty Name="id" ColumnName="id" />
-            <ScalarProperty Name="name" ColumnName="name" />
-            <ScalarProperty Name="categoriesid" ColumnName="categoriesid" />
-            <ScalarProperty Name="articlesid" ColumnName="articlesid" />
-            <ScalarProperty Name="link" ColumnName="link" />
-            <ScalarProperty Name="date" ColumnName="date" />
+          <EntitySetMapping Name="menuitems"><EntityTypeMapping TypeName="CMSModel.MenuItem"><MappingFragment StoreEntitySet="menuitems">
+            <ScalarProperty Name="CategoryId" ColumnName="categoriesid" />
+                <ScalarProperty Name="ArticleId" ColumnName="articlesid" />
+                <ScalarProperty Name="Id" ColumnName="id" />
+            <ScalarProperty Name="Name" ColumnName="name" />
+            <ScalarProperty Name="Link" ColumnName="link" />
+            <ScalarProperty Name="Date" ColumnName="date" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="news"><EntityTypeMapping TypeName="CMSModel.news"><MappingFragment StoreEntitySet="news">
-            <ScalarProperty Name="id" ColumnName="id" />
-            <ScalarProperty Name="title" ColumnName="title" />
-            <ScalarProperty Name="shortdesc" ColumnName="shortdesc" />
-            <ScalarProperty Name="text" ColumnName="text" />
-            <ScalarProperty Name="date" ColumnName="date" />
-            <ScalarProperty Name="image_id" ColumnName="image_id" />
-            <ScalarProperty Name="product_id" ColumnName="product_id" />
-            <ScalarProperty Name="date_order" ColumnName="date_order" />
+          <EntitySetMapping Name="news"><EntityTypeMapping TypeName="CMSModel.News"><MappingFragment StoreEntitySet="news">
+            <ScalarProperty Name="ImageId" ColumnName="image_id" />
+                <ScalarProperty Name="ProductId" ColumnName="product_id" />
+                <ScalarProperty Name="ShortDescriptionId" ColumnName="shortdesc" />
+                <ScalarProperty Name="TextId" ColumnName="text" />
+                <ScalarProperty Name="Id" ColumnName="id" />
+            <ScalarProperty Name="Title" ColumnName="title" />
+            <ScalarProperty Name="Date" ColumnName="date_order" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="pages"><EntityTypeMapping TypeName="CMSModel.pages"><MappingFragment StoreEntitySet="pages">
-            <ScalarProperty Name="id" ColumnName="id" />
-            <ScalarProperty Name="title_text_id" ColumnName="title_text_id" />
-            <ScalarProperty Name="text_text_id" ColumnName="text_text_id" />
+          <EntitySetMapping Name="pages"><EntityTypeMapping TypeName="CMSModel.Page"><MappingFragment StoreEntitySet="pages">
+            <ScalarProperty Name="TextTextId" ColumnName="text_text_id" />
+                <ScalarProperty Name="TitleTextId" ColumnName="title_text_id" />
+                <ScalarProperty Name="Id" ColumnName="id" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="products"><EntityTypeMapping TypeName="CMSModel.products"><MappingFragment StoreEntitySet="products">
-            <ScalarProperty Name="id" ColumnName="id" />
-            <ScalarProperty Name="title_text_id" ColumnName="title_text_id" />
-            <ScalarProperty Name="subtitle_text_id" ColumnName="subtitle_text_id" />
-            <ScalarProperty Name="description_text_id" ColumnName="description_text_id" />
-            <ScalarProperty Name="text_text_id" ColumnName="text_text_id" />
-            <ScalarProperty Name="image_id" ColumnName="image_id" />
+          <EntitySetMapping Name="products"><EntityTypeMapping TypeName="CMSModel.Product"><MappingFragment StoreEntitySet="products">
+                <ScalarProperty Name="ImageId" ColumnName="image_id" />
+                <ScalarProperty Name="DescriptionTextId" ColumnName="description_text_id" />
+                <ScalarProperty Name="SubtitleTextId" ColumnName="subtitle_text_id" />
+                <ScalarProperty Name="TextTextId" ColumnName="text_text_id" />
+                <ScalarProperty Name="TitleTextId" ColumnName="title_text_id" />
+                <ScalarProperty Name="Id" ColumnName="id" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="resources"><EntityTypeMapping TypeName="CMSModel.resources"><MappingFragment StoreEntitySet="resources">
-            <ScalarProperty Name="id" ColumnName="id" />
-            <ScalarProperty Name="name" ColumnName="name" />
-            <ScalarProperty Name="controller" ColumnName="controller" />
-            <ScalarProperty Name="action" ColumnName="action" />
-            <ScalarProperty Name="date" ColumnName="date" />
+          <EntitySetMapping Name="resources"><EntityTypeMapping TypeName="CMSModel.Resource"><MappingFragment StoreEntitySet="resources">
+            <ScalarProperty Name="Id" ColumnName="id" />
+            <ScalarProperty Name="Name" ColumnName="name" />
+            <ScalarProperty Name="Controller" ColumnName="controller" />
+            <ScalarProperty Name="Action" ColumnName="action" />
+            <ScalarProperty Name="Date" ColumnName="date" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="roles"><EntityTypeMapping TypeName="CMSModel.roles"><MappingFragment StoreEntitySet="roles">
-            <ScalarProperty Name="id" ColumnName="id" />
-            <ScalarProperty Name="name" ColumnName="name" />
-            <ScalarProperty Name="date" ColumnName="date" />
-            <ScalarProperty Name="parentid" ColumnName="parentid" />
+          <EntitySetMapping Name="roles"><EntityTypeMapping TypeName="CMSModel.Role"><MappingFragment StoreEntitySet="roles">
+            <ScalarProperty Name="ParentId" ColumnName="parentid" />
+                <ScalarProperty Name="Id" ColumnName="id" />
+            <ScalarProperty Name="Name" ColumnName="name" />
+            <ScalarProperty Name="Date" ColumnName="date" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="roles_resources"><EntityTypeMapping TypeName="CMSModel.roles_resources"><MappingFragment StoreEntitySet="roles_resources">
-            <ScalarProperty Name="id" ColumnName="id" />
-            <ScalarProperty Name="resourcesid" ColumnName="resourcesid" />
-            <ScalarProperty Name="rolesid" ColumnName="rolesid" />
-            <ScalarProperty Name="date" ColumnName="date" />
+          <EntitySetMapping Name="roles_resources"><EntityTypeMapping TypeName="CMSModel.RoleResource"><MappingFragment StoreEntitySet="roles_resources">
+            <ScalarProperty Name="ResourceId" ColumnName="resourcesid" />
+                <ScalarProperty Name="RoleId" ColumnName="rolesid" />
+                <ScalarProperty Name="Id" ColumnName="id" />
+            <ScalarProperty Name="Date" ColumnName="date" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="settings"><EntityTypeMapping TypeName="CMSModel.settings"><MappingFragment StoreEntitySet="settings">
-            <ScalarProperty Name="id" ColumnName="id" />
-            <ScalarProperty Name="name" ColumnName="name" />
-            <ScalarProperty Name="value" ColumnName="value" />
+          <EntitySetMapping Name="settings"><EntityTypeMapping TypeName="CMSModel.Setting"><MappingFragment StoreEntitySet="settings">
+            <ScalarProperty Name="Id" ColumnName="id" />
+            <ScalarProperty Name="Name" ColumnName="name" />
+            <ScalarProperty Name="Value" ColumnName="value" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="tags"><EntityTypeMapping TypeName="CMSModel.tags"><MappingFragment StoreEntitySet="tags">
-            <ScalarProperty Name="id" ColumnName="id" />
-            <ScalarProperty Name="name" ColumnName="name" />
-            <ScalarProperty Name="date" ColumnName="date" />
+          <EntitySetMapping Name="tags"><EntityTypeMapping TypeName="CMSModel.Tag"><MappingFragment StoreEntitySet="tags">
+            <ScalarProperty Name="Id" ColumnName="id" />
+            <ScalarProperty Name="Name" ColumnName="name" />
+            <ScalarProperty Name="Date" ColumnName="date" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="tags_articles"><EntityTypeMapping TypeName="CMSModel.tags_articles"><MappingFragment StoreEntitySet="tags_articles">
+          <EntitySetMapping Name="tags_articles"><EntityTypeMapping TypeName="CMSModel.TagArticle"><MappingFragment StoreEntitySet="tags_articles">
             <ScalarProperty Name="id" ColumnName="id" />
             <ScalarProperty Name="tagsid" ColumnName="tagsid" />
             <ScalarProperty Name="articlesid" ColumnName="articlesid" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="texts"><EntityTypeMapping TypeName="CMSModel.texts"><MappingFragment StoreEntitySet="texts">
-            <ScalarProperty Name="id" ColumnName="id" />
+          <EntitySetMapping Name="texts"><EntityTypeMapping TypeName="CMSModel.Text"><MappingFragment StoreEntitySet="texts">
+            <ScalarProperty Name="Id" ColumnName="id" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="texts_values"><EntityTypeMapping TypeName="CMSModel.texts_values"><MappingFragment StoreEntitySet="texts_values">
-            <ScalarProperty Name="id" ColumnName="id" />
-            <ScalarProperty Name="culture" ColumnName="culture" />
-            <ScalarProperty Name="value" ColumnName="value" />
-            <ScalarProperty Name="text_id" ColumnName="text_id" />
-            <ScalarProperty Name="seo_value" ColumnName="seo_value" />
+          <EntitySetMapping Name="texts_values"><EntityTypeMapping TypeName="CMSModel.TextValue"><MappingFragment StoreEntitySet="texts_values">
+            <ScalarProperty Name="TextId" ColumnName="text_id" />
+                <ScalarProperty Name="Id" ColumnName="id" />
+            <ScalarProperty Name="Culture" ColumnName="culture" />
+            <ScalarProperty Name="Value" ColumnName="value" />
+            <ScalarProperty Name="SeoValue" ColumnName="seo_value" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="users"><EntityTypeMapping TypeName="CMSModel.users"><MappingFragment StoreEntitySet="users">
-            <ScalarProperty Name="id" ColumnName="id" />
-            <ScalarProperty Name="username" ColumnName="username" />
-            <ScalarProperty Name="password" ColumnName="password" />
-            <ScalarProperty Name="email" ColumnName="email" />
-            <ScalarProperty Name="rolesid" ColumnName="rolesid" />
-            <ScalarProperty Name="date" ColumnName="date" />
+          <EntitySetMapping Name="users"><EntityTypeMapping TypeName="CMSModel.User"><MappingFragment StoreEntitySet="users">
+            <ScalarProperty Name="RoleId" ColumnName="rolesid" />
+                <ScalarProperty Name="Id" ColumnName="id" />
+            <ScalarProperty Name="Username" ColumnName="username" />
+            <ScalarProperty Name="Password" ColumnName="password" />
+            <ScalarProperty Name="Email" ColumnName="email" />
+            <ScalarProperty Name="Date" ColumnName="date" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <AssociationSetMapping Name="docgroups_products" TypeName="CMSModel.docgroups_products" StoreEntitySet="docgroups_products">
             <EndProperty Name="docgroups">
-              <ScalarProperty Name="id" ColumnName="docgroup_id" />
+              <ScalarProperty Name="Id" ColumnName="docgroup_id" />
             </EndProperty>
             <EndProperty Name="products">
-              <ScalarProperty Name="id" ColumnName="product_id" />
+              <ScalarProperty Name="Id" ColumnName="product_id" />
             </EndProperty>
           </AssociationSetMapping>
           <AssociationSetMapping Name="images_products" TypeName="CMSModel.images_products" StoreEntitySet="images_products">
             <EndProperty Name="images">
-              <ScalarProperty Name="id" ColumnName="image_id" />
+              <ScalarProperty Name="Id" ColumnName="image_id" />
             </EndProperty>
             <EndProperty Name="products">
-              <ScalarProperty Name="id" ColumnName="product_id" />
+              <ScalarProperty Name="Id" ColumnName="product_id" />
             </EndProperty>
           </AssociationSetMapping>
           <AssociationSetMapping Name="products_categories" TypeName="CMSModel.products_categories" StoreEntitySet="products_categories">
             <EndProperty Name="categories">
-              <ScalarProperty Name="id" ColumnName="category_id" />
+              <ScalarProperty Name="Id" ColumnName="category_id" />
             </EndProperty>
             <EndProperty Name="products">
-              <ScalarProperty Name="id" ColumnName="product_id" />
+              <ScalarProperty Name="Id" ColumnName="product_id" />
             </EndProperty>
           </AssociationSetMapping>
           <AssociationSetMapping Name="products_connections" TypeName="CMSModel.products_connections" StoreEntitySet="products_connections">
             <EndProperty Name="products">
-              <ScalarProperty Name="id" ColumnName="product_id" />
+              <ScalarProperty Name="Id" ColumnName="product_id" />
             </EndProperty>
             <EndProperty Name="products1">
-              <ScalarProperty Name="id" ColumnName="product_id_2" />
+              <ScalarProperty Name="Id" ColumnName="product_id_2" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>
@@ -2234,390 +2212,364 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="Model">
-        <EntityTypeShape EntityType="CMSModel.articles" Width="1.5" PointX="3" PointY="3.375" Height="4.6725065104166665" IsExpanded="true" />
-        <EntityTypeShape EntityType="CMSModel.articles_authors" Width="1.5" PointX="5.25" PointY="6.625" Height="2.1725878906249996" IsExpanded="true" />
-        <EntityTypeShape EntityType="CMSModel.articles_categories" Width="1.5" PointX="5.25" PointY="9.625" Height="2.1725878906249996" IsExpanded="true" />
-        <EntityTypeShape EntityType="CMSModel.authors" Width="1.5" PointX="3" PointY="29.5" Height="2.5571907552083317" IsExpanded="true" />
-        <EntityTypeShape EntityType="CMSModel.categories" Width="1.5" PointX="3" PointY="8.875" Height="3.7109993489583335" IsExpanded="true" />
-        <EntityTypeShape EntityType="CMSModel.comments" Width="1.5" PointX="10.25" PointY="4" Height="3.518697916666667" IsExpanded="true" />
-        <EntityTypeShape EntityType="CMSModel.docgroups" Width="1.5" PointX="3" PointY="26.125" Height="1.595683593749996" IsExpanded="true" />
-        <EntityTypeShape EntityType="CMSModel.docs" Width="1.5" PointX="6" PointY="18.25" Height="2.172587890624996" IsExpanded="true" />
-        <EntityTypeShape EntityType="CMSModel.images" Width="1.5" PointX="3" PointY="16.25" Height="2.7494921875000031" IsExpanded="true" />
-        <EntityTypeShape EntityType="CMSModel.menuitems" Width="1.5" PointX="8.25" PointY="9.5" Height="2.5571907552083353" IsExpanded="true" />
-        <EntityTypeShape EntityType="CMSModel.news" Width="1.5" PointX="7.5" PointY="13.125" Height="3.5186979166666692" IsExpanded="true" />
-        <EntityTypeShape EntityType="CMSModel.pages" Width="1.5" PointX="3" PointY="19.75" Height="1.9802864583333317" IsExpanded="true" />
-        <EntityTypeShape EntityType="CMSModel.products" Width="1.5" PointX="5.25" PointY="12.75" Height="4.2879036458333388" IsExpanded="true" />
-        <EntityTypeShape EntityType="CMSModel.resources" Width="1.5" PointX="5.75" PointY="3.25" Height="2.1725878906250036" IsExpanded="true" />
-        <EntityTypeShape EntityType="CMSModel.roles" Width="1.5" PointX="0.75" PointY="4.375" Height="2.749492187499996" IsExpanded="true" />
-        <EntityTypeShape EntityType="CMSModel.roles_resources" Width="1.5" PointX="8" PointY="3.875" Height="2.5571907552083388" IsExpanded="true" />
-        <EntityTypeShape EntityType="CMSModel.settings" Width="1.5" PointX="10.75" PointY="8.875" Height="1.5956835937500031" IsExpanded="true" />
-        <EntityTypeShape EntityType="CMSModel.tags" Width="1.5" PointX="6" PointY="21.75" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="CMSModel.tags_articles" Width="1.5" PointX="8.25" PointY="0.75" Height="1.9802864583333388" IsExpanded="true" />
-        <EntityTypeShape EntityType="CMSModel.texts" Width="1.5" PointX="0.75" PointY="13.25" Height="4.0956022135416656" IsExpanded="true" />
-        <EntityTypeShape EntityType="CMSModel.texts_values" Width="1.5" PointX="3" PointY="22.5" Height="2.1725878906250031" IsExpanded="true" />
-        <EntityTypeShape EntityType="CMSModel.users" Width="1.5" PointX="8" PointY="24.375" Height="2.7494921875000102" IsExpanded="true" />
+      <Diagram Name="Model" ZoomLevel="62">
+        <EntityTypeShape EntityType="CMSModel.Article" Width="1.5" PointX="6" PointY="3.5" Height="4.6725065104166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.ArticleAuthors" Width="1.5" PointX="11.25" PointY="0.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.ArticleCategory" Width="1.5" PointX="8.25" PointY="9.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.Author" Width="1.5" PointX="9" PointY="20.875" Height="2.5571907552083388" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.Category" Width="1.5" PointX="3" PointY="9.125" Height="3.7109993489583335" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.Comment" Width="1.5" PointX="11.25" PointY="7.125" Height="3.5186979166666656" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.DocumentGroup" Width="1.5" PointX="3" PointY="21.5" Height="1.595683593749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.Document" Width="1.5" PointX="8" PointY="14" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.Image" Width="1.5" PointX="3" PointY="13.375" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.MenuItem" Width="1.5" PointX="5.25" PointY="9.5" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.News" Width="1.5" PointX="7.5" PointY="17" Height="3.3263964843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.Page" Width="1.5" PointX="3" PointY="19" Height="1.9802864583333353" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.Product" Width="1.5" PointX="5.25" PointY="13.25" Height="4.2879036458333353" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.Resource" Width="1.5" PointX="8.75" PointY="3.5" Height="2.1725878906250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.Role" Width="1.5" PointX="3.75" PointY="4.5" Height="2.5571907552083335" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.RoleResource" Width="1.5" PointX="11" PointY="4.25" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.Setting" Width="1.5" PointX="0.75" PointY="3.25" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.Tag" Width="1.5" PointX="6" PointY="25" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.TagArticle" Width="1.5" PointX="8.25" PointY="6.875" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.Text" Width="1.5" PointX="0.75" PointY="14.125" Height="1.4033821614583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.TextValue" Width="1.5" PointX="3" PointY="16.125" Height="2.1725878906250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.User" Width="1.5" PointX="6.75" PointY="20.875" Height="2.7494921875000031" IsExpanded="true" />
         <AssociationConnector Association="CMSModel.FK_articles_authors_articles" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="7.3362532552083337" />
-          <ConnectorPoint PointX="5.25" PointY="7.3362532552083337" />
+          <ConnectorPoint PointX="6.75" PointY="3.5" />
+          <ConnectorPoint PointX="6.75" PointY="1.8362939453124998" />
+          <ConnectorPoint PointX="11.25" PointY="1.8362939453124998" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_articles_categories_articles" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.4999999999999991" PointY="8.0475065104166674" />
-          <ConnectorPoint PointX="4.875" PointY="8.4225065104166674" />
-          <ConnectorPoint PointX="4.875" PointY="10.7112939453125" />
-          <ConnectorPoint PointX="4.979166666666667" PointY="10.7112939453125" />
-          <ConnectorPoint PointX="5.145833333333333" PointY="10.7112939453125" />
-          <ConnectorPoint PointX="5.25" PointY="10.7112939453125" />
+          <ConnectorPoint PointX="7.5" PointY="8.1725065104166674" />
+          <ConnectorPoint PointX="7.875" PointY="8.5475065104166674" />
+          <ConnectorPoint PointX="7.875" PointY="10.8362939453125" />
+          <ConnectorPoint PointX="7.916666666666667" PointY="10.8362939453125" />
+          <ConnectorPoint PointX="8.0833333333333339" PointY="10.8362939453125" />
+          <ConnectorPoint PointX="8.25" PointY="10.8362939453125" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_articles_roles" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="5.749746093749998" />
-          <ConnectorPoint PointX="3" PointY="5.749746093749998" />
+          <ConnectorPoint PointX="5.25" PointY="5.7785953776041667" />
+          <ConnectorPoint PointX="6" PointY="5.7785953776041667" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_comments_articles" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="6.5285953776041694" />
-          <ConnectorPoint PointX="6.791666666666667" PointY="6.5285953776041685" />
-          <ConnectorPoint PointX="6.958333333333333" PointY="6.5285953776041694" />
-          <ConnectorPoint PointX="8.4485897435897428" PointY="6.5285953776041685" />
-          <ConnectorPoint PointX="8.61525641025641" PointY="6.5285953776041694" />
-          <ConnectorPoint PointX="8.8951282051282039" PointY="6.5285953776041685" />
-          <ConnectorPoint PointX="9.0617948717948718" PointY="6.5285953776041694" />
-          <ConnectorPoint PointX="10.25" PointY="6.5285953776041694" />
+          <ConnectorPoint PointX="7.5" PointY="6.6487939453125" />
+          <ConnectorPoint PointX="10.322916666666666" PointY="6.6487939453124989" />
+          <ConnectorPoint PointX="10.489583333333334" PointY="6.6487939453125" />
+          <ConnectorPoint PointX="12.65625" PointY="6.6487939453125" />
+          <ConnectorPoint PointX="12.65625" PointY="7.125" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_menuitems_articles" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="6.5455476888020847" />
-          <ConnectorPoint PointX="6.791666666666667" PointY="6.5455476888020838" />
-          <ConnectorPoint PointX="6.958333333333333" PointY="6.5455476888020847" />
-          <ConnectorPoint PointX="8.4485897435897428" PointY="6.5455476888020838" />
-          <ConnectorPoint PointX="8.61525641025641" PointY="6.5455476888020847" />
-          <ConnectorPoint PointX="8.8951282051282039" PointY="6.5455476888020838" />
-          <ConnectorPoint PointX="9.0617948717948718" PointY="6.5455476888020847" />
-          <ConnectorPoint PointX="9.65625" PointY="6.5455476888020847" />
-          <ConnectorPoint PointX="9.65625" PointY="9.5" />
+          <ConnectorPoint PointX="6.375" PointY="8.1725065104166674" />
+          <ConnectorPoint PointX="6.375" PointY="9.5" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_tags_articles_articles" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="6.5116430664062541" />
-          <ConnectorPoint PointX="6.791666666666667" PointY="6.5116430664062532" />
-          <ConnectorPoint PointX="6.958333333333333" PointY="6.5116430664062541" />
-          <ConnectorPoint PointX="9.609375" PointY="6.5116430664062541" />
-          <ConnectorPoint PointX="9.609375" PointY="2.7302864583333388" />
+          <ConnectorPoint PointX="7.5" PointY="7.4925007552083329" />
+          <ConnectorPoint PointX="8.25" PointY="7.4925007552083329" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_articles_authors_authors" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="29.563460538461534" />
-          <ConnectorPoint PointX="5.0625" PointY="29.000960538461534" />
-          <ConnectorPoint PointX="5.0625" PointY="8.0981725729166669" />
-          <ConnectorPoint PointX="5.25" PointY="8.0981725729166669" />
+          <ConnectorPoint PointX="10.40625" PointY="20.875" />
+          <ConnectorPoint PointX="10.40625" PointY="2.4106934179687496" />
+          <ConnectorPoint PointX="11.25" PointY="2.4106934179687496" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_articles_categories_categories" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="10.105646972656249" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="10.105646972656249" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="10.105646972656249" />
-          <ConnectorPoint PointX="4.979166666666667" PointY="10.105646972656249" />
-          <ConnectorPoint PointX="5.145833333333333" PointY="10.105646972656249" />
-          <ConnectorPoint PointX="5.25" PointY="10.105646972656249" />
+          <ConnectorPoint PointX="4.5" PointY="12.424965761718749" />
+          <ConnectorPoint PointX="4.947916666666667" PointY="12.424965761718749" />
+          <ConnectorPoint PointX="5.114583333333333" PointY="12.424965761718749" />
+          <ConnectorPoint PointX="9" PointY="12.424965761718749" />
+          <ConnectorPoint PointX="9" PointY="11.922587890625" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_authors_authors" ManuallyRouted="false">
-          <ConnectorPoint PointX="8.75" PointY="27.12449218750001" />
-          <ConnectorPoint PointX="8.75" PointY="30.841578146834934" />
-          <ConnectorPoint PointX="4.5" PointY="30.841578146834934" />
+          <ConnectorPoint PointX="8.25" PointY="22.153595377604169" />
+          <ConnectorPoint PointX="8.6666666666666661" PointY="22.153595377604169" />
+          <ConnectorPoint PointX="8.8333333333333339" PointY="22.153595377604169" />
+          <ConnectorPoint PointX="9" PointY="22.153595377604169" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_categories_categories" ManuallyRouted="false">
-          <ConnectorPoint PointX="3.5319230769230767" PointY="12.585999348958334" />
-          <ConnectorPoint PointX="3.5319230769230767" PointY="12.835999348958332" />
-          <ConnectorPoint PointX="3.9784615384615383" PointY="12.835999348958332" />
-          <ConnectorPoint PointX="3.9784615384615383" PointY="12.585999348958334" />
+          <ConnectorPoint PointX="3.5319230769230767" PointY="12.835999348958334" />
+          <ConnectorPoint PointX="3.5319230769230767" PointY="13.085999348958332" />
+          <ConnectorPoint PointX="3.9784615384615383" PointY="13.085999348958332" />
+          <ConnectorPoint PointX="3.9784615384615383" PointY="12.835999348958334" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_categories_texts" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.5" PointY="13.25" />
-          <ConnectorPoint PointX="1.5" PointY="10.730499674479166" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="10.730499674479166" />
-          <ConnectorPoint PointX="2.7083333333333335" PointY="10.730499674479166" />
-          <ConnectorPoint PointX="3" PointY="10.730499674479166" />
+          <ConnectorPoint PointX="1.5" PointY="14.125" />
+          <ConnectorPoint PointX="1.5" PointY="10.884348958333334" />
+          <ConnectorPoint PointX="3" PointY="10.884348958333334" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_categories_texts1" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.9062525" PointY="13.25" />
-          <ConnectorPoint PointX="1.9062525" PointY="11.68950201171875" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="11.68950201171875" />
-          <ConnectorPoint PointX="2.7083333333333335" PointY="11.68950201171875" />
-          <ConnectorPoint PointX="3" PointY="11.68950201171875" />
+          <ConnectorPoint PointX="1.9062525" PointY="14.125" />
+          <ConnectorPoint PointX="1.9062525" PointY="11.891426653645834" />
+          <ConnectorPoint PointX="3" PointY="11.891426653645834" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_categories_texts2" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.0937475" PointY="13.25" />
-          <ConnectorPoint PointX="1.0937475" PointY="9.7714973372395821" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="9.7714973372395821" />
-          <ConnectorPoint PointX="2.7083333333333335" PointY="9.7714973372395821" />
-          <ConnectorPoint PointX="3" PointY="9.7714973372395821" />
+          <ConnectorPoint PointX="1.0937475" PointY="14.125" />
+          <ConnectorPoint PointX="1.0937475" PointY="9.9734219791666661" />
+          <ConnectorPoint PointX="3" PointY="9.9734219791666661" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_menuitems_categories" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="11.958639322916667" />
-          <ConnectorPoint PointX="4.979166666666667" PointY="11.958639322916667" />
-          <ConnectorPoint PointX="5.145833333333333" PointY="11.958639322916667" />
-          <ConnectorPoint PointX="6.791666666666667" PointY="11.958639322916667" />
-          <ConnectorPoint PointX="6.958333333333333" PointY="11.958639322916667" />
-          <ConnectorPoint PointX="8.25" PointY="11.958639322916667" />
+          <ConnectorPoint PointX="4.5" PointY="10.778595377604166" />
+          <ConnectorPoint PointX="4.947916666666667" PointY="10.778595377604166" />
+          <ConnectorPoint PointX="5.114583333333333" PointY="10.778595377604166" />
+          <ConnectorPoint PointX="5.25" PointY="10.778595377604166" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_comments_comments" ManuallyRouted="false">
-          <ConnectorPoint PointX="10.781923076923077" PointY="7.5186979166666674" />
-          <ConnectorPoint PointX="10.781923076923077" PointY="7.7686979166666674" />
-          <ConnectorPoint PointX="11.228461538461538" PointY="7.7686979166666674" />
-          <ConnectorPoint PointX="11.228461538461538" PointY="7.5186979166666674" />
+          <ConnectorPoint PointX="11.25" PointY="8.34017467948718" />
+          <ConnectorPoint PointX="11" PointY="8.34017467948718" />
+          <ConnectorPoint PointX="11" PointY="9.4544362980769243" />
+          <ConnectorPoint PointX="11.25" PointY="9.4544362980769243" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_comments_users" ManuallyRouted="false">
-          <ConnectorPoint PointX="9.5" PointY="25.749746093750005" />
-          <ConnectorPoint PointX="10.46875" PointY="25.749746093750005" />
-          <ConnectorPoint PointX="10.46875" PointY="7.5186979166666674" />
+          <ConnectorPoint PointX="8.25" PointY="23.559591471354171" />
+          <ConnectorPoint PointX="8.6666666666666661" PointY="23.559591471354171" />
+          <ConnectorPoint PointX="8.8333333333333339" PointY="23.559591471354171" />
+          <ConnectorPoint PointX="12" PointY="23.559591471354171" />
+          <ConnectorPoint PointX="12" PointY="10.643697916666666" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_docs_docgroups" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="26.126152846153843" />
-          <ConnectorPoint PointX="4.875" PointY="25.751152846153843" />
-          <ConnectorPoint PointX="4.875" PointY="19.336293945312498" />
-          <ConnectorPoint PointX="4.979166666666667" PointY="19.336293945312498" />
-          <ConnectorPoint PointX="5.145833333333333" PointY="19.336293945312498" />
-          <ConnectorPoint PointX="5.510416666666667" PointY="19.336293945312498" />
-          <ConnectorPoint PointX="5.677083333333333" PointY="19.336293945312498" />
-          <ConnectorPoint PointX="6" PointY="19.336293945312498" />
+          <ConnectorPoint PointX="4.5" PointY="22.566699545898437" />
+          <ConnectorPoint PointX="4.947916666666667" PointY="22.566699545898437" />
+          <ConnectorPoint PointX="5.114583333333333" PointY="22.566699545898437" />
+          <ConnectorPoint PointX="6.5" PointY="22.566699545898437" />
+          <ConnectorPoint PointX="6.5" PointY="20.576396484374996" />
+          <ConnectorPoint PointX="9.25" PointY="20.576396484374996" />
+          <ConnectorPoint PointX="9.25" PointY="16.547587890625" />
+          <ConnectorPoint PointX="8.75" PointY="16.547587890625" />
+          <ConnectorPoint PointX="8.75" PointY="16.172587890625" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_docs_texts" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.5" PointY="17.345602213541667" />
-          <ConnectorPoint PointX="1.5" PointY="19.54314947265625" />
-          <ConnectorPoint PointX="1.8229191666666667" PointY="19.54314947265625" />
-          <ConnectorPoint PointX="1.9895858333333332" PointY="19.54314947265625" />
-          <ConnectorPoint PointX="2.0260454166666664" PointY="19.54314947265625" />
-          <ConnectorPoint PointX="2.1927120833333333" PointY="19.54314947265625" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="19.54314947265625" />
-          <ConnectorPoint PointX="2.7083333333333335" PointY="19.54314947265625" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="19.54314947265625" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="19.54314947265625" />
-          <ConnectorPoint PointX="4.979166666666667" PointY="19.54314947265625" />
-          <ConnectorPoint PointX="5.145833333333333" PointY="19.54314947265625" />
-          <ConnectorPoint PointX="5.510416666666667" PointY="19.54314947265625" />
-          <ConnectorPoint PointX="5.677083333333333" PointY="19.54314947265625" />
-          <ConnectorPoint PointX="6" PointY="19.54314947265625" />
+          <ConnectorPoint PointX="2.25" PointY="15.045972043457024" />
+          <ConnectorPoint PointX="2.75" PointY="15.045972043457024" />
+          <ConnectorPoint PointX="2.75" PointY="13" />
+          <ConnectorPoint PointX="4.5806673177083352" PointY="13" />
+          <ConnectorPoint PointX="4.7473339843750013" PointY="13" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="12.999999999999998" />
+          <ConnectorPoint PointX="5.114583333333333" PointY="13" />
+          <ConnectorPoint PointX="8.75" PointY="13" />
+          <ConnectorPoint PointX="8.75" PointY="14" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_images_texts" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="16.797801106770834" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="16.797801106770834" />
-          <ConnectorPoint PointX="2.7083333333333335" PointY="16.797801106770834" />
-          <ConnectorPoint PointX="3" PointY="16.797801106770834" />
+          <ConnectorPoint PointX="2.25" PointY="14.501057925455726" />
+          <ConnectorPoint PointX="2.6666666666666665" PointY="14.501057925455726" />
+          <ConnectorPoint PointX="2.8333333333333335" PointY="14.501057925455726" />
+          <ConnectorPoint PointX="3" PointY="14.501057925455726" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_news_images" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="17.643951822916669" />
-          <ConnectorPoint PointX="4.979166666666667" PointY="17.643951822916669" />
-          <ConnectorPoint PointX="5.145833333333333" PointY="17.643951822916669" />
-          <ConnectorPoint PointX="5.510416666666667" PointY="17.643951822916669" />
-          <ConnectorPoint PointX="5.677083333333333" PointY="17.643951822916669" />
-          <ConnectorPoint PointX="7.666666666666667" PointY="17.643951822916669" />
-          <ConnectorPoint PointX="7.833333333333333" PointY="17.643951822916669" />
-          <ConnectorPoint PointX="8.28125" PointY="17.643951822916669" />
-          <ConnectorPoint PointX="8.28125" PointY="16.643697916666667" />
+          <ConnectorPoint PointX="4.5" PointY="15.547587890625" />
+          <ConnectorPoint PointX="4.875" PointY="15.922587890625" />
+          <ConnectorPoint PointX="4.875" PointY="19.629059731170656" />
+          <ConnectorPoint PointX="4.947916666666667" PointY="19.629059731170656" />
+          <ConnectorPoint PointX="5.114583333333333" PointY="19.629059731170656" />
+          <ConnectorPoint PointX="5.791666666666667" PointY="19.629059731170656" />
+          <ConnectorPoint PointX="5.958333333333333" PointY="19.629059731170656" />
+          <ConnectorPoint PointX="7.5" PointY="19.629059731170656" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_products_images" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="16.643951822916669" />
-          <ConnectorPoint PointX="4.979166666666667" PointY="16.643951822916669" />
-          <ConnectorPoint PointX="5.145833333333333" PointY="16.643951822916669" />
-          <ConnectorPoint PointX="5.25" PointY="16.643951822916669" />
+          <ConnectorPoint PointX="4.5" PointY="13.995174876302084" />
+          <ConnectorPoint PointX="4.947916666666667" PointY="13.995174876302084" />
+          <ConnectorPoint PointX="5.114583333333333" PointY="13.995174876302084" />
+          <ConnectorPoint PointX="5.25" PointY="13.995174876302084" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_news_products" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.75" PointY="14.884348958333334" />
-          <ConnectorPoint PointX="6.791666666666667" PointY="14.884348958333332" />
-          <ConnectorPoint PointX="7.208333333333333" PointY="14.884348958333334" />
-          <ConnectorPoint PointX="7.5" PointY="14.884348958333334" />
+          <ConnectorPoint PointX="6.75" PointY="17.268951822916669" />
+          <ConnectorPoint PointX="7.5" PointY="17.268951822916669" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_news_texts" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.10937825" PointY="13.25" />
-          <ConnectorPoint PointX="2.10937825" PointY="13" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="13" />
-          <ConnectorPoint PointX="2.7083333333333335" PointY="13" />
-          <ConnectorPoint PointX="4.75" PointY="13" />
-          <ConnectorPoint PointX="4.75" PointY="12.5" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="12.499999999999998" />
-          <ConnectorPoint PointX="5.145833333333333" PointY="12.5" />
-          <ConnectorPoint PointX="6.791666666666667" PointY="12.5" />
-          <ConnectorPoint PointX="6.958333333333333" PointY="12.5" />
-          <ConnectorPoint PointX="7.125" PointY="12.5" />
-          <ConnectorPoint PointX="7.125" PointY="15.7952754375" />
-          <ConnectorPoint PointX="7.5" PointY="15.7952754375" />
+          <ConnectorPoint PointX="1.0889867285156252" PointY="15.528382161458332" />
+          <ConnectorPoint PointX="1.0889867285156252" PointY="18.547201178588871" />
+          <ConnectorPoint PointX="1.3928628092447919" PointY="18.547201178588871" />
+          <ConnectorPoint PointX="1.5595294759114584" PointY="18.547201178588871" />
+          <ConnectorPoint PointX="1.5817067447916668" PointY="18.547201178588871" />
+          <ConnectorPoint PointX="1.7483734114583334" PointY="18.547201178588871" />
+          <ConnectorPoint PointX="1.7530945182291668" PointY="18.547201178588871" />
+          <ConnectorPoint PointX="1.9197611848958334" PointY="18.547201178588871" />
+          <ConnectorPoint PointX="2.0260454166666664" PointY="18.547201178588871" />
+          <ConnectorPoint PointX="2.1927120833333333" PointY="18.547201178588871" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="18.547201178588871" />
+          <ConnectorPoint PointX="5.114583333333333" PointY="18.547201178588871" />
+          <ConnectorPoint PointX="5.791666666666667" PointY="18.547201178588871" />
+          <ConnectorPoint PointX="5.958333333333333" PointY="18.547201178588871" />
+          <ConnectorPoint PointX="7.5" PointY="18.547201178588871" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_news_texts1" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.70312625" PointY="13.25" />
-          <ConnectorPoint PointX="1.70312625" PointY="13.125" />
-          <ConnectorPoint PointX="1.8229191666666667" PointY="13.125" />
-          <ConnectorPoint PointX="1.9895858333333332" PointY="13.125" />
-          <ConnectorPoint PointX="2.0260449166666663" PointY="13.125" />
-          <ConnectorPoint PointX="2.1927115833333333" PointY="13.125" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="13.125" />
-          <ConnectorPoint PointX="2.7083333333333335" PointY="13.125" />
-          <ConnectorPoint PointX="4.875" PointY="13.125" />
-          <ConnectorPoint PointX="4.875" PointY="12.25" />
-          <ConnectorPoint PointX="4.979166666666667" PointY="12.25" />
-          <ConnectorPoint PointX="5.145833333333333" PointY="12.25" />
-          <ConnectorPoint PointX="6.791666666666667" PointY="12.25" />
-          <ConnectorPoint PointX="6.958333333333333" PointY="12.25" />
-          <ConnectorPoint PointX="7.25" PointY="12.25" />
-          <ConnectorPoint PointX="7.25" PointY="13.973422479166665" />
-          <ConnectorPoint PointX="7.5" PointY="13.973422479166665" />
+          <ConnectorPoint PointX="1.4761961425781252" PointY="15.528382161458332" />
+          <ConnectorPoint PointX="1.4761961425781252" PointY="18.738432955932623" />
+          <ConnectorPoint PointX="1.5817067447916668" PointY="18.738432955932623" />
+          <ConnectorPoint PointX="1.7483734114583334" PointY="18.738432955932623" />
+          <ConnectorPoint PointX="1.7530945182291668" PointY="18.738432955932623" />
+          <ConnectorPoint PointX="1.9197611848958334" PointY="18.738432955932623" />
+          <ConnectorPoint PointX="2.0260454166666664" PointY="18.738432955932623" />
+          <ConnectorPoint PointX="2.1927120833333333" PointY="18.738432955932623" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="18.738432955932623" />
+          <ConnectorPoint PointX="5.114583333333333" PointY="18.738432955932623" />
+          <ConnectorPoint PointX="5.791666666666667" PointY="18.738432955932623" />
+          <ConnectorPoint PointX="5.958333333333333" PointY="18.738432955932623" />
+          <ConnectorPoint PointX="7.5" PointY="18.738432955932623" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_news_texts2" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.29687375" PointY="13.25" />
-          <ConnectorPoint PointX="1.29687375" PointY="13.0625" />
-          <ConnectorPoint PointX="1.4166666666666667" PointY="13.0625" />
-          <ConnectorPoint PointX="1.5833333333333333" PointY="13.0625" />
-          <ConnectorPoint PointX="1.8229191666666667" PointY="13.0625" />
-          <ConnectorPoint PointX="1.9895858333333332" PointY="13.0625" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="13.0625" />
-          <ConnectorPoint PointX="2.7083333333333335" PointY="13.0625" />
-          <ConnectorPoint PointX="4.625" PointY="13.0625" />
-          <ConnectorPoint PointX="4.625" PointY="12.5" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="12.499999999999998" />
-          <ConnectorPoint PointX="5.145833333333333" PointY="12.5" />
-          <ConnectorPoint PointX="6.791666666666667" PointY="12.5" />
-          <ConnectorPoint PointX="6.958333333333333" PointY="12.5" />
-          <ConnectorPoint PointX="7" PointY="12.5" />
-          <ConnectorPoint PointX="7" PointY="15.339812197916668" />
-          <ConnectorPoint PointX="7.041666666666667" PointY="15.339812197916668" />
-          <ConnectorPoint PointX="7.208333333333333" PointY="15.339812197916668" />
-          <ConnectorPoint PointX="7.5" PointY="15.339812197916668" />
+          <ConnectorPoint PointX="1.8364278515625" PointY="15.528382161458332" />
+          <ConnectorPoint PointX="1.8364278515625" PointY="18.869218977966312" />
+          <ConnectorPoint PointX="2.0260454166666664" PointY="18.869218977966312" />
+          <ConnectorPoint PointX="2.1927120833333333" PointY="18.869218977966312" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="18.869218977966312" />
+          <ConnectorPoint PointX="5.114583333333333" PointY="18.869218977966312" />
+          <ConnectorPoint PointX="5.791666666666667" PointY="18.869218977966312" />
+          <ConnectorPoint PointX="5.958333333333333" PointY="18.869218977966312" />
+          <ConnectorPoint PointX="7.5" PointY="18.869218977966312" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_pages_texts" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.9062525" PointY="17.345602213541667" />
-          <ConnectorPoint PointX="1.9062525" PointY="20.740143229166666" />
-          <ConnectorPoint PointX="2.0260454166666664" PointY="20.740143229166666" />
-          <ConnectorPoint PointX="2.1927120833333333" PointY="20.740143229166666" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="20.740143229166666" />
-          <ConnectorPoint PointX="2.7083333333333335" PointY="20.740143229166666" />
-          <ConnectorPoint PointX="3" PointY="20.740143229166666" />
+          <ConnectorPoint PointX="2.10937875" PointY="15.528382161458332" />
+          <ConnectorPoint PointX="2.10937875" PointY="20.243973657226565" />
+          <ConnectorPoint PointX="3" PointY="20.243973657226565" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_pages_texts1" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.0937475" PointY="17.345602213541667" />
-          <ConnectorPoint PointX="1.0937475" PointY="20.21381911458333" />
-          <ConnectorPoint PointX="1.8229191666666667" PointY="20.21381911458333" />
-          <ConnectorPoint PointX="1.9895858333333332" PointY="20.21381911458333" />
-          <ConnectorPoint PointX="2.0260454166666664" PointY="20.21381911458333" />
-          <ConnectorPoint PointX="2.1927120833333333" PointY="20.21381911458333" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="20.21381911458333" />
-          <ConnectorPoint PointX="2.7083333333333335" PointY="20.21381911458333" />
-          <ConnectorPoint PointX="3" PointY="20.21381911458333" />
+          <ConnectorPoint PointX="1.665040078125" PointY="15.528382161458332" />
+          <ConnectorPoint PointX="1.665040078125" PointY="19.59073432861328" />
+          <ConnectorPoint PointX="2.0260454166666664" PointY="19.59073432861328" />
+          <ConnectorPoint PointX="2.1927120833333333" PointY="19.59073432861328" />
+          <ConnectorPoint PointX="3" PointY="19.59073432861328" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_products_texts_desc" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="14.71875" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="14.71875" />
-          <ConnectorPoint PointX="2.7083333333333335" PointY="14.71875" />
-          <ConnectorPoint PointX="4.979166666666667" PointY="14.71875" />
-          <ConnectorPoint PointX="5.145833333333333" PointY="14.71875" />
-          <ConnectorPoint PointX="5.25" PointY="14.71875" />
+          <ConnectorPoint PointX="0.88824086425781268" PointY="15.528382161458332" />
+          <ConnectorPoint PointX="0.88824086425781268" PointY="15.8362939453125" />
+          <ConnectorPoint PointX="0.90528046305338572" PointY="15.836293945312498" />
+          <ConnectorPoint PointX="1.1723200618489584" PointY="15.8362939453125" />
+          <ConnectorPoint PointX="1.1992581022135418" PointY="15.8362939453125" />
+          <ConnectorPoint PointX="1.3659247688802083" PointY="15.8362939453125" />
+          <ConnectorPoint PointX="1.3928628092447919" PointY="15.8362939453125" />
+          <ConnectorPoint PointX="1.5595294759114584" PointY="15.8362939453125" />
+          <ConnectorPoint PointX="1.5817067447916668" PointY="15.8362939453125" />
+          <ConnectorPoint PointX="1.7483734114583334" PointY="15.8362939453125" />
+          <ConnectorPoint PointX="1.7530945182291668" PointY="15.8362939453125" />
+          <ConnectorPoint PointX="1.9197611848958334" PointY="15.8362939453125" />
+          <ConnectorPoint PointX="1.9244822916666668" PointY="15.836293945312498" />
+          <ConnectorPoint PointX="2.1927120833333338" PointY="15.8362939453125" />
+          <ConnectorPoint PointX="4.7053727213541672" PointY="15.8362939453125" />
+          <ConnectorPoint PointX="4.8720393880208333" PointY="15.8362939453125" />
+          <ConnectorPoint PointX="4.947916666666667" PointY="15.8362939453125" />
+          <ConnectorPoint PointX="5.114583333333333" PointY="15.8362939453125" />
+          <ConnectorPoint PointX="5.25" PointY="15.8362939453125" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_products_texts_subtitle" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="15.515625" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="15.515625" />
-          <ConnectorPoint PointX="2.7083333333333335" PointY="15.515625" />
-          <ConnectorPoint PointX="4.979166666666667" PointY="15.515625" />
-          <ConnectorPoint PointX="5.145833333333333" PointY="15.515625" />
-          <ConnectorPoint PointX="5.25" PointY="15.515625" />
+          <ConnectorPoint PointX="1.2825914355468751" PointY="15.528382161458332" />
+          <ConnectorPoint PointX="1.2825914355468751" PointY="15.980649472656243" />
+          <ConnectorPoint PointX="1.3928628092447919" PointY="15.980649472656243" />
+          <ConnectorPoint PointX="1.5595294759114584" PointY="15.980649472656243" />
+          <ConnectorPoint PointX="1.5817067447916668" PointY="15.980649472656243" />
+          <ConnectorPoint PointX="1.7483734114583334" PointY="15.980649472656243" />
+          <ConnectorPoint PointX="1.7530945182291668" PointY="15.980649472656243" />
+          <ConnectorPoint PointX="1.9197611848958334" PointY="15.980649472656243" />
+          <ConnectorPoint PointX="1.9244822916666668" PointY="15.980649472656241" />
+          <ConnectorPoint PointX="2.1927120833333338" PointY="15.980649472656243" />
+          <ConnectorPoint PointX="4.947916666666667" PointY="15.980649472656243" />
+          <ConnectorPoint PointX="5.114583333333333" PointY="15.980649472656243" />
+          <ConnectorPoint PointX="5.25" PointY="15.980649472656243" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_products_texts_text" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="13.921875" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="13.921875" />
-          <ConnectorPoint PointX="2.7083333333333335" PointY="13.921875" />
-          <ConnectorPoint PointX="4.979166666666667" PointY="13.921875" />
-          <ConnectorPoint PointX="5.145833333333333" PointY="13.921875" />
-          <ConnectorPoint PointX="5.25" PointY="13.921875" />
+          <ConnectorPoint PointX="2.2109418749999996" PointY="15.528382161458332" />
+          <ConnectorPoint PointX="2.2109418749999996" PointY="15.867546445312494" />
+          <ConnectorPoint PointX="4.947916666666667" PointY="15.867546445312494" />
+          <ConnectorPoint PointX="5.114583333333333" PointY="15.867546445312494" />
+          <ConnectorPoint PointX="5.25" PointY="15.867546445312494" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_products_texts_title" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="15.1171875" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="15.1171875" />
-          <ConnectorPoint PointX="2.7083333333333335" PointY="15.1171875" />
-          <ConnectorPoint PointX="4.979166666666667" PointY="15.1171875" />
-          <ConnectorPoint PointX="5.145833333333333" PointY="15.1171875" />
-          <ConnectorPoint PointX="5.25" PointY="15.1171875" />
+          <ConnectorPoint PointX="0.988613796386719" PointY="15.528382161458332" />
+          <ConnectorPoint PointX="0.988613796386719" PointY="16.011901972656236" />
+          <ConnectorPoint PointX="1.0056533951822919" PointY="16.011901972656236" />
+          <ConnectorPoint PointX="1.1723200618489584" PointY="16.011901972656236" />
+          <ConnectorPoint PointX="1.3928628092447919" PointY="16.011901972656236" />
+          <ConnectorPoint PointX="1.5595294759114584" PointY="16.011901972656236" />
+          <ConnectorPoint PointX="1.5817067447916668" PointY="16.011901972656236" />
+          <ConnectorPoint PointX="1.7483734114583334" PointY="16.011901972656236" />
+          <ConnectorPoint PointX="1.7530945182291668" PointY="16.011901972656236" />
+          <ConnectorPoint PointX="1.9197611848958334" PointY="16.011901972656236" />
+          <ConnectorPoint PointX="1.9244822916666668" PointY="16.011901972656236" />
+          <ConnectorPoint PointX="2.1927120833333338" PointY="16.011901972656236" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="16.011901972656236" />
+          <ConnectorPoint PointX="5.114583333333333" PointY="16.011901972656236" />
+          <ConnectorPoint PointX="5.25" PointY="16.011901972656236" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_roles_resources_resources" ManuallyRouted="false">
-          <ConnectorPoint PointX="7.25" PointY="4.6487939453125016" />
-          <ConnectorPoint PointX="7.416666666666667" PointY="4.6487939453125007" />
-          <ConnectorPoint PointX="7.583333333333333" PointY="4.6487939453125016" />
-          <ConnectorPoint PointX="8" PointY="4.6487939453125016" />
+          <ConnectorPoint PointX="10.25" PointY="4.9612939453125016" />
+          <ConnectorPoint PointX="10.322916666666666" PointY="4.9612939453125007" />
+          <ConnectorPoint PointX="10.489583333333334" PointY="4.9612939453125016" />
+          <ConnectorPoint PointX="10.541666666666666" PointY="4.9612939453125007" />
+          <ConnectorPoint PointX="10.708333333333334" PointY="4.9612939453125016" />
+          <ConnectorPoint PointX="11" PointY="4.9612939453125016" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_roles_resources_roles" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="5.0311210468750058" />
-          <ConnectorPoint PointX="2.75" PointY="5.0311210468750058" />
-          <ConnectorPoint PointX="2.75" PointY="3" />
-          <ConnectorPoint PointX="7.416666666666667" PointY="2.9999999999999996" />
-          <ConnectorPoint PointX="7.583333333333333" PointY="3" />
-          <ConnectorPoint PointX="8.75" PointY="3" />
-          <ConnectorPoint PointX="8.75" PointY="3.875" />
+          <ConnectorPoint PointX="4.5" PointY="4.5" />
+          <ConnectorPoint PointX="4.5" PointY="3.25" />
+          <ConnectorPoint PointX="6.666666666666667" PointY="3.2499999999999996" />
+          <ConnectorPoint PointX="6.833333333333333" PointY="3.25" />
+          <ConnectorPoint PointX="10.322916666666666" PointY="3.2499999999999996" />
+          <ConnectorPoint PointX="10.489583333333334" PointY="3.25" />
+          <ConnectorPoint PointX="10.625" PointY="3.25" />
+          <ConnectorPoint PointX="10.625" PointY="5.7231929179687437" />
+          <ConnectorPoint PointX="11" PointY="5.7231929179687437" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_roles_roles" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.2819230769230767" PointY="7.124492187499996" />
-          <ConnectorPoint PointX="1.2819230769230767" PointY="7.374492187499996" />
-          <ConnectorPoint PointX="1.7284615384615383" PointY="7.374492187499996" />
-          <ConnectorPoint PointX="1.7284615384615383" PointY="7.124492187499996" />
+          <ConnectorPoint PointX="4.2819230769230767" PointY="7.0571907552083335" />
+          <ConnectorPoint PointX="4.2819230769230767" PointY="7.3071907552083335" />
+          <ConnectorPoint PointX="4.7284615384615378" PointY="7.3071907552083335" />
+          <ConnectorPoint PointX="4.7284615384615378" PointY="7.0571907552083335" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_users_roles" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="7.124492187499996" />
-          <ConnectorPoint PointX="2.625" PointY="7.499492187499996" />
-          <ConnectorPoint PointX="2.625" PointY="25.3987939453125" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="25.3987939453125" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="25.3987939453125" />
-          <ConnectorPoint PointX="4.979166666666667" PointY="25.3987939453125" />
-          <ConnectorPoint PointX="5.145833333333333" PointY="25.3987939453125" />
-          <ConnectorPoint PointX="5.510416666666667" PointY="25.3987939453125" />
-          <ConnectorPoint PointX="5.677083333333333" PointY="25.3987939453125" />
-          <ConnectorPoint PointX="8" PointY="25.3987939453125" />
+          <ConnectorPoint PointX="5.03125" PointY="7.0571907552083335" />
+          <ConnectorPoint PointX="5.03125" PointY="23.391337890625" />
+          <ConnectorPoint PointX="6.75" PointY="23.391337890625" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_roles_resources_roles_resources" ManuallyRouted="false">
-          <ConnectorPoint PointX="8.5319230769230767" PointY="6.4321907552083388" />
-          <ConnectorPoint PointX="8.5319230769230767" PointY="6.9321907552083388" />
-          <ConnectorPoint PointX="8.9784615384615378" PointY="6.9321907552083388" />
-          <ConnectorPoint PointX="8.9784615384615378" PointY="6.4321907552083388" />
+          <ConnectorPoint PointX="11.531923076923077" PointY="6.422587890625" />
+          <ConnectorPoint PointX="11.531923076923077" PointY="6.672587890625" />
+          <ConnectorPoint PointX="11.978461538461538" PointY="6.672587890625" />
+          <ConnectorPoint PointX="11.978461538461538" PointY="6.422587890625" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_tags_articles_tags" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.75" PointY="21.75" />
-          <ConnectorPoint PointX="6.75" PointY="20.672587890624996" />
-          <ConnectorPoint PointX="7.75" PointY="20.672587890624996" />
-          <ConnectorPoint PointX="7.75" PointY="17.287903645833339" />
-          <ConnectorPoint PointX="6.875" PointY="17.287903645833339" />
-          <ConnectorPoint PointX="6.875" PointY="5.6725878906250031" />
-          <ConnectorPoint PointX="7.5" PointY="5.6725878906250031" />
-          <ConnectorPoint PointX="7.5" PointY="1.7401432291666694" />
-          <ConnectorPoint PointX="8.25" PointY="1.7401432291666694" />
+          <ConnectorPoint PointX="7.5" PointY="25.893992513020834" />
+          <ConnectorPoint PointX="8.75" PointY="25.893992513020834" />
+          <ConnectorPoint PointX="8.75" PointY="20.701396484374996" />
+          <ConnectorPoint PointX="9.75" PointY="20.701396484374996" />
+          <ConnectorPoint PointX="9.75" PointY="12.172587890625" />
+          <ConnectorPoint PointX="9.0833333333333339" PointY="12.172587890625" />
+          <ConnectorPoint PointX="8.9166666666666661" PointY="12.172587890625" />
+          <ConnectorPoint PointX="8" PointY="12.172587890625" />
+          <ConnectorPoint PointX="8" PointY="9.2302864583333388" />
+          <ConnectorPoint PointX="9" PointY="9.2302864583333388" />
+          <ConnectorPoint PointX="9" PointY="8.8552864583333388" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.FK_texts_values_texts1" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.10937875" PointY="17.345602213541667" />
-          <ConnectorPoint PointX="2.10937875" PointY="23.5862939453125" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="23.5862939453125" />
-          <ConnectorPoint PointX="2.7083333333333335" PointY="23.5862939453125" />
-          <ConnectorPoint PointX="3" PointY="23.5862939453125" />
+          <ConnectorPoint PointX="2.007815625" PointY="15.528382161458332" />
+          <ConnectorPoint PointX="2.007815625" PointY="17.2112939453125" />
+          <ConnectorPoint PointX="2.0260454166666664" PointY="17.2112939453125" />
+          <ConnectorPoint PointX="2.1927120833333333" PointY="17.2112939453125" />
+          <ConnectorPoint PointX="3" PointY="17.2112939453125" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.docgroups_products" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="26.95467071995192" />
-          <ConnectorPoint PointX="4.979166666666667" PointY="26.95467071995192" />
-          <ConnectorPoint PointX="5.145833333333333" PointY="26.95467071995192" />
-          <ConnectorPoint PointX="5.59375" PointY="26.95467071995192" />
-          <ConnectorPoint PointX="5.59375" PointY="17.037903645833339" />
+          <ConnectorPoint PointX="4.5" PointY="21.975211498046875" />
+          <ConnectorPoint PointX="4.947916666666667" PointY="21.975211498046875" />
+          <ConnectorPoint PointX="5.114583333333333" PointY="21.975211498046875" />
+          <ConnectorPoint PointX="5.875" PointY="21.975211498046875" />
+          <ConnectorPoint PointX="5.875" PointY="17.537903645833335" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.images_products" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="16.384475911458335" />
-          <ConnectorPoint PointX="4.979166666666667" PointY="16.384475911458335" />
-          <ConnectorPoint PointX="5.145833333333333" PointY="16.384475911458335" />
-          <ConnectorPoint PointX="5.25" PointY="16.384475911458335" />
+          <ConnectorPoint PointX="4.5" PointY="14.802628883463541" />
+          <ConnectorPoint PointX="4.947916666666667" PointY="14.802628883463541" />
+          <ConnectorPoint PointX="5.114583333333333" PointY="14.802628883463541" />
+          <ConnectorPoint PointX="5.25" PointY="14.802628883463541" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.products_categories" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="12.52369065665064" />
-          <ConnectorPoint PointX="4.5660744349011217" PointY="12.58976509155176" />
-          <ConnectorPoint PointX="4.6839255650988791" PointY="12.707616221749518" />
-          <ConnectorPoint PointX="4.6910744349011217" PointY="12.71476509155176" />
-          <ConnectorPoint PointX="4.8089255650988791" PointY="12.832616221749518" />
-          <ConnectorPoint PointX="4.8160744349011217" PointY="12.83976509155176" />
-          <ConnectorPoint PointX="4.9339255650988791" PointY="12.957616221749518" />
-          <ConnectorPoint PointX="4.9375" PointY="12.96119065665064" />
-          <ConnectorPoint PointX="4.9375" PointY="12.436347153846153" />
-          <ConnectorPoint PointX="5.0035744349011217" PointY="12.502421588747273" />
-          <ConnectorPoint PointX="5.1214255650988791" PointY="12.620272718945031" />
-          <ConnectorPoint PointX="5.2511528461538459" PointY="12.75" />
+          <ConnectorPoint PointX="4.5000000000000018" PointY="12.835999348958334" />
+          <ConnectorPoint PointX="4.875" PointY="13.210999348958332" />
+          <ConnectorPoint PointX="4.875" PointY="12.873847153846153" />
+          <ConnectorPoint PointX="4.9723244349011217" PointY="12.971171588747273" />
+          <ConnectorPoint PointX="5.0901755650988791" PointY="13.089022718945031" />
+          <ConnectorPoint PointX="5.2511528461538459" PointY="13.25" />
         </AssociationConnector>
         <AssociationConnector Association="CMSModel.products_connections" ManuallyRouted="false">
-          <ConnectorPoint PointX="5.7819230769230767" PointY="12.75" />
-          <ConnectorPoint PointX="5.7819230769230767" PointY="12.625" />
-          <ConnectorPoint PointX="6.2284615384615378" PointY="12.625" />
-          <ConnectorPoint PointX="6.2284615384615378" PointY="12.75" />
+          <ConnectorPoint PointX="5.7819230769230767" PointY="13.25" />
+          <ConnectorPoint PointX="5.7819230769230767" PointY="12.984375" />
+          <ConnectorPoint PointX="6.2284615384615378" PointY="12.984375" />
+          <ConnectorPoint PointX="6.2284615384615378" PointY="13.25" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

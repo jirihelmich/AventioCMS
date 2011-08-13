@@ -19,6 +19,6 @@ namespace DomainModel.Entity
         public long TextTextId { get; set; }
     
         public virtual Text TitleText { get; set; }
-        public virtual Text TextText { get; set; }
+        public virtual Text ContentText { get; set; }
     }
 }

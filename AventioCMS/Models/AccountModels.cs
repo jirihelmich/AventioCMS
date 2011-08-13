@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Web.Mvc;
 using System.Web.Security;
 
-namespace AventioCMS.Models
+namespace HTH8.Models
 {
 
     public class ChangePasswordModel

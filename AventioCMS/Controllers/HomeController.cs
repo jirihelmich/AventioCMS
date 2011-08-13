@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Model;
 
-namespace AventioCMS.Controllers
+namespace HTH8.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        public ActionResult Index()
-        {
-            ViewBag.Message = "Welcome to ASP.NET MVC!";
 
-            return View();
+        public ActionResult Index()
+        {   
+            return View(sl.GetFrontpage());
         }
 
         public ActionResult About()

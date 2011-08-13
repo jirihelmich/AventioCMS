@@ -40,6 +40,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Extensions" />
@@ -56,9 +59,9 @@
     <Content Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AventioCMS\AventioCMS.csproj">
+    <ProjectReference Include="..\AventioCMS\HTH8.com.csproj">
       <Project>{157EBF2A-6DD4-4F80-B6B6-B1F35CF14EEC}</Project>
-      <Name>AventioCMS</Name>
+      <Name>HTH8.com</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

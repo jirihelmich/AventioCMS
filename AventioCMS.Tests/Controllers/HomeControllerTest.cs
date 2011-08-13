@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
+using HTH8.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AventioCMS;
-using AventioCMS.Controllers;
+using HTH8;
 
-namespace AventioCMS.Tests.Controllers
+namespace HTH8.Tests.Controllers
 {
     [TestClass]
     public class HomeControllerTest

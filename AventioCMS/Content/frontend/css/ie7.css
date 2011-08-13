@@ -1,0 +1,13 @@
+.smaller h1 {
+  margin-top:20px;
+}
+
+h1 {
+  margin-top:55px;
+}                   
+
+.carousel-content .right .thumbnails li a, .carousel-content .right .thumbnails li a img {
+	border: 0 !important;
+}                     
+          
+ 

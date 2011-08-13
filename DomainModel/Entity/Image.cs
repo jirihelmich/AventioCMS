@@ -16,11 +16,10 @@ namespace DomainModel.Entity
     {
         public long Id { get; set; }
         public string Path { get; set; }
-        public Nullable<long> DescriptionTextId { get; set; }
         public Nullable<int> Width { get; set; }
         public Nullable<int> Height { get; set; }
+        public Nullable<long> DescriptionTextId { get; set; }
     
-        public virtual Text Text { get; set; }
-        public virtual ICollection<News> News { get; set; }
+        public virtual Text TitleText { get; set; }
     }
 }

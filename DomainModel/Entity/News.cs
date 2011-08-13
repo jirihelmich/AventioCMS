@@ -16,17 +16,16 @@ namespace DomainModel.Entity
     {
         public long Id { get; set; }
         public long Title { get; set; }
-        public long ShortDescriptionTextId { get; set; }
-        public long TextTextId { get; set; }
-        public byte[] date { get; set; }
-        public Nullable<long> image_id { get; set; }
-        public Nullable<long> product_id { get; set; }
-        public Nullable<System.DateTime> date_order { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
+        public long TextId { get; set; }
+        public long ShortDescriptionId { get; set; }
+        public Nullable<long> ProductId { get; set; }
+        public Nullable<long> ImageId { get; set; }
     
         public virtual Image Image { get; set; }
-        public virtual Product Product { get; set; }
+        public virtual Product Products { get; set; }
         public virtual Text TitleText { get; set; }
         public virtual Text ShortDescriptionText { get; set; }
-        public virtual Text TextText { get; set; }
+        public virtual Text DescriptionText { get; set; }
     }
 }

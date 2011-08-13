@@ -59,83 +59,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="CMS.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CMS.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="articles.cs">
-      <DependentUpon>CMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="articles_authors.cs">
-      <DependentUpon>CMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="articles_categories.cs">
-      <DependentUpon>CMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="authors.cs">
-      <DependentUpon>CMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="categories.cs">
-      <DependentUpon>CMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CMS.cs">
-      <DependentUpon>CMS.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="comments.cs">
-      <DependentUpon>CMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="docgroups.cs">
-      <DependentUpon>CMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="docs.cs">
-      <DependentUpon>CMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="images.cs">
-      <DependentUpon>CMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="menuitems.cs">
-      <DependentUpon>CMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="news.cs">
-      <DependentUpon>CMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="pages.cs">
-      <DependentUpon>CMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="products.cs">
-      <DependentUpon>CMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="resources.cs">
-      <DependentUpon>CMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="roles.cs">
-      <DependentUpon>CMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="roles_resources.cs">
-      <DependentUpon>CMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="settings.cs">
-      <DependentUpon>CMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tags.cs">
-      <DependentUpon>CMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tags_articles.cs">
-      <DependentUpon>CMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="texts.cs">
-      <DependentUpon>CMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="texts_values.cs">
-      <DependentUpon>CMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="users.cs">
-      <DependentUpon>CMS.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Context.cs" />
+    <Compile Include="Entity\Article.cs" />
+    <Compile Include="Entity\ArticleAuthors.cs" />
+    <Compile Include="Entity\ArticleCategory.cs" />
+    <Compile Include="Entity\Author.cs" />
+    <Compile Include="Entity\Category.cs" />
+    <Compile Include="Entity\Comment.cs" />
+    <Compile Include="Entity\Document.cs" />
+    <Compile Include="Entity\DocumentGroup.cs" />
+    <Compile Include="Entity\Image.cs" />
+    <Compile Include="Entity\Menuitem.cs" />
+    <Compile Include="Entity\News.cs" />
+    <Compile Include="Entity\Page.cs" />
+    <Compile Include="Entity\Product.cs" />
+    <Compile Include="Entity\Resource.cs" />
+    <Compile Include="Entity\Role.cs" />
+    <Compile Include="Entity\RoleResource.cs" />
+    <Compile Include="Entity\Setting.cs" />
+    <Compile Include="Entity\Tag.cs" />
+    <Compile Include="Entity\TagArticle.cs" />
+    <Compile Include="Entity\Text.cs" />
+    <Compile Include="Entity\TextValue.cs" />
+    <Compile Include="Entity\User.cs" />
     <Compile Include="Model.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -147,11 +93,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CMS.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="CMS.mdf" />
     <Content Include="CMS_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>CMS.mdf</DependentUpon>
     </Content>
   </ItemGroup>
@@ -163,14 +106,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="CMS.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CMS.Context.cs</LastGenOutput>
-    </None>
-    <None Include="CMS.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CMS.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
@@ -204,9 +139,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Entity\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
