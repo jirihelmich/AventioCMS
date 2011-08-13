@@ -27,7 +27,7 @@ namespace HTH8.Controllers
 
         public ActionResult CarouselImage()
         {
-            String title = _sl.GetSubsystem<CategoryService, DomainModel.Entity.Category>()
+            String title = _sl.GetSubsystem<CategoryService>()
                 .GetTitleByIDCulture((String)Request.Params["id"], Request.Params["culture"]);
 
             return new ImageActionResult(

@@ -19,7 +19,7 @@ namespace HTH8.Controllers
 
         public ActionResult Detail(long Id)
         {
-            return View(_sl.GetSubsystem<NewsService, DomainModel.Entity.News>().GetById(Id));
+            return View(_sl.GetSubsystem<NewsService>().GetById(Id));
         }
 
     }

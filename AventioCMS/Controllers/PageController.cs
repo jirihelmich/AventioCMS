@@ -13,7 +13,7 @@ namespace HTH8.Controllers
 
         public ActionResult Detail(long Id)
         {
-            return View(_sl.GetSubsystem<Model.Subsystem.PageService, DomainModel.Entity.Page>().GetById(Id));
+            return View(_sl.GetSubsystem<Model.Subsystem.PageService>().GetById(Id));
         }
 
     }

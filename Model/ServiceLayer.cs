@@ -38,13 +38,14 @@ namespace Model
         /// </summary>
         /// <typeparam name="T">Type of the service, derived from the Subsystem.AbstractService class</typeparam>
         /// <returns></returns>
-        public T GetSubsystem<T,U>() where T : Subsystem.AbstractService<U>, new() where U : EntityBase
+        public T GetSubsystem<T>() where T : IModelService, new()
         {
+            
             // "singleton"
             if (!_serviceCache.ContainsKey(typeof(T)))
             {
                 // consider double-locking to provide thread-safe functionality
-                Subsystem.AbstractService<U> instance = new T();
+                IModelService instance = new T();
                 instance.SetServiceLayer(this);
 
                 // insert new instance
@@ -62,7 +63,7 @@ namespace Model
         /// <returns>List of the news, ordered by date, descending.</returns>
         public List<News> GetTopNews(int count)
         {
-            return GetSubsystem<NewsService, News>().GetTop(count);
+            return GetSubsystem<NewsService>().GetTop(count);
         }
 
         /// <summary>
@@ -71,7 +72,7 @@ namespace Model
         /// <returns>List of topmost categories.</returns>
         public List<Category> GetRootCategories()
         {
-            return GetSubsystem<CategoryService, Category>().GetRootCategories();
+            return GetSubsystem<CategoryService>().GetRootCategories();
         }
 
         /// <summary>
@@ -80,7 +81,7 @@ namespace Model
         /// <returns></returns>
         public List<Page> GetAllPages()
         {
-            return GetSubsystem<PageService, Page>().ToList();
+            return GetSubsystem<PageService>().ToList();
         }
 
         /// <summary>

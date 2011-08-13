@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Model.Subsystem
 {
-    public abstract class AbstractService<T> where T : DomainModel.Entity.EntityBase
+    public abstract class AbstractService<T> : IModelService where T : DomainModel.Entity.EntityBase
     {
         protected ServiceLayer _sl;
 
