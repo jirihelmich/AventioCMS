@@ -1,0 +1,65 @@
+@using System.Globalization
+@model HTH8.Areas.MvcMembership.Models.UserAdministration.DetailsViewModel
+@{
+	ViewBag.Title = "User Details: " + Model.DisplayName;
+}
+
+<link href='@Url.Content("~/Content/MvcMembership.css")' rel="stylesheet" type="text/css" />
+
+<h2 class="mvcMembership">Detail uživatele: @Model.DisplayName [@Model.Status]</h2>
+
+<ul class="mvcMembership-tabs">
+	<li>Detaily</li>
+	<li>@Html.ActionLink("Zmìna hesla", "Password", "UserAdministration", new { id = Model.User.ProviderUserKey }, null)</li>
+	@if(Model.IsRolesEnabled){
+	<li>@Html.ActionLink("Uživatelské role", "UsersRoles", "UserAdministration", new { id = Model.User.ProviderUserKey }, null)</li>
+	}
+</ul>
+
+<h3 class="mvcMembership">Úèet</h3>
+<div class="mvcMembership-account">
+	<dl class="mvcMembership">
+		<dt>Uživatelské jméno:</dt>
+			<dd>@Model.User.UserName</dd>
+		<dt>Email:</dt>
+			<dd><a href="mailto:@Model.User.Email">@Model.User.Email</a></dd>
+		@if(Model.User.LastActivityDate == Model.User.CreationDate){
+		<dt>Poslední aktivita:</dt>
+			<dd><em>Nikdy</em></dd>
+		<dt>Poslední pøihlášení:</dt>
+			<dd><em>Nikdy</em></dd>
+		}else{
+		<dt>Naposledy aktivní:</dt>
+			<dd>@Model.User.LastActivityDate.ToString("MMMM dd, yyyy h:mm:ss tt", CultureInfo.InvariantCulture)</dd>
+		<dt>Poslední pøihlášení:</dt>
+			<dd>@Model.User.LastLoginDate.ToString("MMMM dd, yyyy h:mm:ss tt", CultureInfo.InvariantCulture)</dd>
+		}
+		<dt>Datum vytvoøení:</dt>
+			<dd>@Model.User.CreationDate.ToString("MMMM dd, yyyy h:mm:ss tt", CultureInfo.InvariantCulture)</dd>
+	</dl>
+
+	@using(Html.BeginForm("ChangeApproval", "UserAdministration", new{ id = Model.User.ProviderUserKey })){
+		@Html.Hidden("isApproved", !Model.User.IsApproved)
+		<input type="submit" value='@(Model.User.IsApproved ? "Zakázat" : "Schválit") úèet' />
+	}
+	@using(Html.BeginForm("DeleteUser", "UserAdministration", new{ id = Model.User.ProviderUserKey })){
+		<input type="submit" value="Smazat úèet" />
+	}
+</div>
+
+<h3 class="mvcMembership">Email & Poznámky</h3>
+<div class="mvcMembership-emailAndComments">
+	@using(Html.BeginForm("Details", "UserAdministration", new{ id = Model.User.ProviderUserKey })){
+	<fieldset>
+		<p>
+			<label for="email">Email:</label>
+			@Html.TextBox("email", Model.User.Email)
+		</p>
+		<p>
+			<label for="comments">Poznámky:</label>
+			@Html.TextArea("comments", Model.User.Comment)
+		</p>
+		<input type="submit" value="Uložit e-mail a poznámky" />
+	</fieldset>
+	}
+</div>

@@ -1,0 +1,40 @@
+﻿@using DomainModel.Entity
+@model ICollection<DomainModel.Entity.Category>
+
+@{
+    ViewBag.Title = "Kategorie";
+}
+
+<ul id="submenu">
+    <li>@Html.ActionLink("Nová kategorie", "Edit", new {area = "Admin"})</li>
+</ul>
+
+@helper RenderCategoryList(ICollection<Category> categories){
+    if (categories.Count > 0)
+    {
+        <ul>
+        @foreach (Category c in categories)
+        {
+            <li class="sortable-item" id="@("Parent_"+c.Id)">
+                <div>
+                    @c.TitleText.GetValue(UICulture)
+                    <div class="controls">
+                        @Html.ActionLink("Editovat", "Edit", new { c.Id }, new {@class = "edit"})
+                        @Html.ActionLink("Smazat", "Delete", new { c.Id }, new { @class = "delete" })
+                    </div>
+                </div>
+                @RenderCategoryList(c.Children)
+            </li>
+        }    
+        </ul>
+    }
+}
+
+<div class="categories-list box" id="categories">
+    <h3 class="box-name"><span><span>Kategorie</span></span></h3>
+    <div class="box-content">
+        @RenderCategoryList(Model)
+    </div>
+</div>
+
+<input type="submit" value="Uložit uspořádání" id="save-ordering" />

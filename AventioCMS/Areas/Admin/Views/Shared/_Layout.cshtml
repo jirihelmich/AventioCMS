@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>
+        @ViewBag.Title
+    </title>
+    <link href="../../../../Content/Admin.css?110927" rel="stylesheet" type="text/css" />
+    <link href="../../../../Content/tablecloth.css" rel="stylesheet" type="text/css" />
+    <link href="../../../../Content/chosen/chosen.css" rel="stylesheet" type="text/css" />
+    <link href="../../../../Content/css/blitzer/jquery-ui-1.8.2.custom.css?110927" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript" src="../../../../Scripts/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/jquery-ui-1.8.11.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/jquery.ui.nestedSortable.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/jquery.form.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/chosen.jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/Admin/general.js?110927"></script>
+    <script type="text/javascript" src="../../../../Scripts/ckeditor/ckeditor.js?110620"></script>
+</head>
+    <body>
+    <div id="container">
+        <div id="header">
+            <!-- Your logo -->
+            <h1 id="logo">
+                <a href="/Admin/Dashboard">Administrace HTH8.cz</a></h1>
+            <!-- Your slogan -->
+            <p id="login">
+                <a href="/Admin/Account/LogOff">Odhlásit se</a>
+                <a href="/Admin/Account/ChangePassword">Změnit heslo</a>
+                <a href="/Admin/Account/Register">Registrovat</a>
+                <a href="/">Zobrazit web</a>
+            </p>
+            <hr class="noscreen" />
+        </div>
+        <!-- Hidden navigation -->
+        <hr class="noscreen" />
+        <hr class="noscreen" />
+        <!-- Horizontal navigation -->
+        <div id="navigation">
+            <h3 class="noscreen">
+                Navigace</h3>
+            <ul id="nav">
+                <li><a href="/Admin/Dashboard" class="top"><span><span>Nástěnka</span></span></a></li>
+                <li><a href="/Admin/Product" class="top"><span><span>Produkty</span></span></a></li>
+                <li><a href="/Admin/Category" class="top"><span><span>Kategorie</span></span></a></li>
+                <li><a href="/Admin/Page" class="top"><span><span>Statické stránky</span></span></a></li>
+                <li><a href="/Admin/News" class="top"><span><span>Novinky</span></span></a></li>
+                <li><a href="/Users/UserAdministration" class="top"><span><span>Uživatelé</span></span></a></li>
+            </ul>
+        </div>
+        <!-- /main -->
+        <hr class="noscreen" />
+        <!-- 2 columns (Content and Sidebar) -->
+        <div id="cols">
+            <div class="main box">
+                <!-- Sidebar -->
+                <!-- Content -->
+                <div id="main">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <div id="footer">
+            <p>
+                <span style="display: block; float: left;">&copy;&nbsp;2008-12<a href="http://aventio.cz"
+                    title="aventio.cz">
+                    <img src="http://aventio.cz/aventio-transparent.png" width="80" height="23" alt="aventio.cz"
+                        title="aventio.cz" /></a></span>
+            </p>
+        </div>
+        <!-- /footer -->
+        <span class="clear"></span>
+    </div>
+
+</body>
+</html>

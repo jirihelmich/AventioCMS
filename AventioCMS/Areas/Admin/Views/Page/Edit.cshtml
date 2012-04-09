@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Edit";
+}
+
+
+@model DomainModel.Entity.Page
+
+@using (Html.BeginForm(new { Model.Id }))
+{
+    <div id="tabs">
+    
+        <ul>
+            @foreach (String culture in HTH8.Utils.LangIterator.Langs)
+            {
+                <li><a href="#@culture" class="@culture"><img src="@Url.Content("~/Content/flags/" + culture + ".png")"/></a></li>
+            }
+        </ul>
+
+        
+        @foreach (String culture in HTH8.Utils.LangIterator.Langs)
+        {
+            <div id="@culture">
+                @Html.TextBox("title[" + @culture + "]", Model.TitleText == null ? "" : Model.TitleText.GetValue(culture), new { @class = "largeField" })
+                @Html.TextArea("content[" + @culture + "]", Model.ContentText == null ? "" : Model.ContentText.GetValue(culture), new { @class = "ckeditor" })
+            </div>
+        }
+
+        <input type="submit" value="Uložit" />
+        <a href="@Url.Action("Index","Page")">Storno</a>
+
+    </div>
+}

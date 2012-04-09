@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "Edit";
+}
+
+@using DomainModel.Entity
+@using Model.ViewModel
+@model ProductEditViewModel
+           
+<div class="tabs">
+    <ul>
+        <li><a href="#text-form">Texty</a></li>
+        <li><a href="#icon-form">Ikona</a></li>
+    </ul>
+
+    <div id="text-form">
+
+    @using (Html.BeginForm(new { Model.Edited.Id }))
+    {
+
+        @Html.Hidden("imageId", Model.Edited.ImageId ?? 0)
+    
+        <div class="select">
+            @Html.Label("Kategorie")
+            @Html.ListBox("CategoryIds", Model.Categories, new { @class = "chosen", style = "width: 50%;" })
+        </div>
+    
+        <div class="select">
+            @Html.Label("Související produkty")
+            @Html.ListBox("ProductIds", Model.Products, new { @class = "chosen", style = "width: 50%;" })
+        </div>
+    
+        <div id="tabs">
+    
+            <ul>
+                @foreach (String culture in HTH8.Utils.LangIterator.Langs)
+                {
+                    <li><a href="#@culture" class="@culture"><img src="@Url.Content("~/Content/flags/" + culture + ".png")"/></a></li>
+                }
+                <li><a href="#documents">Dokumenty</a></li>
+            </ul>
+
+        
+            @foreach (String culture in HTH8.Utils.LangIterator.Langs)
+            {
+                <div id="@culture">
+                    @Html.TextBox("title[" + @culture + "]", Model.Edited.TitleText == null ? "" : Model.Edited.TitleText.GetValue(culture), new { @class = "largeField" })
+                    @Html.TextBox("subtitle[" + @culture + "]", Model.Edited.SubtitleText == null ? "" : Model.Edited.SubtitleText.GetValue(culture), new { @class = "largeField" })
+                    @Html.TextArea("shortDescription[" + @culture + "]", Model.Edited.ShortDescriptionText == null ? "" : Model.Edited.ShortDescriptionText.GetValue(culture), new { @class = "ckeditor" })
+                    @Html.TextArea("description[" + @culture + "]", Model.Edited.DescriptionText == null ? "" : Model.Edited.DescriptionText.GetValue(culture), new { @class = "ckeditor" })
+                </div>
+            }
+
+            <div id="documents">
+                <iframe src="@Url.Action("ListDocuments", new { Model.Edited.Id })" width="100%" height="100%"></iframe>
+            </div>
+
+            <input type="submit" value="Uložit" />
+            <a href="@Url.Action("Index","Product")">Storno</a>
+
+        </div>
+    }
+    </div>
+    <div id="icon-form">
+        @Html.Partial("IconLoader", Model.Edited.Image ?? new Image())
+    </div>
+
+</div>

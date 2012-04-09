@@ -1,0 +1,28 @@
+﻿@using DomainModel.Entity
+@model ICollection<DomainModel.Entity.News>
+
+@{
+    ViewBag.Title = "Novinky";
+}
+
+<ul id="submenu">
+    <li>@Html.ActionLink("Vytvořit novinku", "Edit", new {area = "Admin"})</li>
+</ul>
+
+<table>
+    <tr>
+        <th>Název</th>
+        <th>Datum</th>
+        <th>Editovat</th>
+        <th>Smazat</th>
+    </tr>
+@foreach (DomainModel.Entity.News n in Model)
+{
+    <tr>
+        <td>@n.TitleText.GetValue(UICulture)</td>
+        <td>@(n.Date != null ? n.Date.Value.ToShortDateString() : String.Empty)</td>
+        <td>@Html.ActionLink("Editovat", "Edit", new { n.Id })</td>
+        <td>@Html.ActionLink("Smazat", "Delete", new { n.Id })</td>
+    </tr>
+}
+</table>

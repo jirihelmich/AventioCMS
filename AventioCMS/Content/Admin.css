@@ -1481,7 +1481,7 @@ legend{
 
  label{
 	font-weight: bold;
-	width: 170px;     
+	width: 175px;     
 	display:inline-block;
 }                   
 
@@ -1500,7 +1500,7 @@ input#Password, input#UserName, input#Email, input#ConfirmPassword{
 	
 }        
 
-input[type=submit]{
+input[type=submit], .mvcMembership-tabs li{
 	background: #d70909 !important;
 	border: none !important;
     color: #fff !important;
@@ -1510,7 +1510,14 @@ input[type=submit]{
 	-webkit-border-radius: 4px;
 	border-top-radius: 4px;
     padding: 10px;
-}    
+} 
+
+.mvcMembership-tabs li {
+    width: 150px;
+    display: inline-block;
+}   
+  
+  dt{ font-weight: bold; }
   
 .cke_2{
 	margin-top: 15px;  
@@ -1543,3 +1550,117 @@ input[type=submit]{
 .select{
 	margin-bottom: 10px;
 }
+
+h3.mvcMembership {
+    margin-top: 20px;
+}
+
+.mvcMembership-roleUsers li {
+    padding-bottom: 10px;
+}
+
+p.mvcMembership-warning{
+	color: #cc0000;
+	font-weight: bold;
+	border: 2px solid #cc0000;
+	padding: 1em;
+	border-radius: .5em;
+	text-align: center;
+}
+
+h3.mvcMembership{
+	clear: left;
+}
+
+ul.mvcMembership-paging > li{
+	float: left;
+	list-style-type: none;
+	margin: 1em;
+}
+
+ul.mvcMembership > li > form{
+	display: inline;
+	margin-left: 1em;
+}
+
+dl.mvcMembership{
+	margin-left: .9em;
+}
+dl.mvcMembership > dt{
+	display: block;
+	float: left;
+	clear: left;
+	height: 1.75em;
+	margin-right: 1em;
+}
+dl.mvcMembership > dd{
+	display: block;
+	height: 1.75em;
+}
+
+div.mvcMembership-account > form{
+	display: inline;
+}
+
+div.mvcMembership-allUsers ul{
+	margin: 0;
+}
+div.mvcMembership-allUsers ul.mvcMembership-users > li{
+	margin: .5em 0 .5em 0;
+    border-bottom: 1px solid white;
+    padding-bottom: 5px;
+}
+div.mvcMembership-allUsers ul.mvcMembership-users > li > span.mvcMembership-username {
+    font-weight: bold;
+}
+div.mvcMembership-allUsers ul.mvcMembership-users > li > span.mvcMembership-isOnline{
+	display: block;
+	font-weight: bold;
+	color: #33cc33;
+}
+div.mvcMembership-allUsers ul.mvcMembership-users > li > span.mvcMembership-isOffline{
+	display: block;
+	color: #999;
+}
+div.mvcMembership-allUsers ul.mvcMembership-users > li > span.mvcMembership-email{
+	display: block;
+	font-size: .8em;
+}
+div.mvcMembership-allUsers ul.mvcMembership-users > li > span.mvcMembership-comment{
+	display: block;
+	border: 1px solid #ccc;
+	padding: .25em .5em .25em .5em;
+	margin: .5em 0 .5em 0;
+}
+
+div.mvcMembership-allUsers .PagedList-disabled a{
+	color: #666;
+}
+div.mvcMembership-allUsers .PagedList-disabled a:hover{
+	color: #666;
+}
+
+div.mvcMembership-allRoles ul > li{
+	margin: .5em 0 .5em 0;
+}
+
+form.mvcMembership-searchForm fieldset,
+.mvcMembership-allRoles fieldset{
+	padding-top: 1.5em;
+}
+
+.PagedList-pager > ul{
+	display: block;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.PagedList-pager > ul > li{
+	margin: .25em;
+	display: inline-block;
+}
+.PagedList-goToPage > fieldset{
+	border: 0;
+}
+
+.mvcMembership-allUsers{ padding: 20px;margin: 20px;background: gainsboro; }

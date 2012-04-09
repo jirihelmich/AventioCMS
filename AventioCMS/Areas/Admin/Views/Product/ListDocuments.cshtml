@@ -1,0 +1,85 @@
+﻿@{
+    Layout = null;
+}
+
+@using DomainModel.Entity
+@using HTH8.Utils
+@using Model.ViewModel
+@model DocumentsViewModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>ListDocuments</title>
+    <link href="../../../../Content/tablecloth.css" rel="stylesheet" type="text/css" />
+    <style>
+        #doclist a { color: white !important; }
+    </style>
+
+    <script type="text/javascript" src="../../../../Scripts/jquery-1.5.1.min.js"></script>
+
+    <script>
+        $(function() {
+            $(".delete").click(function () {
+                return confirm("Opravdu smazat?");
+            });
+        });
+    </script>
+</head>
+<body>
+    @if (Model != null && Model.Product != null)
+    {
+    <div>
+        <table id="doclist">
+        @foreach (DocumentGroup dg in Model.DocumentGroups)
+        {
+            <tr>
+                <th>Skupina @dg.Id</th><th>@Html.ActionLink("Smazat", "DeleteGroup", "Product", new {dg.Id, ProductId = Model.Product.Id}, new {@class = "delete"})</th>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <ul>
+                    @foreach(Document d in dg.Documents)
+                    {
+                        <li>
+                            @foreach (TextValue tv in d.TitleText.Values)
+                            {
+                                <img src="@Url.Content("~/Content/flags/" + tv.Culture + ".png")"/>
+                                @(tv.Value) <span>-</span> <small>@(d.Path)</small>
+                            }
+                        </li>
+                    }
+                    </ul>
+                </td>
+            </tr>
+        }
+        </table>
+
+        @using (@Html.BeginForm("AddDocumentGroup", "Product", new RouteValueDictionary(new { Model.Product.Id }), FormMethod.Post, new Dictionary<string, object>(){{"enctype","multipart/form-data"}}))
+        {          
+            <table>
+                <tr>
+                    <th colspan="3">Přidat skupinu dokumentů</th>
+                </tr>
+                <tr>
+                    @foreach(string lang in LangIterator.Langs)
+                    {
+                        <tr>
+                            <td><img src="@Url.Content("~/Content/flags/" + lang + ".png")"/></td>
+                            <td>@Html.TextBox("title["+@lang+"]")</td>
+                            <td><input type="file" name="file[@lang]" /></td>
+                        </tr>
+                    }
+                </tr>
+            </table>
+            
+            <input type="submit" />
+        }
+    </div>
+    }else
+    {
+        <div>Nejprve nový produkt uložte.</div>
+    }
+</body>
+</html>

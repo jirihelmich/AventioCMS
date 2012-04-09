@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Edit";
+}
+
+
+@model Model.ViewModel.CategoryEditViewModel
+           
+@using (Html.BeginForm(new { Model.Edited.Id }))
+{
+  
+    <div class="select">
+        @Html.Label("Rodičovská kategorie")
+        @Html.DropDownList("ParentID", Model.Categories, new{@class = "chosen", style = "width:50%;"})
+    </div>
+    <div id="tabs">
+    
+        <ul>
+            @foreach (String culture in HTH8.Utils.LangIterator.Langs)
+            {
+                <li><a href="#@culture" class="@culture"><img src="@Url.Content("~/Content/flags/" + culture + ".png")"/></a></li>
+            }
+        </ul>
+
+        
+        @foreach (String culture in HTH8.Utils.LangIterator.Langs)
+        {
+            <div id="@culture">
+                @Html.TextBox("title[" + @culture + "]", Model.Edited.TitleText == null ? "" : Model.Edited.TitleText.GetValue(culture), new { @class = "largeField" })
+                @Html.TextArea("shortDescription[" + @culture + "]", Model.Edited.ShortDescriptionText == null ? "" : Model.Edited.ShortDescriptionText.GetValue(culture), new { @class = "ckeditor" })
+                @Html.TextArea("description[" + @culture + "]", Model.Edited.DescriptionText == null ? "" : Model.Edited.DescriptionText.GetValue(culture), new { @class = "ckeditor" })
+            </div>
+        }
+        
+        <input type="submit" value="Uložit" />
+        <a href="@Url.Action("Index","Category")">Storno</a>
+
+    </div>
+}

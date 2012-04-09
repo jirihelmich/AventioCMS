@@ -1,0 +1,17 @@
+﻿@using DomainModel.Entity
+@model Image
+
+<div id="files" class="box box-width-30 highlight">
+    <div class="box-content">
+        <form action="@Url.Action("Upload","Img")" method="POST" enctype="multipart/form-data" id="ajaxUploadFormImg">
+            <label for="icon">Vyberte ikonu:</label>
+            <input type="file" name="icon" id="icon" />
+        </form>
+        <div class="uploaded img">
+            @if(Model.Path != null)
+            {
+                <img src="@Url.Content("~/files/"+Model.Path)" height="@(Model.Height < 200 ? Model.Height : 200)" />
+            }
+        </div>
+    </div>
+</div>

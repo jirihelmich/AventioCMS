@@ -1,0 +1,28 @@
+﻿@using DomainModel.Entity
+@model ICollection<DomainModel.Entity.Page>
+
+@{
+    ViewBag.Title = "Statické stránky";
+}
+
+<ul id="submenu">
+    <li>@Html.ActionLink("Nová stránka", "Edit", new {area = "Admin"})</li>
+</ul>
+
+<div class="pages-list">
+    <table>
+        <tr>
+            <th>Název</th>
+            <th>Editovat</th>
+            <th>Smazat</th>
+        </tr>
+    @foreach (DomainModel.Entity.Page p in Model)
+    {
+        <tr>
+            <td>@p.TitleText.GetValue(UICulture)</td>
+            <td>@Html.ActionLink("Editovat", "Edit", new { p.Id })</td>
+            <td>@Html.ActionLink("Smazat", "Delete", new { p.Id })</td>
+        </tr>
+    }
+    </table>
+</div>

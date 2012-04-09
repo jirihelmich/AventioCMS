@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "Edit";
+}
+
+
+@using DomainModel.Entity
+@model Model.ViewModel.NewsEditViewModel
+<div class="tabs">
+    <ul>
+        <li><a href="#text-form">Texty</a></li>
+        <li><a href="#icon-form">Ikona</a></li>
+    </ul>
+
+    <div id="text-form">
+    @using (Html.BeginForm(new { Model.Edited.Id }))
+    {
+
+        @Html.Hidden("imageId", Model.Edited.ImageId ?? 0)
+    
+        <div class="select">
+            @Html.Label("Datum")
+            @Html.TextBox("date", Model.Edited.Date != null ? Model.Edited.Date.Value.ToShortDateString() : String.Empty)
+        </div>
+        <div class="select">
+            @Html.Label("Související produkt")
+            @Html.DropDownList("ProductId", Model.Products, new { @class = "chosen", style = "width:50%;" })
+        </div>
+    
+        <div id="tabs">
+
+            <ul>
+                @foreach (String culture in HTH8.Utils.LangIterator.Langs)
+                {
+                    <li><a href="#@culture" class="@culture"><img src="@Url.Content("~/Content/flags/" + culture + ".png")"/></a></li>
+                }
+            </ul>
+
+        
+            @foreach (String culture in HTH8.Utils.LangIterator.Langs)
+            {
+                <div id="@culture">
+                    @Html.TextBox("title[" + @culture + "]", Model.Edited.TitleText == null ? "" : Model.Edited.TitleText.GetValue(culture), new { @class = "largeField" })
+                    @Html.TextArea("shortDescription[" + @culture + "]", Model.Edited.ShortDescriptionText == null ? "" : Model.Edited.ShortDescriptionText.GetValue(culture), new { @class = "ckeditor" })
+                    @Html.TextArea("description[" + @culture + "]", Model.Edited.DescriptionText == null ? "" : Model.Edited.DescriptionText.GetValue(culture), new { @class = "ckeditor" })
+                </div>
+            }
+
+            <input type="submit" value="Uložit" />
+            <a href="@Url.Action("Index","News")">Storno</a>
+
+        </div>
+    }
+    </div>
+    
+    <div id="icon-form">
+        @Html.Partial("IconLoader", Model.Edited.Image ?? new Image())
+    </div>
+</div>

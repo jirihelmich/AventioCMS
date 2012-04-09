@@ -1,0 +1,62 @@
+﻿@using DomainModel.Entity
+@using Model.ViewModel
+@model ProductListViewModel
+
+@{
+    ViewBag.Title = "Produkty";
+}
+
+<ul id="submenu">
+    <li>@Html.ActionLink("Nový produkt", "Edit", new { area = "Admin" })</li>
+</ul>
+
+@helper RenderCategoryList(ICollection<Category> categories){
+    if (categories.Count > 0)
+    {
+        <ul>
+        @foreach (Category c in categories)
+        {
+            <li>
+                @Html.ActionLink(c.TitleText.GetValue(UICulture), "Index", new { categoryId = c.Id })
+                @RenderCategoryList(c.Children)
+            </li>
+        }    
+        </ul>
+    }
+}
+
+<div class="categories-list box left box-width-20">
+    <h3 class="box-name"><span><span>Kategorie</span></span></h3>
+    @RenderCategoryList(Model.Categories)
+</div>
+
+@if (Model.Products != null)
+{
+    <div class="products-list box right box-width-80">
+        @Html.Hidden("cid", Model.ActiveCategory != null ? Model.ActiveCategory.Id : 0)
+        <ul>
+        @foreach (Product p in Model.Products)
+        {
+            <li class="item product box" id="@("products_"+p.Id)">
+                <h3 class="box-name">
+                    <span><span>@p.TitleText.GetValue(UICulture)</span></span>
+                </h3>
+                @if (p.Image != null)
+                {
+                    <img src="/files/@p.Image.Path" />
+                }
+                <div class="controls">
+                    @Html.ActionLink("Editovat", "Edit", new { p.Id }, new { @class = "edit" })
+                    @Html.ActionLink("Smazat", "Delete", new { p.Id }, new { @class = "delete" })
+                </div>
+            </li>
+        }
+        </ul>
+    </div>
+    
+    <input type="submit" value="Uložit uspořádání" id="save-ordering" />
+}
+else
+{
+    <p>Klikněte na název kategorie pro výpis produktů.</p>
+}
