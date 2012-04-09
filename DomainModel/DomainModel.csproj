@@ -65,6 +65,7 @@
     <Compile Include="Entity\ArticleCategory.cs" />
     <Compile Include="Entity\Author.cs" />
     <Compile Include="Entity\Category.cs" />
+    <Compile Include="Entity\CategoryProduct.cs" />
     <Compile Include="Entity\Comment.cs" />
     <Compile Include="Entity\Document.cs" />
     <Compile Include="Entity\DocumentGroup.cs" />

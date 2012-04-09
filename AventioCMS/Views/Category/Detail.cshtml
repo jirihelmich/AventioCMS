@@ -1,0 +1,49 @@
+@using HTH8.Utils.HtmlExtensions
+@model Model.ViewModel.CategoryViewModel
+           
+@{ ViewBag.Title = Model.Category.TitleText.GetValue(UICulture); }
+
+<div id='subpage'>
+    <div class='top'>
+        <h1>@Model.Category.TitleText.GetValue(UICulture)</h1>
+        <ul class='tags'>
+            <li><a href='@Url.Action("Index", "Home", new { Culture = UICulture })'>HTH 8<span class="left"></span><span class="right"></span></a></li>
+            @Html.Partial("Partial/RecursiveBreadcrumbs", Model.Category)
+        </ul>
+    </div>
+    
+    <div class='content clearfix'>
+        <div class='left'>
+            @Html.Partial("Partial/LeftCategoryMenu", Model)
+        </div>
+        <div class='right'>
+
+        @if (Model.Category.DescriptionText != null)
+        {
+            @Html.Raw(Model.Category.DescriptionText.GetValue(UICulture))
+        }
+
+        @foreach (DomainModel.Entity.Product p in Model.Category.CategoryProducts.OrderBy(x => x.Ordering).Select(x => x.Product))
+        {
+                <div class='product-container clerafix'>
+                    <div class='left'>
+                        @if (p.Image != null)
+                        {
+                            <img src='/Image/Thumbnail?width=230&height=175&path=@p.Image.Path' alt='@p.TitleText.GetValue(UICulture)' title='@p.TitleText.GetValue(UICulture)' />
+                        }
+                    </div>
+                    <div class='right'>
+                        <h2>
+                            @Html.ActionLinkWithList(p.TitleText.GetValue(UICulture), "Detail", "Product", new { Id = p.Id, Culture = UICulture, Categories = Model.CategoryPath.Categories, Title = p.TitleText.GetSeoValue(UICulture) })
+                        </h2>
+                        <span class='subtitle'>@p.SubtitleText.GetValue(UICulture)</span>
+                        @Html.Raw(p.ShortDescriptionText.GetValue(UICulture))
+                        @Html.ActionLinkWithList(HTH8.Resources.Strings.MoreInfo, "Detail", "Product", new { Id = p.Id, Culture = UICulture, Categories = Model.CategoryPath.Categories, Title = p.TitleText.GetSeoValue(UICulture) }, new { @class = "more-info" })
+                    </div>
+                </div> <!-- /.product-container --> 
+        }   
+		</div> <!-- /.right -->
+
+		<div class='content-bottom'>&nbsp;</div>
+	</div> <!-- /.content -->
+</div> <!-- /#subpage-->

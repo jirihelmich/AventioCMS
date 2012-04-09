@@ -15,6 +15,12 @@ namespace DomainModel.Entity
             return Values.Single(x => x.Culture == Culture.Substring(0, 2)).Value;
         }
 
+        public bool IsNullOrEmpty(String Culture)
+        {
+            var value = Values.SingleOrDefault(x => x.Culture == Culture.Substring(0, 2));
+            return (value == null || String.IsNullOrEmpty(value.Value));
+        }
+
         public String GetSeoValue(String Culture)
         {
             return Values.Single(x => x.Culture == Culture.Substring(0, 2)).SeoValue;

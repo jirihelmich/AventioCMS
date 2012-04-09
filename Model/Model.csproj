@@ -33,7 +33,11 @@
   <ItemGroup>
     <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,6 +45,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountModel.cs" />
+    <Compile Include="ProductOrderModelBinder.cs" />
+    <Compile Include="OrderingModelBinder.cs" />
+    <Compile Include="Routing\CategoryRoute.cs" />
+    <Compile Include="Routing\ProductRoute.cs" />
+    <Compile Include="Routing\NewsRoute.cs" />
+    <Compile Include="Routing\DictionaryRouteValueTranslationProvider.cs" />
+    <Compile Include="Routing\IRouteValueTranslationProvider.cs" />
+    <Compile Include="Routing\PageRoute.cs" />
+    <Compile Include="Routing\RouteValueTranslation.cs" />
+    <Compile Include="Routing\TranslatedRoute.cs" />
+    <Compile Include="Routing\TranslatedRouteCollectionExtensions.cs" />
+    <Compile Include="Subsystem\DocumentService.cs" />
+    <Compile Include="ViewModel\ProductOrderModel.cs" />
+    <Compile Include="ViewModel\DocumentsViewModel.cs" />
     <Compile Include="IModelService.cs" />
     <Compile Include="ServiceLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -48,7 +67,22 @@
     <Compile Include="Subsystem\CategoryService.cs" />
     <Compile Include="Subsystem\NewsService.cs" />
     <Compile Include="Subsystem\PageService.cs" />
+    <Compile Include="Subsystem\ProductService.cs" />
+    <Compile Include="UrlModels\CategoryUrlModel.cs" />
+    <Compile Include="UrlModels\ProductUrlModel.cs" />
+    <Compile Include="ViewModel\CategoryEditViewModel.cs" />
+    <Compile Include="ViewModel\CategoryViewModel.cs" />
+    <Compile Include="Subsystem\ImageService.cs" />
+    <Compile Include="ViewModel\MapViewModel.cs" />
+    <Compile Include="ViewModel\OrderingModel.cs" />
+    <Compile Include="ViewModel\ProductEditViewModel.cs" />
+    <Compile Include="ViewModel\NewsEditViewModel.cs" />
+    <Compile Include="ViewModel\ProductListViewModel.cs" />
+    <Compile Include="ViewModel\ProductViewModel.cs" />
     <Compile Include="ViewModel\FrontpageViewModel.cs" />
+    <Compile Include="ViewModel\ProductsListViewModel.cs" />
+    <Compile Include="ViewModel\SearchViewModel.cs" />
+    <Compile Include="ViewResults\FileUploadJsonResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DomainModel\DomainModel.csproj">

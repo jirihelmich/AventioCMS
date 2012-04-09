@@ -8,5 +8,6 @@ namespace Model
     public interface IModelService
     {
         void SetServiceLayer(ServiceLayer sl);
+        void DeleteById(long id);
     }
 }

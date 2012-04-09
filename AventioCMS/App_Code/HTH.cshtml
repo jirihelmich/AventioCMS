@@ -1,17 +1,19 @@
 ﻿@using System.Web.Mvc
 @using DomainModel.Entity
+@using HTH8.Utils.HtmlExtensions;
 
-@helper DisplayProductsMenu(ICollection<Category> categories, UrlHelper Url, String UICulture, System.Web.Mvc.HtmlHelper Html, bool id)
+@helper DisplayProductsMenu(IEnumerable<Category> categories, UrlHelper Url, String UICulture, System.Web.Mvc.HtmlHelper Html, bool id)
 {    <ul @Html.Raw(id ? "id='products-menu' class='clearfix'" : String.Empty)>
         @foreach(Category c in categories)
         {
             <li>
-                <a href="@Url.Action("Detail", "Category", new { Id = c.Id, Title = c.TitleText.GetSeoValue(UICulture) })">
-                    @c.TitleText.GetValue(UICulture)<span class="left"></span><span class="right"></span>
-                </a>
+                @Html.ActionLinkWithList(@c.TitleText.GetValue(UICulture),"Detail","Category", new {
+                    Categories = c.Parents,
+                    culture = UICulture
+                })
                 @if (c.Children.Count() > 0)
                 {
-                    @DisplayProductsMenu(c.Children, Url, UICulture, Html, false);
+                    @DisplayProductsMenu(c.Children.OrderBy(x=>x.Ordering), Url, UICulture, Html, false);
                 }
             </li> 
         }
@@ -19,7 +21,7 @@
 }
 
 @helper DisplayPagesMenu(ICollection<DomainModel.Entity.Page> pages, UrlHelper Url, String UICulture, System.Web.Mvc.HtmlHelper Html)
-{
+    {
     foreach (DomainModel.Entity.Page p in pages)
     {
         <li>
@@ -44,7 +46,7 @@
             <div class="news-text">
                 <h3>@n.TitleText.GetValue(UICulture)</h3>
                 <p>@Html.Raw(n.ShortDescriptionText.GetValue(UICulture))</p>
-                <a href="@Url.Action("Detail", "News", new { Id = n.Id, Title = n.TitleText.GetSeoValue(UICulture) })">...</a>
+                <a href="@Url.Action("Detail", "News", new { Culture = UICulture, Id = n.Id, Title = n.TitleText.GetSeoValue(UICulture), news = HTH8.Resources.Strings.News.ToLower() })">...</a>
             </div>
         </div>
     </div>
@@ -68,7 +70,10 @@
 		<div class='carousel-content'>
 			<div class='left'>
 				<h3>@c.TitleText.GetValue(UICulture)</h3>
-				<p>@Html.Raw(c.ShortDescriptionText.GetValue(UICulture))</p>
+                @if (c.ShortDescriptionText != null)
+                {
+				    <p>@Html.Raw(c.ShortDescriptionText.GetValue(UICulture))</p>
+                }
 			</div>
 			<div class='right'>                <img src='@Url.Content("/Content/images/carousel/" + @index + "/pic1.png")' alt='@c.TitleText.GetValue(UICulture)' />                <ul class='thumbnails'>                    <li><a href='#' class='selected'><img src='@Url.Content("/Content/images/carousel/" + @index + "/pic1-small.png")' alt='@c.TitleText.GetValue(UICulture)' /></a></li>                    <li><a href='#'><img src='@Url.Content("/Content/images/carousel/" + @index + "/pic2-small.png")' alt='@c.TitleText.GetValue(UICulture)' /></a></li>                </ul>            </div>        </div>    </div>
 }

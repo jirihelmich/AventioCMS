@@ -43,7 +43,6 @@ namespace HTH8.Controllers
 
             ViewBag.RequestAction = ctx.ActionDescriptor.ActionName;
             ViewBag.RequestController = ctx.ActionDescriptor.ControllerDescriptor.ControllerName;
-            ViewBag.RequestParams = new Dictionary<string, object>();
         }
     }
 }

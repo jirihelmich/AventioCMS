@@ -221,14 +221,27 @@ h4{
 
 #products-menu li {
 	float:left;
-	position:relative;
+	position:relative;   
+	margin-bottom: 2px; 
 }
 
 #products-menu li a 
 {
     display:block;
     padding:13px 4px 13px 4px;
-    color: #fff;
+    color: #fff;  
+	border-right: 1px solid #d44f00;    
+
+}          
+#products-menu li ul li{
+	margin-bottom: 0px;
+}       
+#products-menu li ul li a{
+	border: 0;
+}
+
+#products-menu li:last-child a{
+ 	border-right: 0;   
 }
 
 #products-menu li a:hover, #products-menu li:hover {
@@ -972,7 +985,7 @@ h4{
 	clear: left;
 }
 
-#subpage .content .right h3 {
+#subpage .content .right h2 {
 	margin:20px 0;
 }
 
@@ -980,7 +993,8 @@ h4{
 	height:181px;
 	width:658px;
 	background:url('../images/product-container.png') no-repeat 0 0;
-	margin-bottom:20px;
+	margin-bottom:20px;      
+	position: relative;
 }
 #subpage .news-container {
 	height:181px;
@@ -988,7 +1002,8 @@ h4{
 	background:url('../images/news-container.png') no-repeat 0 0;
 	margin-bottom:20px;
 	margin-left: 20px;
-	margin-right: 20px;
+	margin-right: 20px;    
+	position: relative;
 }
 
 #subpage .product-container .left, #subpage .product-container .right, #subpage .news-container .left, #subpage .news-container .right {
@@ -996,15 +1011,19 @@ h4{
 }
 
 #subpage .product-container .left img, #subpage .news-container .left img{
-	max-width: 160px;
+	max-width: 160px;     
+
 }
 
 #subpage .product-container .left, #subpage .news-container .left{
 	width:182px;
-	height:165px;
+	height:181px;
 	text-align:center;
-	margin-top:7px;
-	overflow: hidden;
+	_margin-top:7px;
+	overflow: hidden;    
+	vertical-align: middle;
+	display: table-cell; 
+	float:none !important; 	
 }
 
 #subpage .product-container .right, #subpage .news-container .right {
@@ -1012,14 +1031,17 @@ h4{
 	height:166px;
 	padding:0 27px 15px 30px;
 	position:relative;
-	margin-left: 0;
+	margin-left: 0;          
+	position: absolute;
+	top: 0;
+	right: 0;
 }
 
 #subpage .news-container .right{
 	width: 642px !important;
 }
 
-#subpage .product-container h3, #subpage .news-container h3 {
+#subpage .product-container h2, #subpage .news-container h2 {
 	font-size:18px;
 	font-weight:normal;
 }

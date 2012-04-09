@@ -1,0 +1,25 @@
+﻿@using DomainModel.Entity
+@using HTH8.Utils.HtmlExtensions
+
+@model DomainModel.Entity.Category
+           
+@helper RenderLink(Category c)
+{
+    <li>@Html.ActionLinkWithList(c.TitleText.GetValue(UICulture), "Detail", "Category", new
+    {
+        Categories = c.Parents,
+        culture = UICulture
+    }, true)</li>
+}
+
+@{ Category c = Model; Stack<Category> path = new Stack<Category>(); }
+@while (c != null)
+{
+    path.Push(c);
+    c = c.Parent;
+}
+
+@while(path.Count > 0)
+{
+    @RenderLink(path.Pop());
+}

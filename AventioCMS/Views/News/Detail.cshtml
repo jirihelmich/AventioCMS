@@ -1,4 +1,6 @@
-﻿@model DomainModel.Entity.News
+﻿@using HTH8.Utils.HtmlExtensions
+@model DomainModel.Entity.News
+@{ ViewBag.Title = Model.TitleText.GetValue(UICulture); }
 
 <div id='subpage' class="news-detail">
 	<div class='top'>
@@ -13,11 +15,11 @@
         @Html.Raw(Model.ShortDescriptionText.GetValue(UICulture))
         @Html.Raw(Model.DescriptionText.GetValue(UICulture))
 
-        @if (Model.Product != null)
+        @if (Model.ProductId != null)
         {
             <div class="connected-product">
-                <span>Přidružený produkt:</span>
-                <a href="#">@Model.Product.TitleText.GetValue(UICulture)</a>
+                <span>@HTH8.Resources.Strings.Products:</span>
+                @Html.ActionLinkWithList(Model.Product.TitleText.GetValue(UICulture),"Detail", "Product", new { Culture = UICulture, Categories = Model.Product.ProductCategories.First().Category.Parents, Model.Product.Id, Title = Model.Product.TitleText.GetSeoValue(Culture) })
             </div>
         }
     </div>

@@ -1,11 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Web;
+using System.Web.Mvc;
 using DomainModel;
 using DomainModel.Entity;
 using AventioCMS.Models.ViewModel;
+using HTH8.Models.UrlModels;
 using Model.Subsystem;
+using Model.ViewModel;
 
 namespace Model
 {
@@ -25,6 +31,8 @@ namespace Model
         /// each service class.
         /// </summary>
         private Dictionary<Type, object> _serviceCache = new Dictionary<Type, object>();
+
+        public static String[] Langs = new string[] { "cs", "en", "de", "ru", "fr", "pl" };
 
         #endregion Properties
 
@@ -93,6 +101,20 @@ namespace Model
             return new FrontpageViewModel() {News = GetTopNews(4), Categories = GetRootCategories()};
         }
 
+        public CategoryViewModel GetCategory(CategoryUrlModel model)
+        {
+            long id = long.Parse(model.Categories.Last().Split(new char[] { '-' }, 2).First());
+
+            CategoryService cs = GetSubsystem<CategoryService>();
+            Category entity = cs.GetById(id);
+
+            return new CategoryViewModel()
+                {
+                    Category = entity,
+                    CategoryPath = model
+                };
+        }
+
         #endregion Public Methods
 
         #region Internal
@@ -107,5 +129,183 @@ namespace Model
         }
 
         #endregion Internal
+
+        public ProductViewModel GetProductById(ProductUrlModel model)
+        {
+            return new ProductViewModel() {
+                CategoryPath = new CategoryUrlModel() { Categories = model.Categories },
+                Product = (GetSubsystem<ProductService>().GetById(model.Id))
+            };
+        }
+
+        public ProductListViewModel GetProductsList(long? categoryId)
+        {
+            Category c = categoryId == null
+                              ? null
+                              : GetSubsystem<CategoryService>()
+                                    .GetById((long) categoryId);
+
+            return new ProductListViewModel()
+                       {
+                           Categories = GetSubsystem<CategoryService>().ToList(),
+                           Products = (c == null ? null : c
+                                                .CategoryProducts
+                                                .OrderBy(x=>x.Ordering)
+                                                .Select(x=>x.Product)
+                                                .ToList()),
+                            ActiveCategory = c
+                       };
+        }
+
+        public ICollection<Page> GetPagesList()
+        {
+            return GetSubsystem<PageService>().ToList();
+        }
+
+        public ICollection<News> GetNewsList()
+        {
+            return GetSubsystem<NewsService>().ToList();
+        }
+
+        public ICollection<Category> GetCategoriesList()
+        {
+            return GetSubsystem<CategoryService>().GetRootCategories();
+        }
+
+        public object SaveUploadedImage(HttpRequestBase Request)
+        {
+            return GetSubsystem<ImageService>().Upload(Request.Files[0], Request, Request.Files[0].FileName);
+        }
+
+        public CategoryEditViewModel GetCategoryEditModel(long? id)
+        {
+            CategoryService service = GetSubsystem<CategoryService>();
+            return service.GetEditModel(id);
+        }
+
+        public NewsEditViewModel GetNewsEditModel(long? id)
+        {
+            NewsService service = GetSubsystem<NewsService>();
+            return service.GetEditModel(id);
+        }
+
+        public ProductEditViewModel GetProductEditModel(long? id)
+        {
+            ProductService service = GetSubsystem<ProductService>();
+            return service.GetEditModel(id);
+        }
+
+        public DocumentsViewModel GetDocumentsModelByProductId(long? id)
+        {
+            return GetSubsystem<ProductService>().GetDocumentsModelById(id);
+        }
+
+        public void SaveUploadedDocuments(HttpRequestBase Request, long productId, FormCollection values)
+        {
+            DocumentService service = GetSubsystem<DocumentService>();
+
+            DocumentGroup dg = new DocumentGroup();
+            dg.Documents = new List<Document>();
+
+            GetSubsystem<ProductService>().GetById(productId).DocumentGroups.Add(dg);
+
+            foreach (string lang in Langs)
+            {
+                string key = "file[" + lang + "]";
+                if (Request.Files.AllKeys.Contains(key))
+                {
+                    var file = Request.Files[key];
+
+                    dg.Documents.Add(service.Upload(file, values["title[" + lang + "]"], lang, Request.MapPath("~/files")));
+                }
+            }
+
+            try
+            {
+                GetDBContext().SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        Trace.TraceInformation("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
+        }
+
+        public void DeleteDocumentsGroup(long id)
+        {
+            DocumentService ds = GetSubsystem<DocumentService>();
+            DocumentGroup dg = ds.GetById(id);
+
+            foreach (Product p in dg.Products)
+            {
+                p.DocumentGroups.Remove(dg);
+            }
+
+            GetDBContext().SaveChanges();
+
+        }
+
+        public MapViewModel GetMapData()
+        {
+            return new MapViewModel()
+                       {
+                           Categories = GetSubsystem<CategoryService>().ToList(),
+                           Pages = GetSubsystem<PageService>().ToList(),
+                           News = GetSubsystem<NewsService>().ToList()
+                       };
+        }
+
+        public SearchViewModel Search(string s)
+        {
+            return new SearchViewModel()
+                       {
+                           Products = GetSubsystem<ProductService>()
+                                        .ToList()
+                                        .Where(
+                                            x=>x.TitleText
+                                                .Values
+                                                .Single(y=>y.Culture == System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName)
+                                                .Value.ToLower().Contains(s.ToLower())
+                                        ).ToList()
+                       };
+        }
+
+        public void ReorderCategories(OrderingModel model)
+        {
+            CategoryService service = GetSubsystem<CategoryService>();
+
+            int order = 0;
+
+            foreach (long key in model.Parent.Keys)
+            {
+                Category c = service.GetById(key);
+                c.Parent = (model.Parent[key] == null
+                            ? null :
+                            service.GetById((long)model.Parent[key])
+                            );
+                c.Ordering = ++order;
+            }
+
+            GetDBContext().SaveChanges();
+        }
+
+        public void ReorderProducts(long categoryId, ProductOrderModel model)
+        {
+            CategoryService service = GetSubsystem<CategoryService>();
+            Category c = service.GetById(categoryId);
+
+            int i = 0;
+            foreach (long pId in model.Products)
+            {
+                c.CategoryProducts.Single(x => x.Product.Id == pId).Ordering = i++;
+            }
+
+            GetDBContext().SaveChanges();
+        }
     }
 }

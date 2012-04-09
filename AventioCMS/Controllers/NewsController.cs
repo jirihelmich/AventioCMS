@@ -14,7 +14,7 @@ namespace HTH8.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return View(_sl.GetSubsystem<NewsService>().ToListDescending<DateTime?>(x=>x.Date));
         }
 
         public ActionResult Detail(long Id)

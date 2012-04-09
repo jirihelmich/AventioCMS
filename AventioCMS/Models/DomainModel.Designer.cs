@@ -1,2 +1,0 @@
-﻿// Seeing this comment implies that the code generation for file 'c:\users\jirka\documents\visual studio 2010\Projects\AventioCMS\AventioCMS\Models\DomainModel.edmx'
-// failed. See the ErrorList for details.

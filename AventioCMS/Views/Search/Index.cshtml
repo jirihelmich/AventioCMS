@@ -1,0 +1,24 @@
+﻿@using DomainModel.Entity
+@using HTH8.Utils.HtmlExtensions
+@model Model.ViewModel.SearchViewModel
+
+@{
+    ViewBag.Title = HTH8.Resources.Strings.SearchResults;
+}
+<div id='subpage' class="static-page">
+	<div class='top'>
+		<h1>@HTH8.Resources.Strings.SearchResults</h1>
+		<ul class='tags'>
+			<li><a href='@Url.Action("Index", "Home", new { Culture = UICulture })'>HTH 8<span class="left"></span><span class="right"></span></a></li>
+			<li><a href='#' class="active">@HTH8.Resources.Strings.SearchResults<span class="left"></span><span class="right"></span></a></li>
+		</ul>
+	</div>
+	<div class='content clearfix'>        @if (Model.Products.Count > 0){            <ul>
+                @foreach (Product p in Model.Products)
+                {
+                    <li>@Html.ActionLinkWithList(p.TitleText.GetValue(UICulture), "Detail", "Product", new {Categories = p.ProductCategories.First().Category.Parents, Id = p.Id, Title = p.TitleText.GetValue(UICulture), Culture = UICulture})</li>
+                }            </ul>
+        }else
+        {
+            <p>@HTH8.Resources.Strings.SearchResults: 0</p>
+        }    </div></div>

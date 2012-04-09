@@ -1,0 +1,35 @@
+﻿@using DomainModel.Entity
+@using HTH8.Models.UrlModels
+@using HTH8.Utils.HtmlExtensions
+@using Model.ViewModel
+@model ProductViewModel           @{ ViewBag.Title = Model.Product.TitleText.GetValue(UICulture); }@{ var currentCategory = Model.Product.ProductCategories.Single(x => x.Category.Id == long.Parse(Model.CategoryPath.Categories.Last().Split(new char[] { '-' }).First())).Category; }<div id='subpage' class='product-detail'>
+    <div class='top'>
+        <h1>@Model.Product.TitleText.GetValue(UICulture)</h1>
+        <ul class='tags'>
+            <li class='nonactive'><a href='@Url.Action("Index", "Home", new { Culture = UICulture })'>HTH 8<span class="left"></span><span class="right"></span></a></li>            @Html.Partial("Partial/RecursiveBreadcrumbs", currentCategory)            <li><a href="#" class="active">@Model.Product.TitleText.GetValue(UICulture)<span class="left"></span><span class="right"></span></a></li>
+        </ul>
+    </div>
+    <div class='content clearfix'>
+        <div class='left'>            @Html.Partial("Partial/LeftCategoryMenu", new CategoryViewModel() { Category = currentCategory, CategoryPath = new CategoryUrlModel() { Categories = currentCategory.Parents } })
+        </div>
+        <div class='right'>            <div class='photo-panel'>                @if (Model.Product.Image != null)
+                {                    <div class='photo-container'>                        <img src='@Url.Action("Thumbnail", "Image", new { width = 230, height = 175, path = Model.Product.Image.Path })' alt='@Model.Product.TitleText.GetValue(UICulture)' title='@Model.Product.TitleText.GetValue(UICulture)' />                    </div>
+                }                @if (Model.Product.DocumentGroups.Count > 0)
+                {                    <div class='product-info'>                            <span class="docs-header">Dokumentace</span>                            <div class='info-inner'>                                @foreach (DocumentGroup dg in Model.Product.DocumentGroups)
+                                {                                    <strong>@dg.GetNameByCulture(UICulture)</strong>                                                    <ul class='localization'>                                        @foreach (Document doc in dg.Documents)
+                                        {
+                                            if (doc.Path == String.Empty || doc.Culture == null)
+                                            {
+                                                continue;
+                                            }
+                                                                                        <li class='@doc.Culture'>
+                                                <a href='/files/@doc.Path'>@doc.TitleText.GetValue(doc.Culture)</a>
+                                            </li>
+                                        }                                    </ul>                                                    <hr class='info-separator clear' />
+                                }                                                    <div class='info-bottom'>&nbsp;</div>
+				            </div>                    </div>
+                }            </div>
+	        <div class='product-desc'>                    <span class='subtitle'>@Model.Product.SubtitleText.GetValue(UICulture)</span>
+		        <div class="longdesc">
+                    @Html.Raw(Model.Product.DescriptionText.GetValue(UICulture))
+                </div>            </div>        </div>    </div></div>

@@ -1,3 +1,5 @@
+using System.Linq;
+
 namespace DomainModel.Entity
 {
     using System;
@@ -11,5 +13,24 @@ namespace DomainModel.Entity
     
         public virtual DocumentGroup DocumentGroup { get; set; }
         public virtual Text TitleText { get; set; }
+
+        private static String[] Langs = new string[] { "cs", "en", "de", "ru", "fr", "pl" };
+
+        public string Culture
+        {
+            get
+            {
+                var culture = Langs
+                    .Where(x => !TitleText.IsNullOrEmpty(x));
+
+                if (culture.Count() == 0)
+                {
+                    return null;
+                }
+
+                return culture.First();
+            }
+        }
+
     }
 }

@@ -19,7 +19,7 @@ namespace DomainModel.Entity
         public virtual Text DescriptionText { get; set; }
         public virtual ICollection<DocumentGroup> DocumentGroups { get; set; }
         public virtual ICollection<Image> Images { get; set; }
-        public virtual ICollection<Category> Categories { get; set; }
+        public virtual ICollection<CategoryProduct> ProductCategories { get; set; }
         public virtual ICollection<Product> Similar { get; set; }
         public virtual ICollection<Product> SimilarTo { get; set; }
     }

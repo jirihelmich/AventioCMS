@@ -1,0 +1,37 @@
+﻿@using DomainModel.Entity
+@using HTH8.Utils.HtmlExtensions
+@using Model.ViewModel
+@model Model.ViewModel.CategoryViewModel
+
+@{ Category cat = Model.Category; Stack<Category> path = new Stack<Category>(); }
+@while (cat != null)
+{
+    path.Push(cat);
+    cat = cat.Parent;
+}
+
+@helper RenderList(ICollection<Category> categories, Stack<Category> path)
+{
+    if (categories.Count > 0)
+    {
+        <ul>
+        @foreach (Category c in categories)
+        {
+            bool onPath = path.Contains(c);
+            <li class="@(Model.Category == c ? "active" : String.Empty)">
+                @Html.ActionLinkWithList(c.TitleText.GetValue(UICulture), "Detail", "Category", new { Categories = c.Parents, culture = UICulture })
+                @if (onPath)
+                {
+                    @RenderList(c.Children, path)
+                }
+                @if(Model.Category == c)
+                {
+                    @Html.Partial("Partial/ProductsMenu", new ProductsListViewModel() { Products = c.CategoryProducts.OrderBy(x=>x.Ordering).Select(x=>x.Product), CategoryPath = Model.CategoryPath})
+                }
+            </li>
+        }
+        </ul>
+    }
+}
+
+@RenderList((List<Category>)ViewBag.Categories, path)

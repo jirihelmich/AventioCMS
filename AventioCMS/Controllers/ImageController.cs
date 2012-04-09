@@ -15,12 +15,21 @@ namespace HTH8.Controllers
         //
         // GET: /Image/Thumbnail
 
-        public ActionResult Thumbnail(int width, int height, string path)
+        public ActionResult Thumbnail(string path)
         {
             string fullPath = Request.MapPath("~/files/" + path);
-
+            
             ImageEditing resizer = new ImageEditing(fullPath);
-            return new ImageActionResult(resizer.Resize(width, height));
+            return new ImageActionResult(resizer.Resize(ExtractIntParam("width", "w"), ExtractIntParam("height", "h")));
+        }
+
+        private int ExtractIntParam(string key, string alterKey)
+        {
+            if (Request.Params.AllKeys.Contains(key))
+            {
+                return int.Parse(Request.Params[key]);
+            }
+            return int.Parse(Request.Params[alterKey]);
         }
 
         //

@@ -1,0 +1,17 @@
+C:\Users\Jirka\documents\visual studio 2010\Projects\AventioCMS\HTH8.Resources\bin\Debug\HTH8.Resources.dll
+C:\Users\Jirka\documents\visual studio 2010\Projects\AventioCMS\HTH8.Resources\bin\Debug\HTH8.Resources.pdb
+C:\Users\Jirka\documents\visual studio 2010\Projects\AventioCMS\HTH8.Resources\bin\Debug\de\HTH8.Resources.resources.dll
+C:\Users\Jirka\documents\visual studio 2010\Projects\AventioCMS\HTH8.Resources\bin\Debug\en\HTH8.Resources.resources.dll
+C:\Users\Jirka\documents\visual studio 2010\Projects\AventioCMS\HTH8.Resources\bin\Debug\ru\HTH8.Resources.resources.dll
+C:\Users\Jirka\documents\visual studio 2010\Projects\AventioCMS\HTH8.Resources\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Jirka\documents\visual studio 2010\Projects\AventioCMS\HTH8.Resources\obj\Debug\HTH8.Resources.Strings.resources
+C:\Users\Jirka\documents\visual studio 2010\Projects\AventioCMS\HTH8.Resources\obj\Debug\HTH8.Resources.Strings.de.resources
+C:\Users\Jirka\documents\visual studio 2010\Projects\AventioCMS\HTH8.Resources\obj\Debug\HTH8.Resources.Strings.en.resources
+C:\Users\Jirka\documents\visual studio 2010\Projects\AventioCMS\HTH8.Resources\obj\Debug\HTH8.Resources.Strings.ru.resources
+C:\Users\Jirka\documents\visual studio 2010\Projects\AventioCMS\HTH8.Resources\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\Jirka\documents\visual studio 2010\Projects\AventioCMS\HTH8.Resources\obj\Debug\GenerateResource.write.1.tlog
+C:\Users\Jirka\documents\visual studio 2010\Projects\AventioCMS\HTH8.Resources\obj\Debug\de\HTH8.Resources.resources.dll
+C:\Users\Jirka\documents\visual studio 2010\Projects\AventioCMS\HTH8.Resources\obj\Debug\en\HTH8.Resources.resources.dll
+C:\Users\Jirka\documents\visual studio 2010\Projects\AventioCMS\HTH8.Resources\obj\Debug\ru\HTH8.Resources.resources.dll
+C:\Users\Jirka\documents\visual studio 2010\Projects\AventioCMS\HTH8.Resources\obj\Debug\HTH8.Resources.dll
+C:\Users\Jirka\documents\visual studio 2010\Projects\AventioCMS\HTH8.Resources\obj\Debug\HTH8.Resources.pdb

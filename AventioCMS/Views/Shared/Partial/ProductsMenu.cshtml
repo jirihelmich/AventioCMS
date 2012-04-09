@@ -1,0 +1,20 @@
+﻿@using DomainModel.Entity
+@using HTH8.Utils.HtmlExtensions
+@using Model.ViewModel
+@model ProductsListViewModel
+
+@if (Model.Products.Count() > 0)
+{
+    <ul>
+    @foreach (Product p in Model.Products)
+    {
+        <li>
+        @Html.ActionLinkWithList(@p.TitleText.GetValue(UICulture),"Detail","Product", new {
+            Id = p.Id,
+            Title = p.TitleText.GetSeoValue(UICulture),
+            Categories = Model.CategoryPath.Categories,
+            Culture = UICulture
+        })</li>
+    }
+    </ul>
+}

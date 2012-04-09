@@ -1,0 +1,16 @@
+﻿@model List<DomainModel.Entity.News>@{
+    ViewBag.Title = @HTH8.Resources.Strings.AllNews + " | HTH 8 s.r.o.";
+}<div id='subpage' class='product-detail'>    <div class='top'>        <h1>@HTH8.Resources.Strings.AllNews</h1>
+		<ul class='tags'>            <li class='nonactive'><a href='/cs'>HTH 8<span class="left"></span><span class="right"></span></a></li>            <li class='nonactive'><a href='#' class='active'>@HTH8.Resources.Strings.AllNews<span class="left"></span><span class="right"></span></a></li>        </ul>    </div>
+	<div class='content clearfix'>        @foreach (DomainModel.Entity.News n in Model)
+        {            <div class='news-container clearfix'>                <div class='left'>                    <img src='/Image/Thumbnail?width=230&height=175&path=@n.Image.Path' alt='@n.TitleText.GetValue(UICulture)' title='@n.TitleText.GetValue(UICulture)' />                </div>                <div class='right'>                    <h2>
+                        <a href='@Url.Action("Detail", "News", new { Id = n.Id, Culture = UICulture, Title = n.TitleText.GetSeoValue(UICulture), news = HTH8.Resources.Strings.News.ToLower() })'>
+                            @n.TitleText.GetValue(UICulture)
+                        </a>
+                    </h2>
+                    <p>@Html.Raw(n.ShortDescriptionText.GetValue(UICulture))</p> 
+                    <a href='@Url.Action("Detail", "News", new { Id = n.Id, Culture = UICulture, Title = n.TitleText.GetSeoValue(UICulture)})' class='more-info'>@HTH8.Resources.Strings.MoreInfo</a>                </div>
+		    </div> <!-- /.news-container -->  
+        }
+    </div>
+</div>
